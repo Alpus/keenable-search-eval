@@ -1,0 +1,659 @@
+{
+  "attempts": [
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.437310+00:00",
+      "artifact_dir": "attempts/af882db5195595ebac677529",
+      "completed_at": "2026-09-29T16:49:36+00:00",
+      "completion_evidence": "zero_findings_walkthrough",
+      "completion_kind": "commit_status",
+      "configuration": "native",
+      "duration_seconds": 227.0,
+      "expected_base": "5f714add34fea5d805efdadbb8730b72b80c472a",
+      "expected_head": "af0203d5e44bf53612a15ab5327610e19e293c64",
+      "expires_at": "2026-09-29T17:15:49.120904+00:00",
+      "head_sha": "af0203d5e44bf53612a15ab5327610e19e293c64",
+      "id": "af882db5195595ebac677529",
+      "old_checks": [],
+      "old_statuses": [],
+      "pr_intent": true,
+      "pr_number": 1,
+      "push_intent": true,
+      "repeat": 1,
+      "repository": "Alpus/se-af882db5195595ebac677529",
+      "review_url": "https://github.com/Alpus/se-af882db5195595ebac677529/pull/1",
+      "role": "development",
+      "started_at": "2026-09-29T16:45:42.797624+00:00",
+      "status": "completed",
+      "status_id": 55193529757,
+      "task_id": "dev-zero-findings-candidate",
+      "trigger_id": 5894618511,
+      "trigger_intent": "2026-09-29T16:45:49.120904+00:00",
+      "trigger_time": "2026-09-29T16:45:49Z",
+      "updated_at": "2026-09-29T16:49:50.484241+00:00",
+      "walkthrough_comment_id": 5894620499
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.437310+00:00",
+      "artifact_dir": "attempts/f34343c5c77f2c6acaa8a02f",
+      "completed_at": "2026-09-29T16:52:29+00:00",
+      "completion_evidence": "zero_findings_walkthrough",
+      "completion_kind": "commit_status",
+      "configuration": "none",
+      "duration_seconds": 152.0,
+      "expected_base": "ffeec230999eadc34e75bc47765ddbddb702bd1a",
+      "expected_head": "a82a22d473eed14a155a6358863ca7c6a91e4738",
+      "expires_at": "2026-09-29T17:19:56.964588+00:00",
+      "head_sha": "a82a22d473eed14a155a6358863ca7c6a91e4738",
+      "id": "f34343c5c77f2c6acaa8a02f",
+      "old_checks": [],
+      "old_statuses": [],
+      "pr_intent": true,
+      "pr_number": 1,
+      "push_intent": true,
+      "repeat": 1,
+      "repository": "Alpus/se-f34343c5c77f2c6acaa8a02f",
+      "review_url": "https://github.com/Alpus/se-f34343c5c77f2c6acaa8a02f/pull/1",
+      "role": "development",
+      "started_at": "2026-09-29T16:49:50.500381+00:00",
+      "status": "completed",
+      "status_id": 55193770852,
+      "task_id": "dev-zero-findings-candidate",
+      "trigger_id": 5894682614,
+      "trigger_intent": "2026-09-29T16:49:56.964588+00:00",
+      "trigger_time": "2026-09-29T16:49:57Z",
+      "updated_at": "2026-09-29T16:52:43.525074+00:00",
+      "walkthrough_comment_id": 5894685001
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.437310+00:00",
+      "artifact_dir": "attempts/ede35c624320f0fc65829c54",
+      "completed_at": "2026-09-29T16:55:50+00:00",
+      "completion_evidence": "zero_findings_walkthrough",
+      "completion_kind": "commit_status",
+      "configuration": "keenable",
+      "duration_seconds": 180.0,
+      "expected_base": "efe99fe044d3e750775602b4a1423f5d4958be4d",
+      "expected_head": "458e82e1699bc5fe862ab552e56143bd32823c51",
+      "expires_at": "2026-09-29T17:22:49.671214+00:00",
+      "head_sha": "458e82e1699bc5fe862ab552e56143bd32823c51",
+      "id": "ede35c624320f0fc65829c54",
+      "old_checks": [],
+      "old_statuses": [],
+      "pr_intent": true,
+      "pr_number": 1,
+      "push_intent": true,
+      "repeat": 1,
+      "repository": "Alpus/se-ede35c624320f0fc65829c54",
+      "review_url": "https://github.com/Alpus/se-ede35c624320f0fc65829c54/pull/1",
+      "role": "development",
+      "started_at": "2026-09-29T16:52:43.543816+00:00",
+      "status": "completed",
+      "status_id": 55194057151,
+      "task_id": "dev-zero-findings-candidate",
+      "trigger_id": 5894726812,
+      "trigger_intent": "2026-09-29T16:52:49.671214+00:00",
+      "trigger_time": "2026-09-29T16:52:50Z",
+      "updated_at": "2026-09-29T16:56:01.547706+00:00",
+      "walkthrough_comment_id": 5894729216
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.437310+00:00",
+      "artifact_dir": "attempts/1232e652ce5df4117b95ca3f",
+      "completed_at": "2026-09-29T16:58:27+00:00",
+      "completion_evidence": "zero_findings_walkthrough",
+      "completion_kind": "commit_status",
+      "configuration": "exa",
+      "duration_seconds": 139.0,
+      "expected_base": "08e02fda26a94eb1731ab99bc637ec1901a9f369",
+      "expected_head": "a48e5f8ee4f632e0113d1d638f428e1673903d67",
+      "expires_at": "2026-09-29T17:26:07.747827+00:00",
+      "head_sha": "a48e5f8ee4f632e0113d1d638f428e1673903d67",
+      "id": "1232e652ce5df4117b95ca3f",
+      "old_checks": [],
+      "old_statuses": [],
+      "pr_intent": true,
+      "pr_number": 1,
+      "push_intent": true,
+      "repeat": 1,
+      "repository": "Alpus/se-1232e652ce5df4117b95ca3f",
+      "review_url": "https://github.com/Alpus/se-1232e652ce5df4117b95ca3f/pull/1",
+      "role": "development",
+      "started_at": "2026-09-29T16:56:01.562824+00:00",
+      "status": "completed",
+      "status_id": 55194281665,
+      "task_id": "dev-zero-findings-candidate",
+      "trigger_id": 5894780890,
+      "trigger_intent": "2026-09-29T16:56:07.747827+00:00",
+      "trigger_time": "2026-09-29T16:56:08Z",
+      "updated_at": "2026-09-29T16:58:43.159615+00:00",
+      "walkthrough_comment_id": 5894783334
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.437310+00:00",
+      "artifact_dir": "attempts/7f00c9c517384db73e256f84",
+      "completed_at": "2026-09-29T17:02:29+00:00",
+      "completion_evidence": "submitted_review",
+      "completion_kind": "commit_status",
+      "configuration": "exa",
+      "duration_seconds": 220.0,
+      "expected_base": "039f6bed9933b6b0bcaae54b0fe45009a44220ce",
+      "expected_head": "1f08fc947ed669e59f2909fde48e98db49acfd39",
+      "expires_at": "2026-09-29T17:28:49.052369+00:00",
+      "head_sha": "1f08fc947ed669e59f2909fde48e98db49acfd39",
+      "id": "7f00c9c517384db73e256f84",
+      "old_checks": [],
+      "old_statuses": [],
+      "pr_intent": true,
+      "pr_number": 1,
+      "push_intent": true,
+      "repeat": 1,
+      "repository": "Alpus/se-7f00c9c517384db73e256f84",
+      "review_id": 5355864966,
+      "review_url": "https://github.com/Alpus/se-7f00c9c517384db73e256f84/pull/1",
+      "role": "development",
+      "started_at": "2026-09-29T16:58:43.173603+00:00",
+      "status": "completed",
+      "status_id": 55194630808,
+      "task_id": "dev-requests-timeout",
+      "trigger_id": 5894821353,
+      "trigger_intent": "2026-09-29T16:58:49.052369+00:00",
+      "trigger_time": "2026-09-29T16:58:49Z",
+      "updated_at": "2026-09-29T17:02:37.692292+00:00"
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.437310+00:00",
+      "artifact_dir": "attempts/736b582c0921602d57967a26",
+      "completed_at": "2026-09-29T17:05:21+00:00",
+      "completion_evidence": "submitted_review",
+      "completion_kind": "commit_status",
+      "configuration": "native",
+      "duration_seconds": 157.0,
+      "expected_base": "f39787202808710a75abd61aa77ab58443f407ed",
+      "expected_head": "1409f57914d935b7d36bafe2405ba1ec3551539f",
+      "expires_at": "2026-09-29T17:32:44.084128+00:00",
+      "head_sha": "1409f57914d935b7d36bafe2405ba1ec3551539f",
+      "id": "736b582c0921602d57967a26",
+      "old_checks": [],
+      "old_statuses": [],
+      "pr_intent": true,
+      "pr_number": 1,
+      "push_intent": true,
+      "repeat": 1,
+      "repository": "Alpus/se-736b582c0921602d57967a26",
+      "review_id": 5355895156,
+      "review_url": "https://github.com/Alpus/se-736b582c0921602d57967a26/pull/1",
+      "role": "development",
+      "started_at": "2026-09-29T17:02:37.719987+00:00",
+      "status": "completed",
+      "status_id": 55194880852,
+      "task_id": "dev-requests-timeout",
+      "trigger_id": 5894880936,
+      "trigger_intent": "2026-09-29T17:02:44.084128+00:00",
+      "trigger_time": "2026-09-29T17:02:44Z",
+      "updated_at": "2026-09-29T17:05:34.302851+00:00"
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.437310+00:00",
+      "artifact_dir": "attempts/bcdac3b5cbc903e91529d3e6",
+      "completed_at": "2026-09-29T17:07:50+00:00",
+      "completion_evidence": "submitted_review",
+      "completion_kind": "commit_status",
+      "configuration": "keenable",
+      "duration_seconds": 130.0,
+      "expected_base": "2b0bcafc5293436c00b17d5b14f62eaa072d224b",
+      "expected_head": "265478ade853a6d443187bf99823bbc6c88bad07",
+      "expires_at": "2026-09-29T17:35:40.301526+00:00",
+      "head_sha": "265478ade853a6d443187bf99823bbc6c88bad07",
+      "id": "bcdac3b5cbc903e91529d3e6",
+      "old_checks": [],
+      "old_statuses": [],
+      "pr_intent": true,
+      "pr_number": 1,
+      "push_intent": true,
+      "repeat": 1,
+      "repository": "Alpus/se-bcdac3b5cbc903e91529d3e6",
+      "review_id": 5355921603,
+      "review_url": "https://github.com/Alpus/se-bcdac3b5cbc903e91529d3e6/pull/1",
+      "role": "development",
+      "started_at": "2026-09-29T17:05:34.330931+00:00",
+      "status": "completed",
+      "status_id": 55195099990,
+      "task_id": "dev-requests-timeout",
+      "trigger_id": 5894927184,
+      "trigger_intent": "2026-09-29T17:05:40.301526+00:00",
+      "trigger_time": "2026-09-29T17:05:40Z",
+      "updated_at": "2026-09-29T17:08:03.671608+00:00"
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.437310+00:00",
+      "artifact_dir": "attempts/35e475f2904c95d753b9d81d",
+      "completed_at": "2026-09-29T17:11:01+00:00",
+      "completion_evidence": "submitted_review",
+      "completion_kind": "commit_status",
+      "configuration": "none",
+      "duration_seconds": 172.0,
+      "expected_base": "40834ef77c66474786a5b6ac59d2b0e02d15e787",
+      "expected_head": "8e63e9f3ecba0ed4ccffe948c7c03b16e9371ffe",
+      "expires_at": "2026-09-29T17:38:09.499297+00:00",
+      "head_sha": "8e63e9f3ecba0ed4ccffe948c7c03b16e9371ffe",
+      "id": "35e475f2904c95d753b9d81d",
+      "old_checks": [],
+      "old_statuses": [],
+      "pr_intent": true,
+      "pr_number": 1,
+      "push_intent": true,
+      "repeat": 1,
+      "repository": "Alpus/se-35e475f2904c95d753b9d81d",
+      "review_id": 5355954603,
+      "review_url": "https://github.com/Alpus/se-35e475f2904c95d753b9d81d/pull/1",
+      "role": "development",
+      "started_at": "2026-09-29T17:08:03.702892+00:00",
+      "status": "completed",
+      "status_id": 55195373386,
+      "task_id": "dev-requests-timeout",
+      "trigger_id": 5894965678,
+      "trigger_intent": "2026-09-29T17:08:09.499297+00:00",
+      "trigger_time": "2026-09-29T17:08:09Z",
+      "updated_at": "2026-09-29T17:11:08.664230+00:00"
+    }
+  ],
+  "config": {
+    "allowance_file": "validation/martian-development-002-allowance.json",
+    "arms": [
+      {
+        "id": "native",
+        "mcp": [],
+        "native_search": true
+      },
+      {
+        "id": "none",
+        "mcp": [],
+        "native_search": false
+      },
+      {
+        "id": "keenable",
+        "mcp": [
+          "keenable"
+        ],
+        "native_search": false
+      },
+      {
+        "id": "exa",
+        "mcp": [
+          "exa"
+        ],
+        "native_search": false
+      }
+    ],
+    "baseline": "native",
+    "github_owner": "Alpus",
+    "limits": {
+      "episode_timeout_seconds": 720,
+      "max_attempts": 8,
+      "max_fetch_calls": 8,
+      "max_review_events_per_hour": 10,
+      "max_search_calls": 8,
+      "poll_seconds": 10,
+      "review_timeout_seconds": 1800
+    },
+    "manifest": "data/martian-pilot.json",
+    "profiles": {
+      "exa": {
+        "connection": "eval-search-b",
+        "endpoint": "search-b",
+        "mode": "auto",
+        "provider": "exa",
+        "tier": "authenticated",
+        "token_env": "MCP_SEARCH_B_TOKEN"
+      },
+      "keenable": {
+        "connection": "eval-search-a",
+        "endpoint": "search-a",
+        "mode": "pro",
+        "provider": "keenable",
+        "tier": "authenticated",
+        "token_env": "MCP_SEARCH_A_TOKEN"
+      }
+    },
+    "public_mcp_url": "https://political-estimate-nights-timber.trycloudflare.com",
+    "repeats": 1,
+    "role": "development",
+    "run_id": "martian-development-002",
+    "seed": 1729,
+    "suite": "martian",
+    "suite_options": {
+      "acceptance_evidence": [],
+      "completion_contract": {
+        "context": "CodeRabbit",
+        "creator_id": 136622811,
+        "creator_login": "coderabbitai[bot]",
+        "kind": "commit_status",
+        "success_description": "Review completed",
+        "zero_findings_app_id": 347564
+      },
+      "judge": {
+        "historical_structured_output_verified": false,
+        "max_retries": 1,
+        "model": "claude-opus-4-5-20251101",
+        "protocol_variant": "anthropic-direct-single-attempt-v1",
+        "protocol_variant_accepted": true,
+        "structured_output": false,
+        "temperature": 0.0
+      },
+      "max_judge_calls_per_attempt": 200
+    }
+  },
+  "created_at": "2026-09-29T16:45:42.791407+00:00",
+  "fingerprint": "86788d86f3c9547eb772f0d9a278421edc11c026d0465bc777053eb1d2a60bb8",
+  "input_identity": {
+    "code": "a87edd5ad8af6bc12a7919892aca61197c1141df1dabf5f219512015396007da",
+    "config": {
+      "allowance_file": "validation/martian-development-002-allowance.json",
+      "arms": [
+        {
+          "id": "native",
+          "mcp": [],
+          "native_search": true
+        },
+        {
+          "id": "none",
+          "mcp": [],
+          "native_search": false
+        },
+        {
+          "id": "keenable",
+          "mcp": [
+            "keenable"
+          ],
+          "native_search": false
+        },
+        {
+          "id": "exa",
+          "mcp": [
+            "exa"
+          ],
+          "native_search": false
+        }
+      ],
+      "baseline": "native",
+      "github_owner": "Alpus",
+      "limits": {
+        "episode_timeout_seconds": 720,
+        "max_attempts": 8,
+        "max_fetch_calls": 8,
+        "max_review_events_per_hour": 10,
+        "max_search_calls": 8,
+        "poll_seconds": 10,
+        "review_timeout_seconds": 1800
+      },
+      "manifest": "data/martian-pilot.json",
+      "profiles": {
+        "exa": {
+          "connection": "eval-search-b",
+          "endpoint": "search-b",
+          "mode": "auto",
+          "provider": "exa",
+          "tier": "authenticated",
+          "token_env": "MCP_SEARCH_B_TOKEN"
+        },
+        "keenable": {
+          "connection": "eval-search-a",
+          "endpoint": "search-a",
+          "mode": "pro",
+          "provider": "keenable",
+          "tier": "authenticated",
+          "token_env": "MCP_SEARCH_A_TOKEN"
+        }
+      },
+      "public_mcp_url": "https://political-estimate-nights-timber.trycloudflare.com",
+      "repeats": 1,
+      "role": "development",
+      "run_id": "martian-development-002",
+      "seed": 1729,
+      "suite": "martian",
+      "suite_options": {
+        "acceptance_evidence": [],
+        "completion_contract": {
+          "context": "CodeRabbit",
+          "creator_id": 136622811,
+          "creator_login": "coderabbitai[bot]",
+          "kind": "commit_status",
+          "success_description": "Review completed",
+          "zero_findings_app_id": 347564
+        },
+        "judge": {
+          "historical_structured_output_verified": false,
+          "max_retries": 1,
+          "model": "claude-opus-4-5-20251101",
+          "protocol_variant": "anthropic-direct-single-attempt-v1",
+          "protocol_variant_accepted": true,
+          "structured_output": false,
+          "temperature": 0.0
+        },
+        "max_judge_calls_per_attempt": 200
+      }
+    },
+    "manifest": "4b819112a0672eb0df4bcd5091a0c4596e544264dde25b13270c245fbd74ee26",
+    "tasks": [
+      {
+        "id": "cal.com-8087",
+        "input": {
+          "base_sha": "ba9688a04a8398c9a8332ee7061bfae2f2efd524",
+          "base_tree": "538e44157abad15963ea56ab84b2d02eb07e8698",
+          "body": "Please review the proposed code changes.",
+          "head_sha": "820d7fa87e0c824c5dee8082a33efadb1a2566f7",
+          "head_tree": "9809dc3fac6244ce782fd2189c777b3544fffd52",
+          "repo": "code-review-benchmark/cal_dot_com__cal.com__coderabbit__PR8087__20260122",
+          "title": "Async import of the appStore packages"
+        },
+        "kind": "pr_review",
+        "role": "scored"
+      },
+      {
+        "id": "cal.com-14740",
+        "input": {
+          "base_sha": "b004587262e8221083bafbe9a0c515e7becaa7b3",
+          "base_tree": "58d30f10167aaeadf9e0c8aec1d39c5910fbca93",
+          "body": "Please review the proposed code changes.",
+          "head_sha": "92f44dcea7ff19e9123a30c63c167a2938df5a55",
+          "head_tree": "f28533146b579472e75aa39d893fe428f5aa16c4",
+          "repo": "code-review-benchmark/cal_dot_com__cal.com__coderabbit__PR14740__20260122",
+          "title": "Add guest management functionality to existing bookings"
+        },
+        "kind": "pr_review",
+        "role": "scored"
+      },
+      {
+        "id": "discourse-graphite-2",
+        "input": {
+          "base_sha": "56abd247e1829cb6de82dfcc8ce04deb5f0d1e91",
+          "base_tree": "f645d318bcbb84b202b333b8dcafc141cc18f4b2",
+          "body": "Please review the proposed code changes.",
+          "head_sha": "6669a2d94d76eea3b99b8c476d12b1eb66726b07",
+          "head_tree": "77648e03b98c11a8128a0ce115db957740d57438",
+          "repo": "code-review-benchmark/discourse__discourse-graphite__coderabbit__PR2__20260122",
+          "title": "FEATURE: per-topic unsubscribe option in emails"
+        },
+        "kind": "pr_review",
+        "role": "scored"
+      },
+      {
+        "id": "discourse-graphite-1",
+        "input": {
+          "base_sha": "3f71fa15c93bb0b751bb92abae1b5dc9a21bd4ca",
+          "base_tree": "7a4a58d7234a4dd967db85f2e2e09d8f23bf3f5a",
+          "body": "Please review the proposed code changes.",
+          "head_sha": "ffbaf8c54269df2ce510de91245760fddce09896",
+          "head_tree": "e868d00a008bd67479b9e26a2079f2fa600a0373",
+          "repo": "code-review-benchmark/discourse__discourse-graphite__coderabbit__PR1__20260122",
+          "title": "FEATURE: automatically downsize large images"
+        },
+        "kind": "pr_review",
+        "role": "scored"
+      },
+      {
+        "id": "grafana-107534",
+        "input": {
+          "base_sha": "d9a8253640464014aa3662c91131278990cfb828",
+          "base_tree": "c485589069e19a63b2289aaae3addf54732a5754",
+          "body": "Please review the proposed code changes.",
+          "head_sha": "1cab4143d443c33079566f6ca36931eb8468159f",
+          "head_tree": "18593902d070bef6388a5f1aac959a24f3774c61",
+          "repo": "code-review-benchmark/grafana__grafana__coderabbit__PR107534__20260122",
+          "title": "Advanced Query Processing Architecture"
+        },
+        "kind": "pr_review",
+        "role": "scored"
+      },
+      {
+        "id": "grafana-80329",
+        "input": {
+          "base_sha": "a886bd3c79a417a70b51509384d1f1ec3e87e96b",
+          "base_tree": "1c1f04deba08a66209a5335a307dd84248e3de61",
+          "body": "Please review the proposed code changes.",
+          "head_sha": "04cfa3bfd469c035ff8b35f9a66867c4e8d5dcf4",
+          "head_tree": "382f71f542b46ff36a1d81a692ad39b2b91751a2",
+          "repo": "code-review-benchmark/grafana__grafana__coderabbit__PR80329__20260122",
+          "title": "Database Performance Optimizations"
+        },
+        "kind": "pr_review",
+        "role": "scored"
+      },
+      {
+        "id": "keycloak-37429",
+        "input": {
+          "base_sha": "f3c8e8f3487112f2c99aa78400430cce2d30be39",
+          "base_tree": "5dac07fb375d24fdb702b362371ae36d55d14848",
+          "body": "Please review the proposed code changes.",
+          "head_sha": "02f48f776f43734d1ac8914d3ad6a7115acdcb33",
+          "head_tree": "532cfa9c91d5c6d50cbf1a3bee84a7633240a34d",
+          "repo": "code-review-benchmark/keycloak__keycloak__coderabbit__PR37429__20260122",
+          "title": "Add HTML sanitizer for translated message resources"
+        },
+        "kind": "pr_review",
+        "role": "scored"
+      },
+      {
+        "id": "keycloak-38446",
+        "input": {
+          "base_sha": "85737f52b59aa2e3403c9b8e48acf71ccc5bfae3",
+          "base_tree": "2d7e6d9d5993ddcf1802de8d47469bcefe191638",
+          "body": "Please review the proposed code changes.",
+          "head_sha": "ce2dcc537b4b1f98a335e88cfe8e0b804483252a",
+          "head_tree": "8c6d2cc22116b557a361b160b7cfad9333bcb3e8",
+          "repo": "code-review-benchmark/keycloak__keycloak__coderabbit__PR38446__20260122",
+          "title": "Implement recovery key support for user storage providers"
+        },
+        "kind": "pr_review",
+        "role": "scored"
+      },
+      {
+        "id": "sentry-93824",
+        "input": {
+          "base_sha": "de11fb0166a7244115bb066edd65ec0d6b7e365c",
+          "base_tree": "8a2644d1810feae40c125cbd7065c0a35fa2e1fb",
+          "body": "Please review the proposed code changes.",
+          "head_sha": "3162ad68a5c87666788b27a44eb31235025091a9",
+          "head_tree": "e4d8170271b048f4b23921b0ce3f8be3bbdb0a8f",
+          "repo": "code-review-benchmark/sentry__sentry__coderabbit__PR93824__20260122",
+          "title": "Span Buffer Multiprocess Enhancement with Health Monitoring"
+        },
+        "kind": "pr_review",
+        "role": "scored"
+      },
+      {
+        "id": "sentry-80168",
+        "input": {
+          "base_sha": "bdd229e3f22e307fe40b30ef99e92ff3f6723da4",
+          "base_tree": "e864b67fe131b72b92d321a4f25ba9376f39538b",
+          "body": "Please review the proposed code changes.",
+          "head_sha": "8422030ef456e3a898415e96475b4d8ddfc7640f",
+          "head_tree": "d556441b89323b29e127d0ef32aabb393692cebf",
+          "repo": "code-review-benchmark/sentry__sentry__coderabbit__PR80168__20260122",
+          "title": "feat(workflow_engine): Add in hook for producing occurrences from the stateful detector"
+        },
+        "kind": "pr_review",
+        "role": "scored"
+      },
+      {
+        "id": "cal.com-14740-fixed-control",
+        "input": {
+          "base_sha": "b004587262e8221083bafbe9a0c515e7becaa7b3",
+          "base_tree": "58d30f10167aaeadf9e0c8aec1d39c5910fbca93",
+          "body": "Please review the proposed code changes.",
+          "head_overrides": [
+            {
+              "expected_old_count": 1,
+              "new_text": "(await isTeamAdmin(user.id, booking.eventType?.teamId ?? 0)) ||",
+              "old_text": "(await isTeamAdmin(user.id, booking.eventType?.teamId ?? 0)) &&",
+              "path": "packages/trpc/server/routers/viewer/bookings/addGuests.handler.ts"
+            }
+          ],
+          "head_sha": "92f44dcea7ff19e9123a30c63c167a2938df5a55",
+          "head_tree": "f28533146b579472e75aa39d893fe428f5aa16c4",
+          "repo": "code-review-benchmark/cal_dot_com__cal.com__coderabbit__PR14740__20260122",
+          "title": "Add guest management functionality to existing bookings"
+        },
+        "kind": "pr_review",
+        "role": "control"
+      },
+      {
+        "id": "sentry-80168-fixed-control",
+        "input": {
+          "base_sha": "bdd229e3f22e307fe40b30ef99e92ff3f6723da4",
+          "base_tree": "e864b67fe131b72b92d321a4f25ba9376f39538b",
+          "body": "Please review the proposed code changes.",
+          "head_overrides": [
+            {
+              "expected_old_count": 1,
+              "new_text": "detector.detector_handler, \"group_2\", 10, PriorityLevel.HIGH",
+              "old_text": "detector.detector_handler, \"group_2\", 6, PriorityLevel.HIGH",
+              "path": "tests/sentry/workflow_engine/processors/test_detector.py"
+            }
+          ],
+          "head_sha": "8422030ef456e3a898415e96475b4d8ddfc7640f",
+          "head_tree": "d556441b89323b29e127d0ef32aabb393692cebf",
+          "repo": "code-review-benchmark/sentry__sentry__coderabbit__PR80168__20260122",
+          "title": "feat(workflow_engine): Add in hook for producing occurrences from the stateful detector"
+        },
+        "kind": "pr_review",
+        "role": "control"
+      },
+      {
+        "id": "dev-requests-timeout",
+        "input": {
+          "base_files": {
+            "README.md": "# Partner status adapter\n\nFetch the JSON status document for a configured partner endpoint. The service must not wait indefinitely for a silent partner.\n",
+            "requirements.txt": "requests==2.32.5\n",
+            "status.py": "import requests\n\n\ndef fetch_status(url):\n    response = requests.get(url, timeout=(3.05, 10))\n    response.raise_for_status()\n    return response.json()\n"
+          },
+          "body": "Review the client change for correctness.",
+          "head_files": {
+            "README.md": "# Partner status adapter\n\nFetch the JSON status document for a configured partner endpoint. The service must not wait indefinitely for a silent partner.\n",
+            "requirements.txt": "requests==2.32.5\n",
+            "status.py": "import requests\n\n\ndef fetch_status(url):\n    response = requests.get(url)\n    response.raise_for_status()\n    return response.json()\n"
+          },
+          "title": "Simplify partner status client"
+        },
+        "kind": "pr_review",
+        "role": "development"
+      },
+      {
+        "id": "dev-zero-findings-candidate",
+        "input": {
+          "base_files": {
+            "labels.py": "def label(name):\n    return name.strip()\n"
+          },
+          "body": "Review the annotation change.",
+          "head_files": {
+            "labels.py": "def label(name: str) -> str:\n    return name.strip()\n"
+          },
+          "title": "Add label function type annotations"
+        },
+        "kind": "pr_review",
+        "role": "development"
+      }
+    ]
+  },
+  "version": 1
+}

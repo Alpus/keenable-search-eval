@@ -1,0 +1,5 @@
+configuration,repeat,role,metric,value,unit,direction,denominator,scope,primary,complete
+exa,1,scored,recall@10,0.3333333333333333,fraction,higher,30,docs,True,True
+exa,1,scored,MRR@10,0.31666666666666665,fraction,higher,30,docs,False,True
+keenable,1,scored,recall@10,0.3,fraction,higher,30,docs,True,True
+keenable,1,scored,MRR@10,0.3,fraction,higher,30,docs,False,True

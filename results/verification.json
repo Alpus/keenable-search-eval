@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "scope": "Minimal portable delivery; fresh live experiment not included",
+  "checks": {
+    "ruff": "passed",
+    "tests": 306,
+    "recorded_replay": "byte-identical report, metrics, chart, state and tool calls; runtime network disabled",
+    "independent_codex_review": "no actionable blockers; 70 focused tests and offline replay passed",
+    "stop": "verified on disposable one-off Compose runner",
+    "qualification": "all three presets validate against current code and preserved source-run evidence",
+    "secrets": "no configured secret values found in tracked files or decompressed assets"
+  },
+  "review_limits": [
+    "Independent reviewer used the same model family as the primary agent.",
+    "Claude Opus 5.5 reached its subscription limit without a verdict on this batch. The user approved Codex review instead."
+  ],
+  "live_status": {
+    "devdex": "60 historical pilot episodes preserved",
+    "martian": "main 40 scored and 8 control reviews not run"
+  },
+  "new_paid_calls": 0
+}

@@ -1,0 +1,35 @@
+{
+  "artifacts": [
+    {
+      "path": "data/acceptance/martian-state.json",
+      "sha256": "6bfd601b792e887b871ea51be67b0513a38531839ecf0f9e75815679ed86aacd"
+    },
+    {
+      "path": "data/acceptance/qualification.json",
+      "sha256": "26aefcfa061fc15368bd92ceb0b11f5adbe75801c1b079565bfad7a7f003b3ae"
+    }
+  ],
+  "code_sha256": "e5909608b3294726aafd22fd00927f42de050270b2283a165e56b55f3a8a3106",
+  "manifest_sha256": "62173f97f581a36ccb107b9c8ed7fd63f945c19c03237b35946995b71758a15b",
+  "passed": true,
+  "protocol_sha256": "7ea792ea5273d8839de31bf019872ebee95543e38fb763aedabd2c76f863b293",
+  "source_runs": [
+    {
+      "code_sha256": "a87edd5ad8af6bc12a7919892aca61197c1141df1dabf5f219512015396007da",
+      "run_fingerprint": "86788d86f3c9547eb772f0d9a278421edc11c026d0465bc777053eb1d2a60bb8",
+      "state_path": "data/acceptance/martian-state.json",
+      "state_sha256": "6bfd601b792e887b871ea51be67b0513a38531839ecf0f9e75815679ed86aacd"
+    }
+  ],
+  "suite": "martian",
+  "targeted_revalidation": [
+    {
+      "changed_behavior": "Docker packaging and CLI orchestration; operator quota attestation is explicitly recorded, not inferred provider balance; original agent/judge/scorer protocols unchanged",
+      "proof_artifacts": [
+        "data/acceptance/qualification.json"
+      ],
+      "source_code_sha256": "a87edd5ad8af6bc12a7919892aca61197c1141df1dabf5f219512015396007da",
+      "target_code_sha256": "e5909608b3294726aafd22fd00927f42de050270b2283a165e56b55f3a8a3106"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+.git
+.venv
+.env
+.env.*
+runs
+validation
+vendor
+.gateway
+__pycache__
+.pytest_cache
+.ruff_cache
+results

@@ -1,0 +1,577 @@
+{
+  "attempts": [
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.435980+00:00",
+      "artifact_dir": "attempts/007bf4eda53f6ad6d6e7e498",
+      "attempt_id": "007bf4eda53f6ad6d6e7e498",
+      "configuration": "exa",
+      "duration_seconds": 20.9618622590001,
+      "expires_at": "2026-09-29T16:05:08.772444+00:00",
+      "id": "007bf4eda53f6ad6d6e7e498",
+      "record_sha256": "f7957489dfd7e2dbc4a2b410e9107fa1616129519693b14edf5fd1bff0f8d41c",
+      "repeat": 1,
+      "role": "development",
+      "started_at": "2026-09-29T15:53:08.772667+00:00",
+      "status": "completed",
+      "task_id": "doc::docs/integrations/index.md#0",
+      "updated_at": "2026-09-29T15:53:29.737739+00:00",
+      "worker_intent": "2026-09-29T15:53:08.776270+00:00"
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.435980+00:00",
+      "artifact_dir": "attempts/099219ee7e8d7e0c059e4004",
+      "attempt_id": "099219ee7e8d7e0c059e4004",
+      "configuration": "keenable",
+      "duration_seconds": 14.757459006999852,
+      "expires_at": "2026-09-29T16:05:29.739783+00:00",
+      "id": "099219ee7e8d7e0c059e4004",
+      "record_sha256": "2603cfbb1b7990b8b4a05a00de4a94dd1a04a4e78c22fff12bbaaf484edf0dec",
+      "repeat": 1,
+      "role": "development",
+      "started_at": "2026-09-29T15:53:29.739888+00:00",
+      "status": "completed",
+      "task_id": "doc::docs/integrations/index.md#0",
+      "updated_at": "2026-09-29T15:53:44.502103+00:00",
+      "worker_intent": "2026-09-29T15:53:29.743142+00:00"
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.435980+00:00",
+      "artifact_dir": "attempts/fe1efbdc70bae395b68f0c05",
+      "attempt_id": "fe1efbdc70bae395b68f0c05",
+      "configuration": "exa",
+      "duration_seconds": 15.749865465999846,
+      "expires_at": "2026-09-29T16:05:44.504615+00:00",
+      "id": "fe1efbdc70bae395b68f0c05",
+      "record_sha256": "9bed6b8e8848aeeb571d4b63a04b14759ac56879ff5570c36532076c7fdb58d4",
+      "repeat": 1,
+      "role": "development",
+      "started_at": "2026-09-29T15:53:44.504738+00:00",
+      "status": "completed",
+      "task_id": "doc::docs/content/concepts/visualization/entity-queries.md#1",
+      "updated_at": "2026-09-29T15:54:00.261201+00:00",
+      "worker_intent": "2026-09-29T15:53:44.508713+00:00"
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.435980+00:00",
+      "artifact_dir": "attempts/cbb8820e4babd28d74b8ea78",
+      "attempt_id": "cbb8820e4babd28d74b8ea78",
+      "configuration": "keenable",
+      "duration_seconds": 13.048084464000112,
+      "expires_at": "2026-09-29T16:06:00.263377+00:00",
+      "id": "cbb8820e4babd28d74b8ea78",
+      "record_sha256": "3ebcb4d693aacfe14a0ba51f4294184108fd97fa1059a284baf25c37d854097e",
+      "repeat": 1,
+      "role": "development",
+      "started_at": "2026-09-29T15:54:00.263486+00:00",
+      "status": "completed",
+      "task_id": "doc::docs/content/concepts/visualization/entity-queries.md#1",
+      "updated_at": "2026-09-29T15:54:13.316306+00:00",
+      "worker_intent": "2026-09-29T15:54:00.266657+00:00"
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.435980+00:00",
+      "artifact_dir": "attempts/557a7cee184fcdb39a69adff",
+      "attempt_id": "557a7cee184fcdb39a69adff",
+      "configuration": "exa",
+      "duration_seconds": 19.207594467000035,
+      "expires_at": "2026-09-29T16:06:13.318481+00:00",
+      "id": "557a7cee184fcdb39a69adff",
+      "record_sha256": "f5e7d5be8fc5f45689497c97e001ae5f08fe3a6901534b353b0b4a45e5dbd991",
+      "repeat": 1,
+      "role": "development",
+      "started_at": "2026-09-29T15:54:13.318607+00:00",
+      "status": "completed",
+      "task_id": "doc::docs/weaviate/config-refs/datatypes.md#1",
+      "updated_at": "2026-09-29T15:54:32.531013+00:00",
+      "worker_intent": "2026-09-29T15:54:13.321778+00:00"
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.435980+00:00",
+      "artifact_dir": "attempts/85ceabb9970bd39419dc020f",
+      "attempt_id": "85ceabb9970bd39419dc020f",
+      "configuration": "keenable",
+      "duration_seconds": 15.282098714999847,
+      "expires_at": "2026-09-29T16:06:32.533591+00:00",
+      "id": "85ceabb9970bd39419dc020f",
+      "record_sha256": "9c6758e370c6f1c553c12f7aee07d8f9205d0fe8447e3feecc42e23be69d37a5",
+      "repeat": 1,
+      "role": "development",
+      "started_at": "2026-09-29T15:54:32.533714+00:00",
+      "status": "completed",
+      "task_id": "doc::docs/weaviate/config-refs/datatypes.md#1",
+      "updated_at": "2026-09-29T15:54:47.820577+00:00",
+      "worker_intent": "2026-09-29T15:54:32.537185+00:00"
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.435980+00:00",
+      "artifact_dir": "attempts/08bfa12b048b69b93b67893e",
+      "attempt_id": "08bfa12b048b69b93b67893e",
+      "configuration": "keenable",
+      "duration_seconds": 26.53952013700018,
+      "expires_at": "2026-09-29T16:06:47.823230+00:00",
+      "id": "08bfa12b048b69b93b67893e",
+      "record_sha256": "8dd8c6a055c8a81c8668195e26075e5e15840bb5323e79633507ca25951f1c4d",
+      "repeat": 1,
+      "role": "development",
+      "started_at": "2026-09-29T15:54:47.823340+00:00",
+      "status": "completed",
+      "task_id": "doc::docs/docs/guides/observe/alerts/example-config.md#0",
+      "updated_at": "2026-09-29T15:55:14.367981+00:00",
+      "worker_intent": "2026-09-29T15:54:47.826512+00:00"
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.435980+00:00",
+      "artifact_dir": "attempts/40d9765aa3c39c0205197879",
+      "attempt_id": "40d9765aa3c39c0205197879",
+      "configuration": "exa",
+      "duration_seconds": 18.265684883000176,
+      "expires_at": "2026-09-29T16:07:14.370195+00:00",
+      "id": "40d9765aa3c39c0205197879",
+      "record_sha256": "775f3d9cd813204ea542b0af2d4d35b0778803de7dea08cb0c53eabf5dc21625",
+      "repeat": 1,
+      "role": "development",
+      "started_at": "2026-09-29T15:55:14.370305+00:00",
+      "status": "completed",
+      "task_id": "doc::docs/docs/guides/observe/alerts/example-config.md#0",
+      "updated_at": "2026-09-29T15:55:32.640838+00:00",
+      "worker_intent": "2026-09-29T15:55:14.373518+00:00"
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.435980+00:00",
+      "artifact_dir": "attempts/d1213e98e3476256598b6e35",
+      "attempt_id": "d1213e98e3476256598b6e35",
+      "configuration": "keenable",
+      "duration_seconds": 17.312887465999665,
+      "expires_at": "2026-09-29T16:07:32.643157+00:00",
+      "id": "d1213e98e3476256598b6e35",
+      "record_sha256": "7c4cb6a4155a69e98ffc6255245e146e61b54a8293aeda7a3312cd8174754668",
+      "repeat": 1,
+      "role": "development",
+      "started_at": "2026-09-29T15:55:32.643284+00:00",
+      "status": "completed",
+      "task_id": "doc::docs/bundler/bytecode.mdx#3",
+      "updated_at": "2026-09-29T15:55:49.961058+00:00",
+      "worker_intent": "2026-09-29T15:55:32.646593+00:00"
+    },
+    {
+      "allowance_valid_until": "2026-09-29T19:39:48.435980+00:00",
+      "artifact_dir": "attempts/65bc5874d01167c85e7b8630",
+      "attempt_id": "65bc5874d01167c85e7b8630",
+      "configuration": "exa",
+      "duration_seconds": 19.042244424999808,
+      "expires_at": "2026-09-29T16:07:49.964027+00:00",
+      "id": "65bc5874d01167c85e7b8630",
+      "record_sha256": "01575de26fa6d2c000e76ef670dc0dc4fa099e2376ebbfa465299d3507d53756",
+      "repeat": 1,
+      "role": "development",
+      "started_at": "2026-09-29T15:55:49.964157+00:00",
+      "status": "completed",
+      "task_id": "doc::docs/bundler/bytecode.mdx#3",
+      "updated_at": "2026-09-29T15:56:09.011674+00:00",
+      "worker_intent": "2026-09-29T15:55:49.968085+00:00"
+    }
+  ],
+  "config": {
+    "allowance_file": "validation/devdex_docs-development-002-allowance.json",
+    "arms": [
+      {
+        "id": "keenable",
+        "mcp": [
+          "keenable"
+        ],
+        "native_search": false
+      },
+      {
+        "id": "exa",
+        "mcp": [
+          "exa"
+        ],
+        "native_search": false
+      }
+    ],
+    "baseline": "exa",
+    "github_owner": "Alpus",
+    "limits": {
+      "episode_timeout_seconds": 720,
+      "max_attempts": 10,
+      "max_fetch_calls": 8,
+      "max_search_calls": 8,
+      "poll_seconds": 10,
+      "review_timeout_seconds": 1800
+    },
+    "manifest": "data/devdex-docs-manifest.json",
+    "profiles": {
+      "exa": {
+        "connection": "eval-search-b",
+        "endpoint": "search-b",
+        "mode": "auto",
+        "provider": "exa",
+        "tier": "authenticated",
+        "token_env": "MCP_SEARCH_B_TOKEN"
+      },
+      "keenable": {
+        "connection": "eval-search-a",
+        "endpoint": "search-a",
+        "mode": "pro",
+        "provider": "keenable",
+        "tier": "authenticated",
+        "token_env": "MCP_SEARCH_A_TOKEN"
+      }
+    },
+    "public_mcp_url": "http://search-mcp:8765",
+    "repeats": 1,
+    "role": "development",
+    "run_id": "devdex_docs-development-002",
+    "seed": 1729,
+    "suite": "devdex_docs",
+    "suite_options": {
+      "acceptance_evidence": []
+    }
+  },
+  "created_at": "2026-09-29T15:53:08.768451+00:00",
+  "fingerprint": "2111e73c8f113349b41cac72b9189a8eeeeaf7a097837e8c0e1917b18217867d",
+  "input_identity": {
+    "code": "05e8ace86fe75698087d15fb57179f21e19daae7073f45a2286c892c8226cf8f",
+    "config": {
+      "allowance_file": "validation/devdex_docs-development-002-allowance.json",
+      "arms": [
+        {
+          "id": "keenable",
+          "mcp": [
+            "keenable"
+          ],
+          "native_search": false
+        },
+        {
+          "id": "exa",
+          "mcp": [
+            "exa"
+          ],
+          "native_search": false
+        }
+      ],
+      "baseline": "exa",
+      "github_owner": "Alpus",
+      "limits": {
+        "episode_timeout_seconds": 720,
+        "max_attempts": 10,
+        "max_fetch_calls": 8,
+        "max_search_calls": 8,
+        "poll_seconds": 10,
+        "review_timeout_seconds": 1800
+      },
+      "manifest": "data/devdex-docs-manifest.json",
+      "profiles": {
+        "exa": {
+          "connection": "eval-search-b",
+          "endpoint": "search-b",
+          "mode": "auto",
+          "provider": "exa",
+          "tier": "authenticated",
+          "token_env": "MCP_SEARCH_B_TOKEN"
+        },
+        "keenable": {
+          "connection": "eval-search-a",
+          "endpoint": "search-a",
+          "mode": "pro",
+          "provider": "keenable",
+          "tier": "authenticated",
+          "token_env": "MCP_SEARCH_A_TOKEN"
+        }
+      },
+      "public_mcp_url": "http://search-mcp:8765",
+      "repeats": 1,
+      "role": "development",
+      "run_id": "devdex_docs-development-002",
+      "seed": 1729,
+      "suite": "devdex_docs",
+      "suite_options": {
+        "acceptance_evidence": []
+      }
+    },
+    "manifest": "0bd9d93029157e167adac40b8220abeaf20623abaf1591831a6a3741831b2776",
+    "tasks": [
+      {
+        "id": "doc::docs/bundler/bytecode.mdx#3",
+        "input": {
+          "query": "how can i make my bun generated .jsc files smaller before i use them"
+        },
+        "kind": "developer_retrieval",
+        "role": "development"
+      },
+      {
+        "id": "doc::docs/content/concepts/visualization/entity-queries.md#1",
+        "input": {
+          "query": "where in the rerun interface do i access the box for editing entity expressions"
+        },
+        "kind": "developer_retrieval",
+        "role": "development"
+      },
+      {
+        "id": "doc::docs/weaviate/config-refs/datatypes.md#1",
+        "input": {
+          "query": "how do i store multiple moments in one property in weaviate"
+        },
+        "kind": "developer_retrieval",
+        "role": "development"
+      },
+      {
+        "id": "doc::docs/docs/guides/observe/alerts/example-config.md#0",
+        "input": {
+          "query": "how do i use the dagster dg cli to apply monitoring policy changes to my project"
+        },
+        "kind": "developer_retrieval",
+        "role": "development"
+      },
+      {
+        "id": "doc::docs/integrations/index.md#0",
+        "input": {
+          "query": "can marimo connect to external tools using any python package or is it limited to certain ones"
+        },
+        "kind": "developer_retrieval",
+        "role": "development"
+      },
+      {
+        "id": "doc::docs/platforms/unreal/usage/sdk-fingerprinting/index.mdx#0",
+        "input": {
+          "query": "how can i make sentry group errors together based on my own criteria instead of the usual way"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/sources/upgrade-guide/upgrade-v9.5/index.md#0",
+        "input": {
+          "query": "will my old authentication methods in grafana stop functioning after the update or will they still be valid"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::src/content/docs/en/guides/migrate-to-astro/from-nuxtjs.mdx#2",
+        "input": {
+          "query": "how do you manage the document title and meta tags in astro compared to what you would do in vue projects"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/src/dialogs.md#1",
+        "input": {
+          "query": "in playwright what happens if i try to shut a tab and let it finish its exit routines"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::src/content/docs/latest-releases/drizzle-orm-v0291.mdx#1",
+        "input": {
+          "query": "how do i make sure drizzle orm does not warn about my own class with a similar function name"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/cookbook/autoregressive/GLM/GLM-4.6.mdx#0",
+        "input": {
+          "query": "in sglang, how many tokens can glm-4.6 handle in a single input before it gets truncated"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/integrations/data-visualization/community_integrations/astrato-and-clickhouse.md#2",
+        "input": {
+          "query": "how does clickhouse suggest which tables should be combined when defining relationships"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/building_on_jax.md#4",
+        "input": {
+          "query": "how do i use jax to combine different domain specific tools for things like defining architectures and fitting them"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/lts/guides/performance/working_with_huge_databases.md#0",
+        "input": {
+          "query": "how long does it take for duckdb to checkpoint after a few changes in a very big table"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/source/user-guide/ecosystem.md#0",
+        "input": {
+          "query": "does polars let me access information from other compatible systems efficiently by avoiding copying it"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::src/docs/scroll-margin.mdx#2",
+        "input": {
+          "query": "how do i add space before or after an element in a horizontal list in tailwind css when layout changes for different languages"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/docs/genai/eval-monitor/scorers/third-party/index.mdx#0",
+        "input": {
+          "query": "how can i use specialized scoring libraries with mlflow while keeping the same interface"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/book/component-guide/annotators/pigeon.md#3",
+        "input": {
+          "query": "does zenml include any user interface improvements for the annotation widget it uses"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::documentation/docs/07-misc/99-faq.md#0",
+        "input": {
+          "query": "how long does it usually take to finish the svelte learning resource that lets you edit components in the browser"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/sources/datasources/elasticsearch/template-variables/index.md#1",
+        "input": {
+          "query": "how do i write a not-equal-to condition in grafana when building a search"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/source/en/optimization/fp16.md#6",
+        "input": {
+          "query": "in diffusers, where is it better to keep the variable that tracks noise levels to prevent extra delays during image generation"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::content/manuals/accounts/general-faqs.md#0",
+        "input": {
+          "query": "what are the allowed symbols when picking a docker id"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/weaviate/model-providers/nvidia/reranker.md#3",
+        "input": {
+          "query": "how does weaviate change the order of results after running a normal retrieval"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/community/api-development-strategy.md#2",
+        "input": {
+          "query": "what happens if i use experimental options in react router in a production app"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/integrations/llms.md#0",
+        "input": {
+          "query": "how can i get pydantic to include all section contents in one place for an ai tool to use"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/source/quicktour.md#4",
+        "input": {
+          "query": "in peft how do you switch which set of extra parameters is being used during inference or training"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::content/manuals/billing/faqs.md#0",
+        "input": {
+          "query": "how does docker notify me if my card does not go through when they try to renew my plan"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/1.getting-started/07.routing.md#0",
+        "input": {
+          "query": "how do i make nuxt load all code for every view at once rather than only what is needed per view"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::documentation/docs/99-legacy/00-legacy-overview.md#0",
+        "input": {
+          "query": "how do i make sure my svelte 5 code only uses the new api and not the old one"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::apps/docs/content/guides/platform/manage-your-usage/storage-image-transformations.mdx#0",
+        "input": {
+          "query": "how much does supabase charge if my usage for the billing period stays under the limit for the number of pictures processed"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/upgrading/v7.md#7",
+        "input": {
+          "query": "how do i make react router v7 use the same domain resolution method as v8"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/training/sampling_mask.md#4",
+        "input": {
+          "query": "how do you get the previous step's filtered probability output in vllm for reinforcement learning workflows"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/source/en/llm_tutorial.md#8",
+        "input": {
+          "query": "how can i use transformers to make sure output follows a specific grammar like sql or python"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::docs/source/install.md#0",
+        "input": {
+          "query": "how do i get peft working on laptops with rtx graphics cards that use the alternative processor architecture"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      },
+      {
+        "id": "doc::content/manuals/security/security-announcements.md#13",
+        "input": {
+          "query": "when did docker start updating their hub to catch the 2 cves in uploads"
+        },
+        "kind": "developer_retrieval",
+        "role": "scored"
+      }
+    ]
+  },
+  "version": 1
+}

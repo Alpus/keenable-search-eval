@@ -1,0 +1,47 @@
+services:
+  runner:
+    init: true
+    build:
+      context: .
+      args:
+        LOCAL_UID: ${LOCAL_UID:-1000}
+      target: runner
+    image: keenable-eval:local
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      SEARCH_EVAL_ROUTING: /app/.gateway/routing/attempts.json
+    volumes:
+      - ./runs:/app/runs
+      - ./configs:/app/configs:ro
+      - ./validation:/app/validation
+      - ./.gateway:/app/.gateway
+  search-mcp:
+    init: true
+    image: keenable-eval-gateway:local
+    build:
+      context: .
+      args:
+        LOCAL_UID: ${LOCAL_UID:-1000}
+      target: gateway
+    entrypoint: ["search-eval-mcp"]
+    environment:
+      KEENABLE_API_KEY: ${KEENABLE_API_KEY:-}
+      EXA_API_KEY: ${EXA_API_KEY:-}
+      PORT: "8765"
+      SEARCH_EVAL_ROUTING: /routing/attempts.json
+      SEARCH_EVAL_TRACE_DIR: /traces
+      SEARCH_EVAL_READER_TIMEOUT: "20"
+      SEARCH_EVAL_READER_MAX_BYTES: "1000000"
+      SEARCH_EVAL_READER_MAX_REDIRECTS: "3"
+      SEARCH_EVAL_READER_MAX_TEXT_CHARS: "40000"
+    ports: ["127.0.0.1:${MCP_HOST_PORT:-8766}:8765"]
+    volumes:
+      - ./.gateway/routing:/routing:ro
+      - ./.gateway/traces:/traces
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; socket.create_connection(('127.0.0.1',8765),timeout=2).close()"]
+      interval: 2s
+      timeout: 3s
+      retries: 15

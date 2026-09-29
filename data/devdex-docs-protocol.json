@@ -1,0 +1,41 @@
+{
+  "source_commit": "24e60473887d33960bf155a9e73affcd07d288a3",
+  "system_prompt": "You are a documentation Q&A agent. Use your search tool to find the answer in real docs. You may also use your fetch/read tool to re-read one result on its own. Search at least twice with different phrasings before giving up. When your results contain information relevant to the question, ANSWER IT: a specific 1-2 sentence answer drawn from those results, plus the source URLs you used. Do NOT rely on prior knowledge \u2014 ground every answer in a retrieved source. Reply answer=\"I don't know\" with empty sources ONLY if searches surface nothing relevant; do not abstain merely because unsure. Call submit_answer EXACTLY ONCE.",
+  "settings": {
+    "K": "10",
+    "CITE_K": "10",
+    "MAX_TURNS": "40",
+    "MAX_SEARCH": "0",
+    "MAX_READ": "0",
+    "TIMEOUT": "600",
+    "RUNS": "1",
+    "SKILL": "off",
+    "AGENT_SNIPPET": "20000",
+    "TRANSCRIPT_CHARS": "0",
+    "PAGE_FULL": "0",
+    "GROUND_CHARS": "6000",
+    "MAX_MCP_OUTPUT_TOKENS": "800000"
+  },
+  "model": "claude-opus-4-8",
+  "model_replacement": "Forbidden without explicit named protocol change",
+  "visible_fields": [
+    "input.query"
+  ],
+  "scorer": "devdex.scorer.report_metrics.score_records + devdex.scorer.suite._docs_rank",
+  "metric_mapping": {
+    "recall@10": "recall",
+    "MRR@10": "amrr"
+  },
+  "suppression": "invalid = dead / n > 0.10",
+  "native_manifest_hash": "1ee2dde12478a487dc940da74e18ce1ae59d2bec335490803c9239fccf8c23a7",
+  "source_files_sha256": {
+    "devdex/harness/runner_sdk.py": "4bfe7ec39336c0dd4f6eb6b4885e327d84e6b67e6995fb6ad5ffc383e76d9b25",
+    "devdex/harness/prompts.py": "2fa9c16397c30ee6b04774a6b2e4383ba1b680974b295d25c80ed5ce928910f0",
+    "devdex/harness/control.py": "e1d7f3dd8ceea38e3ca0910f81fa0fd928a001ff54b3f7f93b5d8f2ea99b4d4d",
+    "devdex/harness/arms.py": "9502058659103947868f7ac1b2aa27f91acb7d77a6173ee8bc9f3ade72b45b28",
+    "devdex/harness/provenance.py": "720d55d0d6b86f72b7c68011f82e22a8e822d9470666f163db49a369ad288604",
+    "devdex/harness/tools_manifest.json": "30418ed327744fcf9cb05d5a38c8354aeddea1ed3a526b0b7984ffde0819bd0a",
+    "devdex/scorer/report_metrics.py": "4f94cc27bf4648eee4e72f0808f6c91fa3bec68d2b1ce38dc9f5598c7442f922",
+    "devdex/scorer/suite.py": "1bd7e2c0fb419bcc168b221e0d2178e5a7b772b6b06c04ab81beef9797ace105"
+  }
+}

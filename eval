@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")"
+command -v docker >/dev/null || { echo "Install Docker with Compose first." >&2; exit 2; }
+export LOCAL_UID="$(id -u)"
+if [[ "$LOCAL_UID" == 0 ]]; then export LOCAL_UID=1000; fi
+command="${1:-help}"
+shift || true
+case "$command" in
+  help|--help|-h)
+    cat <<'HELP'
+./eval reproduce              Rebuild measured results; no credentials or paid calls
+./eval check                  Run offline tests; no credentials or paid calls
+./eval setup                  Create .env template and local output directories
+./eval config CONFIG          Print every resolved experiment input
+./eval plan CONFIG            Save a schedule without API calls
+./eval allow CONFIG --confirm-existing-quota
+                              Attest service access, existing quota and no paid overage
+./eval doctor CONFIG          Show missing live prerequisites; no API calls
+./eval run CONFIG             Start gateway, check prerequisites, run/resume experiment
+./eval report RUN_ID          Rebuild a report for a current-runtime run
+./eval status                 Show local containers and run states
+./eval stop                   Stop local containers, retain all results
+
+Requires Docker with Compose. Live runs also require keys in .env and the account
+setup described in docs/usage.md. Reproduce uses the frozen historical runtime.
+HELP
+    ;;
+  setup)
+    if [[ ! -f .env ]]; then (umask 077; cp .env.example .env); fi
+    mkdir -p runs validation .gateway/routing .gateway/traces
+    if [[ "$(id -u)" == 0 ]]; then chown -R "$LOCAL_UID" runs validation .gateway; fi
+    echo "Edit .env and an experiment YAML. Run ./eval doctor CONFIG before live work."
+    ;;
+  reproduce|check)
+    target=replay; image=keenable-eval-replay
+    if [[ "$command" == check ]]; then target=test; image=keenable-eval-test; fi
+    docker build --build-arg LOCAL_UID="$LOCAL_UID" --target "$target" -t "$image" .
+    if [[ "$command" == reproduce ]]; then
+      mkdir -p runs/reproduced
+      if [[ "$(id -u)" == 0 ]]; then chown -R "$LOCAL_UID" runs/reproduced; fi
+      docker run --rm --network none --mount "type=bind,src=$PWD/runs/reproduced,dst=/app/runs" "$image"
+    else
+      docker run --rm --network none "$image"
+    fi
+    ;;
+  config|plan|doctor|run|allow)
+    config="${1:?Usage: ./eval $command configs/experiment.yaml}"
+    shift
+    [[ -f "$config" ]] || { echo "Config not found: $config" >&2; exit 2; }
+    if [[ "$command" == run || "$command" == doctor ]]; then
+      [[ -f .env ]] || { echo "Run ./eval setup and fill .env first." >&2; exit 2; }
+    fi
+    mkdir -p runs validation .gateway/routing .gateway/traces
+    if [[ "$(id -u)" == 0 ]]; then chown -R "$LOCAL_UID" runs validation .gateway; fi
+    docker compose build runner
+    if [[ "$command" == run ]]; then
+      docker compose up -d --build --wait search-mcp
+      docker compose run --rm runner doctor --config "$config"
+      exec docker compose run --rm runner run --config "$config"
+    else
+      exec docker compose run --rm runner "$command" --config "$config" "$@"
+    fi
+    ;;
+  report)
+    run_id="${1:?Usage: ./eval report RUN_ID}"
+    docker compose build runner
+    exec docker compose run --rm runner report --run "$run_id"
+    ;;
+  status)
+    docker compose ps -a
+    docker compose build runner >/dev/null
+    docker compose run --rm --entrypoint python runner -c 'import json,pathlib,collections; [(print(p.parent.name,dict(collections.Counter(a["status"] for a in json.loads(p.read_text())["attempts"])))) for p in sorted(pathlib.Path("runs").glob("*/state.json"))]'
+    ;;
+  stop)
+    docker compose ps --all --quiet | while IFS= read -r container_id; do
+      [[ -z "$container_id" ]] || docker stop "$container_id"
+    done
+    docker compose down
+    ;;
+  *) echo "Unknown command: $command. Run ./eval help." >&2; exit 2 ;;
+esac

@@ -1,0 +1,9 @@
+{
+  "changed_behavior": "Docker packaging and CLI orchestration; operator quota attestation is explicitly recorded, not inferred provider balance; original agent/judge/scorer protocols unchanged",
+  "historical_report_parity": "report.md, metrics.csv, results.png, state.json and tool-calls.json are byte-identical",
+  "network_calls": 0,
+  "scope": "Portable packaging and CLI qualification of the preserved live protocols",
+  "status": "passed",
+  "target_code_sha256": "e5909608b3294726aafd22fd00927f42de050270b2283a165e56b55f3a8a3106",
+  "tests": 306
+}

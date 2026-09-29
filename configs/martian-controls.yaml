@@ -1,0 +1,76 @@
+run_id: martian-controls-001
+suite: martian
+manifest: data/martian-pilot.json
+baseline: native
+arms:
+- id: native
+  native_search: true
+  mcp: []
+- id: none
+  native_search: false
+  mcp: []
+- id: keenable
+  native_search: false
+  mcp:
+  - keenable
+- id: exa
+  native_search: false
+  mcp:
+  - exa
+profiles:
+  keenable:
+    provider: keenable
+    endpoint: search-a
+    connection: eval-search-a
+    token_env: MCP_SEARCH_A_TOKEN
+    mode: pro
+    tier: authenticated
+  exa:
+    provider: exa
+    endpoint: search-b
+    connection: eval-search-b
+    token_env: MCP_SEARCH_B_TOKEN
+    mode: auto
+    tier: authenticated
+limits:
+  max_attempts: 8
+  max_search_calls: 8
+  max_fetch_calls: 8
+  review_timeout_seconds: 1800
+  episode_timeout_seconds: 720
+  poll_seconds: 10
+  max_review_events_per_hour: 10
+repeats: 1
+seed: 1729
+role: control
+github_owner: your-github-login
+review_profile: chill
+public_mcp_url: https://your-public-mcp.example
+allowance_file: validation/martian-controls-allowance.json
+suite_options:
+  scorer:
+    name: martian-original
+    revision: e616e849755441da38f18bf3adba2c9583b03803
+  acceptance_evidence:
+  - validation/martian-controls-live-acceptance.json
+  completion_contract:
+    kind: commit_status
+    context: CodeRabbit
+    creator_id: 136622811
+    creator_login: coderabbitai[bot]
+    success_description: Review completed
+    zero_findings_app_id: 347564
+  max_judge_usd: 3
+  max_judge_calls_per_attempt: 200
+  judge:
+    model: claude-opus-4-5-20251101
+    temperature: 0.0
+    structured_output: false
+    historical_structured_output_verified: false
+    protocol_variant_accepted: true
+    protocol_variant: anthropic-direct-single-attempt-v1
+    max_retries: 1
+    base_url: https://api.anthropic.com/v1
+    max_tokens: null
+    top_p: null
+    seed: null

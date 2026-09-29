@@ -1,0 +1,72 @@
+run_id: devdex-docs-new-run
+suite: devdex_docs
+manifest: data/devdex-docs-manifest.json
+baseline: exa
+arms:
+- id: keenable
+  native_search: false
+  mcp:
+  - keenable
+- id: exa
+  native_search: false
+  mcp:
+  - exa
+profiles:
+  keenable:
+    provider: keenable
+    endpoint: search-a
+    connection: eval-search-a
+    token_env: MCP_SEARCH_A_TOKEN
+    mode: pro
+    tier: authenticated
+  exa:
+    provider: exa
+    endpoint: search-b
+    connection: eval-search-b
+    token_env: MCP_SEARCH_B_TOKEN
+    mode: auto
+    tier: authenticated
+limits:
+  max_attempts: 60
+  max_search_calls: 8
+  max_fetch_calls: 8
+  review_timeout_seconds: 1800
+  episode_timeout_seconds: 720
+  poll_seconds: 10
+repeats: 1
+seed: 1729
+role: scored
+github_owner: your-github-login
+public_mcp_url: http://search-mcp:8765
+allowance_file: validation/devdex-docs-new-run-allowance.json
+suite_options:
+  scorer:
+    name: devdex-docs-original
+    revision: 24e60473887d33960bf155a9e73affcd07d288a3
+  acceptance_evidence:
+  - data/acceptance/devdex_docs.json
+  agent:
+    name: devdex-original-sdk
+    model: claude-opus-4-8
+    protocol_file: data/devdex-docs-protocol.json
+    settings:
+      K: '10'
+      CITE_K: '10'
+      MAX_TURNS: '40'
+      MAX_SEARCH: '0'
+      MAX_READ: '0'
+      TIMEOUT: '600'
+      RUNS: '1'
+      SKILL: 'off'
+      AGENT_SNIPPET: '20000'
+      TRANSCRIPT_CHARS: '0'
+      PAGE_FULL: '0'
+      GROUND_CHARS: '6000'
+      MAX_MCP_OUTPUT_TOKENS: '800000'
+    sampling:
+      temperature: null
+      top_p: null
+      seed: null
+    retry:
+      episode_retries: 0
+      sdk_retries: null

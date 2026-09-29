@@ -1,0 +1,239 @@
+{
+  "suite": "devdex_docs",
+  "source_commit": "24e60473887d33960bf155a9e73affcd07d288a3",
+  "source_sha256": "7bf25a95911b23cba828efc6c4920a65673d63d4233d910773c1dfd15e641b69",
+  "source_rows": 201,
+  "license": "MIT",
+  "seed": "keenable-devdex-docs-2026-09-29-v1",
+  "sampling": "Sort eligible IDs by SHA256(seed + NUL + id); first five development, next thirty evaluation",
+  "exclusions": [
+    {
+      "id": "doc::docs/v3/concepts/rate-limits.mdx#4",
+      "reason": "Inspected during pre-experiment research"
+    },
+    {
+      "id": "doc::docs/whats-new/security-changelog.md#6",
+      "reason": "Inspected during pre-experiment research"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "doc::docs/bundler/bytecode.mdx#3",
+      "role": "development",
+      "source_row_sha256": "a035ce808c695888aad52afbf955be3add191110aa912edb963a91b86e3d804f"
+    },
+    {
+      "id": "doc::docs/content/concepts/visualization/entity-queries.md#1",
+      "role": "development",
+      "source_row_sha256": "d596288a22829b02a8729032250e65d10c5f80a577e72ace88651efbec893b19"
+    },
+    {
+      "id": "doc::docs/weaviate/config-refs/datatypes.md#1",
+      "role": "development",
+      "source_row_sha256": "0707c45e625456c143199c8594df6ab93d5343d58bf79a53a7083f54693bd9ee"
+    },
+    {
+      "id": "doc::docs/docs/guides/observe/alerts/example-config.md#0",
+      "role": "development",
+      "source_row_sha256": "24fa8cd6c147704e3f414e75614069df731aa34906c69138a3ed7635ec3dcaa8"
+    },
+    {
+      "id": "doc::docs/integrations/index.md#0",
+      "role": "development",
+      "source_row_sha256": "9d17ef00da269f119be4831deaec2523633783c5d397ab71ebfa55925640fb08"
+    },
+    {
+      "id": "doc::docs/platforms/unreal/usage/sdk-fingerprinting/index.mdx#0",
+      "role": "evaluation",
+      "source_row_sha256": "ceb2b9bb07f9c5655595265b62c5da4536b9811167fc8e6d3ce1926343b27646"
+    },
+    {
+      "id": "doc::docs/sources/upgrade-guide/upgrade-v9.5/index.md#0",
+      "role": "evaluation",
+      "source_row_sha256": "0bb5a0d4134e09610aa242688b1af15624f424968f52e78e8a4e26282d3d2e05"
+    },
+    {
+      "id": "doc::src/content/docs/en/guides/migrate-to-astro/from-nuxtjs.mdx#2",
+      "role": "evaluation",
+      "source_row_sha256": "c5588f03fafed7fdbb651743d836d6a97e0099afb5b6c1543617f323d112a3ce"
+    },
+    {
+      "id": "doc::docs/src/dialogs.md#1",
+      "role": "evaluation",
+      "source_row_sha256": "e8666980d4229af242507de35fc0a81c855f378957fe022bc1640395b33013a7"
+    },
+    {
+      "id": "doc::src/content/docs/latest-releases/drizzle-orm-v0291.mdx#1",
+      "role": "evaluation",
+      "source_row_sha256": "153c174bf869e83f6a0b6a96ee6f9bfee4522b6c413a644a96598e1ab1e9636b"
+    },
+    {
+      "id": "doc::docs/cookbook/autoregressive/GLM/GLM-4.6.mdx#0",
+      "role": "evaluation",
+      "source_row_sha256": "192799749b413742fcdefc88d6874476217b19fd034e8c4493926b2212b78706"
+    },
+    {
+      "id": "doc::docs/integrations/data-visualization/community_integrations/astrato-and-clickhouse.md#2",
+      "role": "evaluation",
+      "source_row_sha256": "897ff6460bbc8624336a6dbb6b16c74d9b1eda083d2164d4832d25403b104605"
+    },
+    {
+      "id": "doc::docs/building_on_jax.md#4",
+      "role": "evaluation",
+      "source_row_sha256": "b19b5df5d59efdb39d4d80ce7c2997c8bd1d029c8abb93e94ca57f81332aef5d"
+    },
+    {
+      "id": "doc::docs/lts/guides/performance/working_with_huge_databases.md#0",
+      "role": "evaluation",
+      "source_row_sha256": "07ca9392158e7702bbbc076f08745f8db2f31fba0d3f287510face91a8ffaeb4"
+    },
+    {
+      "id": "doc::docs/source/user-guide/ecosystem.md#0",
+      "role": "evaluation",
+      "source_row_sha256": "bf202572fe5e2d5318e0a300c182fce1a89994e5a1167c60f94525496e9bc9ba"
+    },
+    {
+      "id": "doc::src/docs/scroll-margin.mdx#2",
+      "role": "evaluation",
+      "source_row_sha256": "dea70887e06545a2fad3534904cca74cbd3158bc83aabf680248c3065c3846b9"
+    },
+    {
+      "id": "doc::docs/docs/genai/eval-monitor/scorers/third-party/index.mdx#0",
+      "role": "evaluation",
+      "source_row_sha256": "611fc476a385e95da0b82b5a005f59f2b836e4e308dcc38c59556b0a53ed8f9c"
+    },
+    {
+      "id": "doc::docs/book/component-guide/annotators/pigeon.md#3",
+      "role": "evaluation",
+      "source_row_sha256": "644f63467b08ae9f7b5ec8c73c6f8379fbd7b435a52e30e3c4f127b4f5acbc6d"
+    },
+    {
+      "id": "doc::documentation/docs/07-misc/99-faq.md#0",
+      "role": "evaluation",
+      "source_row_sha256": "43b67157714035a35e6dc1438eb62792e78a5f2982cac4defb814fad46388c7b"
+    },
+    {
+      "id": "doc::docs/sources/datasources/elasticsearch/template-variables/index.md#1",
+      "role": "evaluation",
+      "source_row_sha256": "96be38a4af4e87c990c748026870b6bf868ca4182a64afbba1d05b2e8e71ad23"
+    },
+    {
+      "id": "doc::docs/source/en/optimization/fp16.md#6",
+      "role": "evaluation",
+      "source_row_sha256": "85ad2a3b1f099413efeafd20541d464ecde4e55b346940cc44ded06c2d5db67b"
+    },
+    {
+      "id": "doc::content/manuals/accounts/general-faqs.md#0",
+      "role": "evaluation",
+      "source_row_sha256": "304fb9a625253fede3e032b8ccfcc07bc2851d2007d2b3813ded0bfd742a4c9c"
+    },
+    {
+      "id": "doc::docs/weaviate/model-providers/nvidia/reranker.md#3",
+      "role": "evaluation",
+      "source_row_sha256": "303b88c7ce025f174e3b4fbea79a560aa5fe613d1de80bbcb079aa1fca16fe6b"
+    },
+    {
+      "id": "doc::docs/community/api-development-strategy.md#2",
+      "role": "evaluation",
+      "source_row_sha256": "d97f803c56b4b270d2dead2e6f759f10b827a33878f748a4db748e9abbb8452a"
+    },
+    {
+      "id": "doc::docs/integrations/llms.md#0",
+      "role": "evaluation",
+      "source_row_sha256": "80c23500f811841f50f4fb48b194564abf03f0e20c263ad0729f07706c7f4e0f"
+    },
+    {
+      "id": "doc::docs/source/quicktour.md#4",
+      "role": "evaluation",
+      "source_row_sha256": "6983f7eeb3703fa7adcda88bca27df7577467e004589d6d7c04cb08cbebe4405"
+    },
+    {
+      "id": "doc::content/manuals/billing/faqs.md#0",
+      "role": "evaluation",
+      "source_row_sha256": "6a405add14548061c00e966329596765e369e11ac21df4a3dc597f371b462a8a"
+    },
+    {
+      "id": "doc::docs/1.getting-started/07.routing.md#0",
+      "role": "evaluation",
+      "source_row_sha256": "accc8f4569b144992a31349822380fd8717bf2d4788a658b85d020e7912a4192"
+    },
+    {
+      "id": "doc::documentation/docs/99-legacy/00-legacy-overview.md#0",
+      "role": "evaluation",
+      "source_row_sha256": "cc111b4fba86b709b8b416a4f52ec4f9341ffc98d4de6d0c662f98fc321e2047"
+    },
+    {
+      "id": "doc::apps/docs/content/guides/platform/manage-your-usage/storage-image-transformations.mdx#0",
+      "role": "evaluation",
+      "source_row_sha256": "2a4d693ea6f68763886d6d90f0d75c231401532f0cc93b23e5574fa0b1bd0e13"
+    },
+    {
+      "id": "doc::docs/upgrading/v7.md#7",
+      "role": "evaluation",
+      "source_row_sha256": "68b274c5c62ff80f1a0ea890826a7fdb8c088e01bea3847a9a54b19bcbd4fd0e"
+    },
+    {
+      "id": "doc::docs/training/sampling_mask.md#4",
+      "role": "evaluation",
+      "source_row_sha256": "60cab8bf6a2872792e50a0608c154af6739ab9835012fc5cd2a426670680008f"
+    },
+    {
+      "id": "doc::docs/source/en/llm_tutorial.md#8",
+      "role": "evaluation",
+      "source_row_sha256": "c3daeb66dbbe1d2cea38bffbc37ac38310f596027b86ae0a3ec68ff964d21c46"
+    },
+    {
+      "id": "doc::docs/source/install.md#0",
+      "role": "evaluation",
+      "source_row_sha256": "dd122fe195172a96d4b55dc57e751d29e81d8757491fd06ae7520c6e6db1cd4b"
+    },
+    {
+      "id": "doc::content/manuals/security/security-announcements.md#13",
+      "role": "evaluation",
+      "source_row_sha256": "2a7f854edc7ea06d0b000542d76d54acf46718a0e57e0fbf167ca53316a751c8"
+    }
+  ],
+  "protocol": {
+    "model": "claude-opus-4-8",
+    "settings": {
+      "K": "10",
+      "CITE_K": "10",
+      "MAX_TURNS": "40",
+      "MAX_SEARCH": "0",
+      "MAX_READ": "0",
+      "TIMEOUT": "600",
+      "RUNS": "1",
+      "SKILL": "off",
+      "AGENT_SNIPPET": "20000",
+      "TRANSCRIPT_CHARS": "0",
+      "PAGE_FULL": "0",
+      "GROUND_CHARS": "6000",
+      "MAX_MCP_OUTPUT_TOKENS": "800000"
+    },
+    "system_prompt_sha256": "faf8cc3545e43bc92baeeb81e1a8356fda3e930ec47df43e226162568d4527e7",
+    "allowlisted_model_fields": [
+      "input.query"
+    ],
+    "configurations": [
+      "keenable",
+      "exa"
+    ],
+    "repeats": 1,
+    "development_episode_cap": 10,
+    "evaluation_episode_cap": 60,
+    "model_access": "unverified",
+    "allowance": "unverified",
+    "source_http_access": "2026-09-29 direct-reader audit:32/35 successful; JAX500 and2Docker404 retained; no exclusions/replacements"
+  },
+  "label_validation": {
+    "all_rows_have_canonical_sources": true,
+    "all_rows_have_query": true
+  },
+  "answer_patterns": [
+    "*github.com/firecrawl/benchmark-devdex*",
+    "*raw.githubusercontent.com/firecrawl/benchmark-devdex/*",
+    "*firecrawl.dev/benchmarks/devdex*",
+    "*huggingface.co/datasets/*devdex*"
+  ],
+  "manifest_sha256": "1ee2dde12478a487dc940da74e18ce1ae59d2bec335490803c9239fccf8c23a7"
+}
