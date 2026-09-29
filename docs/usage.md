@@ -11,54 +11,57 @@ Install Docker with Compose 2.24+ and use a POSIX shell (WSL on Windows). No hos
 
 The first build downloads pinned images/packages. Replay and tests then run without network or credentials. Replay restores the historical DevDex runtime and observations into `runs/reproduced/devdex_docs-pilot-001/`. Report, CSV, PNG, state and tool-call hashes must match. This reproduces scoring of recorded answers; fresh model/search calls can produce different answers.
 
-## New experiment
+## Fresh runs
 
 ```sh
-./eval setup
-# Fill .env, inspect the YAML, check service access and existing quota.
-./eval config configs/devdex_docs.yaml
-./eval allow configs/devdex_docs.yaml --confirm-existing-quota
-./eval run configs/devdex_docs.yaml
-```
-
-`setup` creates a private `.env` and never overwrites it. DevDex needs `KEENABLE_API_KEY`, `EXA_API_KEY` and `ANTHROPIC_API_KEY`, with access to the pinned original `claude-opus-4-8` model.
-
-`allow` records your explicit confirmation of access, sufficient existing quota and disabled paid overage for this config, valid for 24 hours. It does not query balances, buy credit or prove access remotely. DevDex caps episodes/tool calls, not model dollars; configure account spending controls before approval. Local approvals are ignored by Git and never inherited by another user.
-
-`run` builds the current image, starts the gateway, waits for health, checks prerequisites and executes/resumes the schedule. Failed preflight stops before paid calls or PR creation. Release qualification records bind tested code/protocol to original live development evidence. Protocol changes need new qualification. Repeat the same command to resume; use a new `run_id` for an independent experiment. Changed config/data/code/scorer cannot resume old state.
-
-## CodeRabbit setup
-
-Use `configs/martian.yaml` (40 scored reviews) or `configs/martian-controls.yaml` (8 controls). The main comparison has not run.
-
-1. Add `GITHUB_TOKEN` and `MARTIAN_API_KEY` (Anthropic key) to `.env`; set `github_owner` in YAML. GitHub access must cover creation of private repos, PR writes and review/status reads.
-2. Install CodeRabbit with full review and MCP access to the intended test repositories. Check review quota. These external account permissions cannot be inferred from API keys.
-3. Expose localhost:8766 through an HTTPS tunnel and set `public_mcp_url`. Keep the tunnel reachable throughout the run.
-4. Set random `MCP_SEARCH_A_TOKEN` and `MCP_SEARCH_B_TOKEN` values. Register scoped CodeRabbit connections `eval-search-a` and `eval-search-b` at `<public_mcp_url>/mcp/search-a` and `/mcp/search-b` using those bearer tokens. Keep unrelated/base scopes empty.
-5. Confirm the YAML's SHA-bound completion contract for your account. Different completion contracts or new search combinations need a development smoke and requalification.
-6. Check the configured judge cap and actual prepaid balance. Run `./eval allow configs/martian.yaml --confirm-existing-quota --existing-model-credit-usd AMOUNT`, using that checked balance, then `./eval run configs/martian.yaml`.
-
-The presets pace reviews at 10 per hour. Set `limits.max_review_events_per_hour: null` only after verifying eligible [free trial PR overages](https://docs.coderabbit.ai/management/usage-based-addon#pr-reviews-during-your-trial); local pacing and hosted review time are separate.
-
-No command purchases credits or installs a paid plan. Martian preserves dated Opus 4.5, temperature 0, plain JSON and one total attempt per call. Its USD cap reserves $2.60 before each call and settles from returned usage; uncertain outcomes retain reservations. CodeRabbit's internal model and sampling remain unknown.
-
-## Run all experiments
-
-Complete the account and `.env` setup above. Inspect and approve each config with `allow`, including `configs/martian-controls.yaml`. Check that existing quota covers the combined work. Approval remains explicit for each experiment and expires after 24 hours.
-
-```sh
+cp .env.example .env
+# Fill GITHUB_TOKEN, KEENABLE_API_KEY, EXA_API_KEY and ANTHROPIC_API_KEY.
 ./eval run-all
 ```
 
-This runs `configs/devdex_docs.yaml`, `configs/martian.yaml` and `configs/martian-controls.yaml` sequentially. Each stage uses `run`, including its prerequisite checks, immutable resume and automatic grading/reporting. The first failure stops the sequence. Run the same command again after resolving the failure; completed attempts are preserved. Reports are saved under `runs/<run_id>/`.
+Only Docker with Compose and these account credentials are required locally. The GitHub token must allow private repository creation, contents/PR writes, Actions administration and review/status reads. The pinned Claude models must be available to your account. Account registration, credits and CodeRabbit installation require your authorization; a key alone does not grant those permissions.
 
-To use local variants, supply all three config paths in the same order:
+`run-all` performs preparation and execution in one command:
+
+1. Preserve `.env`, generate missing MCP bearer tokens and use the Anthropic key for Martian unless `MARTIAN_API_KEY` is set separately.
+2. Start the gateway and a pinned Cloudflare temporary HTTPS tunnel. An optional `PUBLIC_MCP_URL` in `.env` uses your existing tunnel instead.
+3. Read your GitHub login, write resolved configs under `validation/prepared/`, create the 48 deterministic private test repositories and disable their GitHub Actions. No source is pushed and no review is triggered during this preparation.
+4. Write `.gateway/coderabbit-setup.md` with exact connection URLs and repository names. Pause for the dashboard steps below, then record your explicit quota confirmation.
+5. Check all three configs before any model calls. Execute DevDex, scored Martian and Martian controls sequentially, grading and reporting each. Stop at the first failure.
+
+Repeat the same command after fixing a prerequisite or interruption. Existing tokens and matching repositories are reused. Completed attempts are preserved; unknown reviews are never blindly retried. Configs, source, model settings, data and scorer cannot change during resume. An independent experiment needs new run IDs. Do not reuse another person's test repositories.
+
+### Unavoidable CodeRabbit dashboard steps
+
+The [documented API](https://docs.coderabbit.ai/api) and [OpenAPI specification](https://docs.coderabbit.ai/openapi.json) do not expose saved-connection or Review-scope provisioning (checked 2026-09-29). `run-all` stops at this checkpoint on first use or when connection/repository identity changes. Follow the generated local checklist:
+
+- [Install the GitHub App](https://docs.coderabbit.ai/platforms/github-com) for the generated repositories. Selecting all repositories also covers future ones but grants broader access.
+- [Save two MCP connections](https://docs.coderabbit.ai/connections/mcp-servers), `eval-search-a` and `eval-search-b`, with the generated URLs and bearer tokens from `.env`. Enable their search and fetch tools.
+- [Create a named Review scope](https://docs.coderabbit.ai/connections/scopes-review) containing these connections and the generated repositories. Keep unrelated inherited connections out of these test repositories; preserve unrelated account settings. Confirm full reviews and MCP access.
+
+Type `ready` in the terminal only after saving these settings. This is an operator attestation, not remote verification. Live gateway health and actual review/tool receipts remain the execution evidence. No browser session is required after setup.
+
+Temporary tunnels need no Cloudflare key or account, but their address can change after a restart. Keep the tunnel running through both Martian stages. If it changes, update the CodeRabbit connections before any new run. Started runs retain their original URL and cannot silently migrate; use a stable HTTPS tunnel for resumable long experiments. `./eval stop` stops the temporary tunnel too. [Cloudflare limitations](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/trycloudflare/).
+
+### Quota and configuration
+
+The command asks for confirmation of existing quota and disabled paid overage, plus the prepaid USD reserved for Martian **after** DevDex. The two Martian judge caps total $18. DevDex has episode/tool limits but no local dollar cap; use account spending controls and budget for it separately. No command reads provider balances, buys credit, changes a subscription or proves entitlement from a key. Confirmations expire after 24 hours and are never included in the repository.
+
+The presets pace reviews at 10 per hour. Set `limits.max_review_events_per_hour: null` only after verifying eligible [free trial PR overages](https://docs.coderabbit.ai/management/usage-based-addon#pr-reviews-during-your-trial). Hosted review latency remains separate.
+
+For different run IDs, owner/organization, limits or search combinations, edit copies of the presets and pass all three paths:
 
 ```sh
 ./eval run-all configs/devdex-local.yaml configs/martian-local.yaml configs/controls-local.yaml
 ```
 
-Approve those exact configs before launch. `run-all` never creates approvals or purchases quota. Keep the gateway tunnel available for both Martian stages.
+The original YAML files are never overwritten. `validation/prepared/` contains the exact resolved configs. Each run additionally saves `effective-inputs.json` with all defaults and identities before execution. Protocol changes require a development smoke and requalification; changing the account alone does not. Martian preserves dated Opus 4.5, temperature 0, plain JSON and one total attempt per call. Its USD cap reserves $2.60 before each judge call and settles from returned usage. Uncertain outcomes retain reservations. CodeRabbit's internal model and sampling remain unknown.
+
+For an individual already configured experiment, `./eval allow CONFIG --confirm-existing-quota` records quota approval (`--existing-model-credit-usd AMOUNT` is also required for Martian), then `./eval run CONFIG` executes it. These lower-level commands do not provision account settings or a tunnel. `./eval setup` only creates a private `.env` template and output directories without overwriting files.
+
+## Public repository and replay
+
+The harness and recorded DevDex evidence can be reused directly. `./eval reproduce` needs no account, keys or test repositories. Fresh hosted reviews use your own account and generated private repositories; making our execution repositories public would not grant your account the same scope, model, quota or clean review history. We reuse a test repository only to resume its exact attempt.
 
 ## Controls
 
@@ -68,7 +71,7 @@ Approve those exact configs before launch. `run-all` never creates approvals or 
 | `./eval config CONFIG` | Show resolved inputs/defaults, models, limits and scorer identity |
 | `./eval plan CONFIG` | Save a preview without API calls or creating resumable run state |
 | `./eval doctor CONFIG` | Show missing local prerequisites without API calls |
-| `./eval run-all [DEVDEX MARTIAN CONTROLS]` | Run/resume all three experiments in order, report each and stop on failure |
+| `./eval run-all [DEVDEX MARTIAN CONTROLS]` | Prepare accounts, then run/resume both benchmarks and controls |
 | `./eval status` | Show containers and saved attempt counts |
 | `./eval report RUN_ID` | Rebuild a current-runtime report; use `reproduce` for the historical pilot |
 | `./eval stop` | Stop local containers; retain all evidence |

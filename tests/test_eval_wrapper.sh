@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Offline wrapper checks. Docker is replaced before any eval command runs.
+# Exercise actual command orchestration with Docker replaced before invocation.
 set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
-cp "$root/eval" "$work/eval"
-mkdir -p "$work/bin" "$work/configs"
+cp "$root/eval" "$root/.env.example" "$work/"
+mkdir -p "$work/bin" "$work/configs" "$work/.gateway"
 touch "$work/.env"
 for name in devdex_docs martian martian-controls local-devdex local-martian local-controls; do
   touch "$work/configs/$name.yaml"
@@ -14,39 +14,51 @@ cat > "$work/bin/docker" <<'STUB'
 #!/usr/bin/env bash
 printf '%s\n' "$*" >> "$DOCKER_LOG"
 if [[ "$*" == "${FAIL_COMMAND:-}" ]]; then exit 23; fi
+if [[ "$*" == *'scripts/prepare.py init '* && "${CUSTOM_URL:-}" == 1 ]]; then
+  echo 'https://custom.example'
+fi
+if [[ "$*" == 'compose logs --no-color tunnel' ]]; then echo '| https://test.trycloudflare.com |'; fi
+if [[ "$*" == *'scripts/prepare.py provision '* ]]; then
+  printf 'validation/prepared/%s.yaml\n' devdex martian controls > .gateway/prepared-configs.txt
+fi
 STUB
 chmod +x "$work/bin/docker"
 export PATH="$work/bin:$PATH" DOCKER_LOG="$work/docker.log"
 
-expect_sequence() {
-  : > "$work/expected.log"
-  for config in "$@"; do
-    cat >> "$work/expected.log" <<EOF
-compose build runner
-compose up -d --build --wait search-mcp
-compose run --rm runner doctor --config $config
-compose run --rm runner run --config $config
-EOF
-  done
-  diff -u "$work/expected.log" "$DOCKER_LOG"
-}
-
-# Default order reuses the existing run command, which owns resume and reporting.
+# Prepare once, preflight every suite before any live execution, then run in order.
 : > "$DOCKER_LOG"
 "$work/eval" run-all > "$work/output.log"
-expect_sequence configs/devdex_docs.yaml configs/martian.yaml configs/martian-controls.yaml
+[[ "$(grep -c 'compose build runner' "$DOCKER_LOG")" == 1 ]]
+[[ "$(grep -c 'scripts/prepare.py provision' "$DOCKER_LOG")" == 1 ]]
+grep -q 'compose up -d tunnel' "$DOCKER_LOG"
+tail -n 6 "$DOCKER_LOG" > "$work/actual"
+cat > "$work/expected" <<'EOF'
+compose run --rm -T runner doctor --config validation/prepared/devdex.yaml
+compose run --rm -T runner doctor --config validation/prepared/martian.yaml
+compose run --rm -T runner doctor --config validation/prepared/controls.yaml
+compose run --rm -T runner run --config validation/prepared/devdex.yaml
+compose run --rm -T runner run --config validation/prepared/martian.yaml
+compose run --rm -T runner run --config validation/prepared/controls.yaml
+EOF
+diff -u "$work/expected" "$work/actual"
 
-# Custom config paths preserve the supplied order.
+# Stable URL bypasses temporary tunnel; custom inputs are forwarded unchanged.
 : > "$DOCKER_LOG"
+export CUSTOM_URL=1
 "$work/eval" run-all configs/local-devdex.yaml configs/local-martian.yaml configs/local-controls.yaml > "$work/output.log"
-expect_sequence configs/local-devdex.yaml configs/local-martian.yaml configs/local-controls.yaml
+! grep -q 'compose up -d tunnel' "$DOCKER_LOG"
+grep -q 'provision --public-url https://custom.example configs/local-devdex.yaml configs/local-martian.yaml configs/local-controls.yaml' "$DOCKER_LOG"
+unset CUSTOM_URL
 
-# A failed stage preserves its exit code and prevents the third stage.
-: > "$DOCKER_LOG"
-export FAIL_COMMAND='compose run --rm runner run --config configs/martian.yaml'
-if "$work/eval" run-all > "$work/output.log" 2>&1; then exit 1; else status=$?; fi
-[[ "$status" == 23 ]]
-expect_sequence configs/devdex_docs.yaml configs/martian.yaml
+# Any failed preflight prevents all model calls; failed execution stops later stages.
+for phase in doctor run; do
+  : > "$DOCKER_LOG"
+  export FAIL_COMMAND="compose run --rm -T runner $phase --config validation/prepared/martian.yaml"
+  if "$work/eval" run-all > "$work/output.log" 2>&1; then exit 1; else status=$?; fi
+  [[ "$status" == 23 ]]
+  ! grep -q 'runner run --config validation/prepared/controls.yaml' "$DOCKER_LOG"
+  if [[ "$phase" == doctor ]]; then ! grep -q 'runner run --config' "$DOCKER_LOG"; fi
+done
 unset FAIL_COMMAND
 
 # Reject partial overrides and missing configs before starting Docker.

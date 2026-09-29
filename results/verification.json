@@ -3,13 +3,13 @@
   "scope": "Minimal portable delivery; fresh live experiment not included",
   "checks": {
     "ruff": "passed",
-    "tests": 307,
+    "tests": 319,
     "recorded_replay": "byte-identical report, metrics, chart, state and tool calls; runtime network disabled",
-    "independent_codex_review": "no actionable blockers; 70 focused tests and offline replay passed",
+    "independent_codex_review": "Setup batch: 12 focused tests and code/docs review; no remaining blockers after packaging and root ownership fixes. Same model family.",
     "stop": "verified on disposable one-off Compose runner",
     "qualification": "all three presets validate against current code and preserved source-run evidence",
-    "secrets": "no configured secret values found in tracked files or decompressed assets",
-    "run_all": "stub-Docker sequencing, config overrides and stop-on-failure passed",
+    "secrets": "2506 files/history blobs/archive members scanned; no configured secrets. Regex matches were original upstream x-only token placeholders.",
+    "run_all": "Real Docker startup, token/routing creation, temporary HTTPS tunnel and authenticated MCP health passed; intentional invalid GitHub credentials stopped before repository/model/review calls. Offline orchestration and 48-repository idempotence tests passed.",
     "github_actions": "transient permission readback and persistent refusal regressions passed"
   },
   "review_limits": [
@@ -18,7 +18,7 @@
   ],
   "live_status": {
     "devdex": "60 historical pilot episodes preserved",
-    "martian": "main 40 scored and 8 control reviews not run"
+    "martian": "40 scored reviews in progress; 8 controls queued. No headline result yet."
   },
   "new_paid_calls": 0
 }

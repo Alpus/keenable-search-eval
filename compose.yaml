@@ -6,7 +6,7 @@ services:
       args:
         LOCAL_UID: ${LOCAL_UID:-1000}
       target: runner
-    image: keenable-eval:local
+    image: ${EVAL_RUNNER_IMAGE:-keenable-eval:local}
     env_file:
       - path: .env
         required: false
@@ -19,7 +19,7 @@ services:
       - ./.gateway:/app/.gateway
   search-mcp:
     init: true
-    image: keenable-eval-gateway:local
+    image: ${EVAL_GATEWAY_IMAGE:-keenable-eval-gateway:local}
     build:
       context: .
       args:
@@ -45,3 +45,7 @@ services:
       interval: 2s
       timeout: 3s
       retries: 15
+  tunnel:
+    image: cloudflare/cloudflared:2026.9.3@sha256:072c067d25ccbe61d46e18f0d0723255f2bb5304f7317caa95b27031520ff92c
+    command: ["tunnel", "--no-autoupdate", "--url", "http://search-mcp:8765"]
+    profiles: ["live"]

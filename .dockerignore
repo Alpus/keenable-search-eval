@@ -2,6 +2,7 @@
 .venv
 .env
 .env.*
+!.env.example
 runs
 validation
 vendor

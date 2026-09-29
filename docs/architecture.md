@@ -19,12 +19,16 @@ src/search_eval/
   report.py                  Offline metrics, comparisons, audit and charts
   suites/martian.py          Original Martian pipeline adapter
   suites/devdex.py           Original DevDex URL scorer adapter
-scripts/                     Frozen replay and independent DevDex audit
+scripts/prepare.py           Account preparation and explicit manual checkpoints
+scripts/replay.py            Frozen result replay
+scripts/audit_devdex_run.py  Independent DevDex evidence audit
 assets/                      Checksummed benchmark dependencies and measured replay
 results/                     Measured CSV and chart, plus release verification
 tests/                       Focused regression tests
-Dockerfile / compose.yaml    Build targets and the two live services
+Dockerfile / compose.yaml    Build targets, runner, gateway and optional HTTPS tunnel
 ```
+
+`run-all` first prepares credentials, tunnel and deterministic repositories. A generated checklist covers the CodeRabbit dashboard operations unavailable through its public API. It preserves local preparation state separately from immutable experiment state. No scoring or provider logic is duplicated in preparation.
 
 Flow: YAML → resolved input snapshot → schedule → CodeRabbit or DevDex → gateway → provider. Saved reviews/answers → original scorer → report. Native search and MCP profiles are independent configuration fields; an additional combination does not require a new executor.
 

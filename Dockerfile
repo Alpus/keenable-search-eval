@@ -35,6 +35,7 @@ ENTRYPOINT ["search-eval"]
 FROM application AS runner
 USER root
 COPY data ./data
+COPY scripts/prepare.py ./scripts/prepare.py
 COPY --from=bundles /benchmark/ /app/
 RUN chown -R eval:eval /app
 USER eval
@@ -46,8 +47,8 @@ FROM runner AS test
 USER root
 RUN uv sync --frozen
 COPY tests ./tests
-COPY eval ./eval
+COPY eval .env.example ./
 COPY assets ./assets
 RUN chown -R eval:eval /app
 USER eval
-ENTRYPOINT ["sh", "-c", "ruff check src tests && pytest -q && bash tests/test_eval_wrapper.sh"]
+ENTRYPOINT ["sh", "-c", "ruff check src tests scripts/prepare.py && pytest -q && bash tests/test_eval_wrapper.sh"]
