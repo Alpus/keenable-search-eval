@@ -52,7 +52,7 @@ suite_options:
     name: martian-original
     revision: e616e849755441da38f18bf3adba2c9583b03803
   acceptance_evidence:
-  - validation/martian-controls-live-acceptance.json
+  - data/acceptance/martian-controls.json
   completion_contract:
     kind: commit_status
     context: CodeRabbit

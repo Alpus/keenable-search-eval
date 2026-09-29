@@ -8,6 +8,6 @@ Run configs freeze dataset, model, tool parameters, scorer and repeats. Changed 
 
 Batch related edits before full tests and independent review. Use focused checks during iteration. Fix current blockers; defer non-blocking edge cases. Do not add a generic framework or recovery machinery without a current need.
 
-Martian pairwise calls queue before the upstream 30-second timer. Git snapshot creation preserves exact blob bytes, symlinks and modes. DevDex's SDK runs as a non-root container user. These have dedicated regressions; do not replace them with superficial mocks.
+Martian pairwise calls queue before the upstream 30-second timer. Git snapshot creation preserves exact blob bytes, symlinks and modes. GitHub permission writes can propagate late; confirm Actions disable with bounded reads before pushing source. DevDex's SDK runs as a non-root container user. These have dedicated regressions; do not replace them with superficial mocks.
 
 Plan previews must not create resumable run state before gateway identity is known. Stop must include one-off Compose runner containers; compose down alone does not stop them. Verify lifecycle changes with a disposable container.

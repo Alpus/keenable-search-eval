@@ -46,7 +46,8 @@ FROM runner AS test
 USER root
 RUN uv sync --frozen
 COPY tests ./tests
+COPY eval ./eval
 COPY assets ./assets
 RUN chown -R eval:eval /app
 USER eval
-ENTRYPOINT ["sh", "-c", "ruff check src tests && pytest -q"]
+ENTRYPOINT ["sh", "-c", "ruff check src tests && pytest -q && bash tests/test_eval_wrapper.sh"]

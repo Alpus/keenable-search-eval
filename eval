@@ -18,6 +18,8 @@ case "$command" in
                               Attest service access, existing quota and no paid overage
 ./eval doctor CONFIG          Show missing live prerequisites; no API calls
 ./eval run CONFIG             Start gateway, check prerequisites, run/resume experiment
+./eval run-all [DEVDEX MARTIAN CONTROLS]
+                              Run/resume all three experiments in order and report each
 ./eval report RUN_ID          Rebuild a report for a current-runtime run
 ./eval status                 Show local containers and run states
 ./eval stop                   Stop local containers, retain all results
@@ -43,6 +45,21 @@ HELP
     else
       docker run --rm --network none "$image"
     fi
+    ;;
+  run-all)
+    if [[ "$#" == 0 ]]; then
+      set -- configs/devdex_docs.yaml configs/martian.yaml configs/martian-controls.yaml
+    elif [[ "$#" != 3 ]]; then
+      echo "Usage: ./eval run-all [DEVDEX_CONFIG MARTIAN_CONFIG CONTROLS_CONFIG]" >&2
+      exit 2
+    fi
+    for config in "$@"; do
+      [[ -f "$config" ]] || { echo "Config not found: $config" >&2; exit 2; }
+    done
+    for config in "$@"; do
+      echo "Running/resuming $config"
+      "$PWD/eval" run "$config"
+    done
     ;;
   config|plan|doctor|run|allow)
     config="${1:?Usage: ./eval $command configs/experiment.yaml}"

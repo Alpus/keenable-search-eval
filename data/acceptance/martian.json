@@ -6,13 +6,13 @@
     },
     {
       "path": "data/acceptance/qualification.json",
-      "sha256": "26aefcfa061fc15368bd92ceb0b11f5adbe75801c1b079565bfad7a7f003b3ae"
+      "sha256": "8402501a929e1a19914f91bd159891ffed524de2028923e9a3fd60bb2e72e5b7"
     }
   ],
-  "code_sha256": "e5909608b3294726aafd22fd00927f42de050270b2283a165e56b55f3a8a3106",
+  "code_sha256": "0fbfbb737a3a79e400ee4785abd9a6d8f1f50c8cb1f2dd351638f739d55ee175",
   "manifest_sha256": "62173f97f581a36ccb107b9c8ed7fd63f945c19c03237b35946995b71758a15b",
   "passed": true,
-  "protocol_sha256": "7ea792ea5273d8839de31bf019872ebee95543e38fb763aedabd2c76f863b293",
+  "protocol_sha256": "d244f2f6365a283f1d4c82ff2ad0c1f2c3319f349769cd76a45ef002c9d5f5c9",
   "source_runs": [
     {
       "code_sha256": "a87edd5ad8af6bc12a7919892aca61197c1141df1dabf5f219512015396007da",
@@ -24,12 +24,12 @@
   "suite": "martian",
   "targeted_revalidation": [
     {
-      "changed_behavior": "Docker packaging and CLI orchestration; operator quota attestation is explicitly recorded, not inferred provider balance; original agent/judge/scorer protocols unchanged",
+      "changed_behavior": "Docker packaging and CLI orchestration, plus bounded read-only confirmation of GitHub Actions disable after one PUT; original agent/judge/scorer protocols unchanged. GitHub permission propagation regression and full offline suite passed.",
       "proof_artifacts": [
         "data/acceptance/qualification.json"
       ],
       "source_code_sha256": "a87edd5ad8af6bc12a7919892aca61197c1141df1dabf5f219512015396007da",
-      "target_code_sha256": "e5909608b3294726aafd22fd00927f42de050270b2283a165e56b55f3a8a3106"
+      "target_code_sha256": "0fbfbb737a3a79e400ee4785abd9a6d8f1f50c8cb1f2dd351638f739d55ee175"
     }
   ]
 }

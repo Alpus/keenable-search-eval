@@ -379,8 +379,14 @@ def ensure_repo(api, owner, name, marker, save, attempt):
     if not repo.get("private") or repo.get("description") != marker:
         raise EvalError("Repository identity/visibility mismatch; refusing reuse")
     api.call("PUT", f"/repos/{owner}/{name}/actions/permissions", body={"enabled": False})
-    permission = api.call("GET", f"/repos/{owner}/{name}/actions/permissions")
-    if permission.get("enabled") is not False:
+    # GitHub can briefly return the old permission after the successful write.
+    for poll in range(10):
+        permission = api.call("GET", f"/repos/{owner}/{name}/actions/permissions")
+        if permission.get("enabled") is False:
+            break
+        if poll < 9:
+            time.sleep(2)
+    else:
         raise EvalError("Inherited GitHub Actions are not disabled")
     attempt["repository"] = f"{owner}/{name}"
     save()

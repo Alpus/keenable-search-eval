@@ -148,6 +148,7 @@ class Server:
         self.lose_create = False
         self.lose_trigger = False
         self.ignore_actions = False
+        self.actions_readbacks = []
         self.pr = {
             "number": 1,
             "html_url": "https://github.com/" + REPO + "/pull/1",
@@ -172,6 +173,8 @@ class Server:
         if path.endswith("/actions/permissions"):
             if method == "PUT" and not self.ignore_actions:
                 self.actions = body["enabled"]
+            if method == "GET" and self.actions_readbacks:
+                return httpx.Response(200, json={"enabled": self.actions_readbacks.pop(0)})
             return httpx.Response(200, json={"enabled": self.actions})
         if path == "/repos/" + REPO + "/pulls":
             return httpx.Response(200, json=[self.pr])
@@ -231,11 +234,29 @@ def test_existing_repository_mismatch_has_no_writes(mismatch):
     assert all(m == "GET" for m, _, _ in server.calls)
 
 
-def test_actions_disable_must_be_verified():
-    server = Server()
+def test_actions_disable_waits_for_read_only_propagation(monkeypatch):
+    server, attempt, sleeps = Server(), {}, []
+    server.actions_readbacks = [True, False]
+    monkeypatch.setattr(gh.time, "sleep", sleeps.append)
+    gh.ensure_repo(server.api(), "test", "se-attempt", "marker", lambda: None, attempt)
+    assert attempt["repository"] == REPO
+    permissions = [m for m, p, _ in server.calls if p.endswith("/actions/permissions")]
+    assert permissions == ["PUT", "GET", "GET"]
+    assert sleeps == [2]
+    assert sum(m == "POST" for m, _, _ in server.calls) == 1
+
+
+def test_actions_disable_must_be_verified(monkeypatch):
+    server, attempt, sleeps = Server(), {}, []
     server.ignore_actions = True
+    monkeypatch.setattr(gh.time, "sleep", sleeps.append)
     with pytest.raises(EvalError, match="Actions"):
-        gh.ensure_repo(server.api(), "test", "se-attempt", "marker", lambda: None, {})
+        gh.ensure_repo(server.api(), "test", "se-attempt", "marker", lambda: None, attempt)
+    assert "repository" not in attempt
+    permissions = [m for m, p, _ in server.calls if p.endswith("/actions/permissions")]
+    assert permissions == ["PUT"] + ["GET"] * 10
+    assert sleeps == [2] * 9
+    assert sum(m == "POST" for m, _, _ in server.calls) == 1
 
 
 def test_uncertain_repository_creation_reconciles_without_second_post():

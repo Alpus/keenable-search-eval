@@ -38,7 +38,27 @@ Use `configs/martian.yaml` (40 scored reviews) or `configs/martian-controls.yaml
 5. Confirm the YAML's SHA-bound completion contract for your account. Different completion contracts or new search combinations need a development smoke and requalification.
 6. Check the configured judge cap and actual prepaid balance. Run `./eval allow configs/martian.yaml --confirm-existing-quota --existing-model-credit-usd AMOUNT`, using that checked balance, then `./eval run configs/martian.yaml`.
 
+The presets pace reviews at 10 per hour. Set `limits.max_review_events_per_hour: null` only after verifying eligible [free trial PR overages](https://docs.coderabbit.ai/management/usage-based-addon#pr-reviews-during-your-trial); local pacing and hosted review time are separate.
+
 No command purchases credits or installs a paid plan. Martian preserves dated Opus 4.5, temperature 0, plain JSON and one total attempt per call. Its USD cap reserves $2.60 before each call and settles from returned usage; uncertain outcomes retain reservations. CodeRabbit's internal model and sampling remain unknown.
+
+## Run all experiments
+
+Complete the account and `.env` setup above. Inspect and approve each config with `allow`, including `configs/martian-controls.yaml`. Check that existing quota covers the combined work. Approval remains explicit for each experiment and expires after 24 hours.
+
+```sh
+./eval run-all
+```
+
+This runs `configs/devdex_docs.yaml`, `configs/martian.yaml` and `configs/martian-controls.yaml` sequentially. Each stage uses `run`, including its prerequisite checks, immutable resume and automatic grading/reporting. The first failure stops the sequence. Run the same command again after resolving the failure; completed attempts are preserved. Reports are saved under `runs/<run_id>/`.
+
+To use local variants, supply all three config paths in the same order:
+
+```sh
+./eval run-all configs/devdex-local.yaml configs/martian-local.yaml configs/controls-local.yaml
+```
+
+Approve those exact configs before launch. `run-all` never creates approvals or purchases quota. Keep the gateway tunnel available for both Martian stages.
 
 ## Controls
 
@@ -48,6 +68,7 @@ No command purchases credits or installs a paid plan. Martian preserves dated Op
 | `./eval config CONFIG` | Show resolved inputs/defaults, models, limits and scorer identity |
 | `./eval plan CONFIG` | Save a preview without API calls or creating resumable run state |
 | `./eval doctor CONFIG` | Show missing local prerequisites without API calls |
+| `./eval run-all [DEVDEX MARTIAN CONTROLS]` | Run/resume all three experiments in order, report each and stop on failure |
 | `./eval status` | Show containers and saved attempt counts |
 | `./eval report RUN_ID` | Rebuild a current-runtime report; use `reproduce` for the historical pilot |
 | `./eval stop` | Stop local containers; retain all evidence |
