@@ -88,7 +88,7 @@ YAML controls supported model settings, search combinations, limits, dataset, sc
 
 ### Concurrent PR reviews
 
-Fresh Martian and Martian control presets use `limits.max_concurrent_reviews: 3`.
+Fresh Martian and Martian control presets use `limits.max_concurrent_reviews: 10`.
 Omitting this setting keeps the sequential default of `1`. DevDex always runs
 sequentially. The runner prepares and triggers one PR at a time, then polls the
 confirmed reviews and fills free slots. Hosted reviews overlap while state and

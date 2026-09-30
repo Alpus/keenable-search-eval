@@ -6,13 +6,13 @@
     },
     {
       "path": "data/acceptance/qualification.json",
-      "sha256": "a64c522be97dadf967bfe830586eab4c03cad65062f5e9cf136ea736999f2846"
+      "sha256": "a8c7dd151b2f26b452db2ec5383ea09d6233f579f808da61ac58293396308e9a"
     }
   ],
   "code_sha256": "350e74d8a92b34047fcb3c4f0e0c7fd5f9e572c4f03a7ce7ba25cf206b98da00",
   "manifest_sha256": "62173f97f581a36ccb107b9c8ed7fd63f945c19c03237b35946995b71758a15b",
   "passed": true,
-  "protocol_sha256": "cec1d79139203221264bcfaf53ba1dea62894469a2720358dc7157415e720f01",
+  "protocol_sha256": "fea38efb06ad6c5975626c7b12975a52df332b534d49c14268e1c6973c8fdcc0",
   "source_runs": [
     {
       "code_sha256": "a87edd5ad8af6bc12a7919892aca61197c1141df1dabf5f219512015396007da",
@@ -24,7 +24,7 @@
   "suite": "martian",
   "targeted_revalidation": [
     {
-      "changed_behavior": "Preserved Docker/CLI and GitHub permission-propagation qualification. Added bounded single-writer review scheduling, independent hourly admission, read-only resume and post-completion recollection. Fresh Martian concurrency is 3; DevDex remains sequential. Original agents, judges and scorers are unchanged. Concurrency is qualified by offline fake-service tests only; no concurrent hosted run or score equivalence is claimed.",
+      "changed_behavior": "Preserved Docker/CLI and GitHub permission-propagation qualification. Added bounded single-writer review scheduling, independent hourly admission, read-only resume and post-completion recollection. Fresh Martian concurrency is 10; DevDex remains sequential. Original agents, judges and scorers are unchanged. Concurrency is qualified by offline fake-service tests only; no concurrent hosted run or score equivalence is claimed.",
       "proof_artifacts": [
         "data/acceptance/qualification.json"
       ],
