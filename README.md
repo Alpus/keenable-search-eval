@@ -76,16 +76,17 @@ Add benchmarks through `src/search_eval/suites/` and the registry in `core.py`, 
 
 ```mermaid
 flowchart LR
-    A[Config + credentials] --> B[Docker runner]
-    B --> C[Martian: CodeRabbit]
-    B --> D[DevDex: agent]
-    C -->|MCP modes| E[MCP gateway]
-    D --> E
-    E --> F[Keenable / Exa]
-    E --> G[Saved evidence]
-    C --> G
-    D --> G
-    G --> H[Original scorer → report]
+    subgraph Live[Live run]
+        A[CodeRabbit / DevDex agent] <-->|MCP calls / results| G[MCP gateway]
+        G <-->|Search| P[Keenable / Exa]
+        G <-->|Fetch| W[Public pages]
+    end
+    A -->|Save reviews / answers| E[Run files on disk]
+    G -.->|Save tool logs| E
+    B[Archived run] -->|Restore: ./eval reproduce| E
+    E --> S[Original scorer] --> R[Metrics + report]
 ```
 
-The gateway exposes search/fetch. Offline replay starts from saved evidence.
+The runner saves configuration, reviews/answers, tool logs and judge responses. CodeRabbit uses this gateway only in MCP modes; fetch uses our shared page reader.
+
+`./eval reproduce` restores the archived files and rebuilds scores and reports. It does not run agents, the gateway or new model calls.
