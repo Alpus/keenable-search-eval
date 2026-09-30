@@ -11,9 +11,9 @@ This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.
 
 ### Martian: code-review quality
 
-[CodeRabbit publicly reports Martian results](https://www.coderabbit.ai/blog/coderabbit-tops-martian-code-review-benchmark), emphasizing its online benchmark. We use 10 PRs from the separate offline benchmark, comparing native search, no search, Keenable MCP and Exa MCP.
+We start with Martian because [CodeRabbit publicly reports results on it](https://www.coderabbit.ai/blog/coderabbit-tops-martian-code-review-benchmark). For a quick pilot, we use 10 of the 50 offline PRs; CodeRabbit’s headline results refer to the separate online benchmark.
 
-40 scored reviews completed, one repeat. Core F2 weights recall more than precision; higher is better for all three metrics.
+Each PR was reviewed once in four modes: native search, no search, Keenable MCP and Exa Auto MCP (40 reviews). Higher scores are better; Core F2 weights recall more than precision.
 
 | Search | Core F2 ↑ | Precision ↑ | Recall ↑ |
 |---|---:|---:|---:|
@@ -22,7 +22,7 @@ This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.
 | Keenable MCP | 54.4% | 45.7% | 57.1% |
 | Exa MCP | 42.8% | 32.5% | 46.4% |
 
-Keenable scored above native and Exa, but **no search scored highest**, so this pilot does not demonstrate a search benefit. [Pre-run screening](docs/martian-provenance.md) classified 8/10 PRs as repository-local and only 2 as plausibly documentation-dependent; one repeat cannot establish provider superiority. [Metrics](results/martian-metrics.csv).
+**No search scored highest overall, but this small pilot does not establish a reliable winner.** [Pre-run screening](docs/martian-provenance.md) classified 8/10 PRs as mainly repository-local; these account for the no-search advantage over Keenable. On the two potentially documentation-dependent PRs, Keenable found 7/9 reference issues, versus 6/9 without search and 4/9 for both native and Exa MCP. Two PRs and one review per mode cannot establish that search caused the difference. [Metrics](results/martian-metrics.csv).
 
 All eight fixed-issue controls were also graded: native, Keenable and Exa re-flagged 0/2 repaired issues; no search re-flagged 1/2. These small diagnostics remain separate from benchmark scores. All 20 main MCP reviews used search. [Control and attribution details](docs/martian-provenance.md#fixed-issue-controls).
 
