@@ -14,6 +14,8 @@ This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.
 - **Martian:** Keenable scored 59.8% Core F2 versus Exa’s 58.6%.
 - **DevDex:** Keenable found 9/30 reference URLs versus Exa’s 10/30, with median task times of 17.2 s and 20.3 s, respectively.
 
+(Models: DevDex agent, Claude Opus 4.8; Martian judge, Claude Opus 4.5; CodeRabbit’s review model is undisclosed.)
+
 ### Martian: search-focused reviews
 
 Start with Martian because [CodeRabbit reports results on it](https://www.coderabbit.ai/blog/coderabbit-tops-martian-code-review-benchmark). From its 50 offline PRs, I manually selected 11 with plausible dependence on external documentation and reviewed each once in four modes.
