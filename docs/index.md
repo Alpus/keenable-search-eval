@@ -24,21 +24,19 @@ title: Keenable clients
 
 **What works today:**
 
-- **Distribution:** [Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search/) rotates unconfigured, keyless traffic across Exa, Parallel, Firecrawl and Keenable. [Ketch](https://github.com/1broseidon/ketch) includes Keenable as a fallback.
-- **Adoption:** free access and easy integration help. I found no convincing evidence of these users switching for measured quality gains.
-- **Quality:** Keenable's own [NEEDLE](https://keenableai.github.io/needle/) showed a 3.3-point overall lead over Exa Auto in my September 29 snapshot, with larger leads on some paper queries.
+- **Already integrated:** [Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search/), [Lightpanda](https://lightpanda.io/docs/usage/agent) and [Ketch](https://github.com/1broseidon/ketch) include Keenable in their keyless search rotation or fallback paths.
+- **Why they choose it:** I found no evidence of switching for better quality. Free queries and integration help seem more likely reasons to add another provider.
+- **Quality:** [NEEDLE](https://keenableai.github.io/needle/) shows a modest overall lead, but it is Keenable's own benchmark with specific task selection.
 
 **What I would do:**
 
-1. Help more agent developers integrate Keenable.
-2. Test aggregated intent-data sales or a GEO analytics product.
-3. Approach Attio, Runpod, Stripe, Vercel and Strapi, plus GEO tools and agencies. Contacts indicate category interest, not confirmed Keenable demand.
+1. **Test demand:** approach Attio, Runpod, Stripe, Vercel and Strapi, plus GEO tools and agencies. “I have agent-search data. Would it be useful to you?” Contacts indicate interest in the category, not confirmed demand for this dataset.
+2. **In parallel, expand distribution:** approach agent teams and platforms, from larger communities to smaller ones: [OpenClaw](https://github.com/openclaw/openclaw), [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT), [Dify](https://github.com/langgenius/dify), [Langflow](https://github.com/langflow-ai/langflow), [OpenHands](https://github.com/OpenHands/OpenHands), [Cline](https://github.com/cline/cline), [Goose](https://github.com/aaif-goose/goose), [Vane](https://github.com/ItzCrazyKns/Vane), [GPT Researcher](https://github.com/assafelovic/gpt-researcher) and [Letta](https://github.com/letta-ai/letta). Pitch: “Keenable is already in Hermes. Can I help you integrate it with free search queries?” These are outreach candidates; check existing integrations first.
 
-**What must hold:**
+**Pros and cons:**
 
-- **Advantage:** an owned data source with potentially unique insights.
-- **Limits:** search queries do not reveal full conversations or purchases.
-- **Economics:** check volume, permitted uses, buyer pricing and costs.
+- **Pro:** proprietary usage data could become a moat for analytics. Existing integrations provide a starting point.
+- **Con:** without distribution through ChatGPT or Claude, this may stay a small data business serving open-source users. I am not convinced that is attractive long term.
 
 ## 2. Specialized search → paid B2B API
 
