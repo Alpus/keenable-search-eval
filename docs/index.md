@@ -30,7 +30,7 @@ title: Keenable clients
 
 **What I would do:**
 
-1. **Test demand:** approach Attio, Runpod, Stripe, Vercel and Strapi, plus GEO tools and agencies. “I have agent-search data. Would it be useful to you?” Contacts indicate interest in the category, not confirmed demand for this dataset.
+1. **Test demand:** approach Attio, Runpod, Stripe, Vercel and Strapi, where personal contacts indirectly confirm a need for this type of data. Also approach GEO tools and agencies. Pitch: “I have agent-search data. Would it be useful to you?”
 2. **In parallel, expand distribution:** approach agent teams and platforms, from larger communities to smaller ones: [OpenClaw](https://github.com/openclaw/openclaw), [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT), [Dify](https://github.com/langgenius/dify), [Langflow](https://github.com/langflow-ai/langflow), [OpenHands](https://github.com/OpenHands/OpenHands), [Cline](https://github.com/cline/cline), [Goose](https://github.com/aaif-goose/goose), [Vane](https://github.com/ItzCrazyKns/Vane), [GPT Researcher](https://github.com/assafelovic/gpt-researcher) and [Letta](https://github.com/letta-ai/letta). Pitch: “Keenable is already in Hermes. Can I help you integrate it with free search queries?” These are outreach candidates; check existing integrations first.
 
 **Pros and cons:**
