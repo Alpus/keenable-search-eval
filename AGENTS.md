@@ -6,7 +6,7 @@ Use ./eval check for offline verification and ./eval reproduce for the preserved
 
 Judge budgets need headroom for the $2.60 per-call reservation, not only expected token cost. A grading stop preserves its original evidence; any authorized completion must replay exact saved request occurrences and record only never-issued calls in a separate sidecar.
 
-Run configs freeze dataset, model, tool parameters, scorer and repeats. Changed code/protocol needs a new run identity and requalification. Keep lifecycle, transport and scoring separate. Preserve attribution, leakage prevention, immutable resume and budget checks. Runtime failures cannot become successful no-findings results.
+Run configs freeze dataset, model, tool parameters, scorer and repeats. Changed code/protocol needs a new run identity and requalification. Keep lifecycle, transport and scoring separate. Preserve attribution, leakage prevention, immutable resume and budget checks. Runtime failures cannot become successful no-findings results. CodeRabbit may update an existing walkthrough: check updated_at against the trigger, while retaining trusted author/app, exact head and fresh completion-status checks; an old created_at alone does not invalidate the result.
 
 Batch related edits before full tests and independent review. Use focused checks during iteration. Fix current blockers; defer non-blocking edge cases. Do not add a generic framework or recovery machinery without a current need.
 
