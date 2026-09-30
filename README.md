@@ -40,7 +40,7 @@ Any isolated gains did not translate into a consistent improvement in these resu
 
 ### Additional Martian pilot
 
-I also tested 10 of the 50 offline PRs, limiting the sample to fit the available time and budget.
+I also tested a seeded, source-balanced sample of 10 of the 50 offline PRs, rather than all 50, due to time and budget limits.
 
 | Search | Reference issues found | Unmatched findings | Core F2 |
 |---|---:|---:|---:|
