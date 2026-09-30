@@ -14,7 +14,8 @@ This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.
 **Keenable shows no clear advantage.**
 
 - It matched slightly more reference issues than native search and Exa, but found the same number of reference issues as running without search and produced more unmatched findings.
-- Manual inspection found useful additional issues.
+
+Manual review also found a privacy leak and unnecessary token refreshes outside the reference list.
 
 **Note on benchmark contamination:** saved Keenable responses exposed existing benchmark PR reviews in at least **3 of the 11 tasks**. These were copies of the same tasks, not unrelated benchmarks:
 
