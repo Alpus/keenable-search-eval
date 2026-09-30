@@ -54,7 +54,7 @@ title: Keenable clients
 
 **Domain evidence:**
 
-1. **Clay:** [Clay combines external providers and research agents](https://www.clay.com/claygent). My [evaluation with GPT-5.4](https://github.com/Alpus/clay-keenable-eval#results) suggests Keenable can improve results when explicitly prompted to verify answers.
+1. **Clay:** [Clay combines external providers and research agents](https://www.clay.com/claygent). My [evaluation with GPT-5.4](https://github.com/Alpus/clay-keenable-eval#results) suggests **Keenable can improve results** when explicitly prompted to verify answers.
 2. **CodeRabbit:** I started here because it has clear benchmarks and the hypothesis is relatively easy to test in a day. Search is secondary here, mostly a documentation lookup. It [already uses Exa](https://exa.ai/customers/coderabbit). My [published evals](https://github.com/Alpus/keenable-search-eval#results) do not establish a clear Keenable advantage.
 3. **E-commerce:** I worked on product matching and competitor data at [Joom](https://www.joom.com/) and know teams did similar work at [Ozon](https://www.ozon.ru/). The need exists; whether search is the bottleneck and companies will pay still needs validation.
 
