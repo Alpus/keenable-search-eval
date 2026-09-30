@@ -41,25 +41,33 @@ All eight fixed-issue controls were also graded: native, Keenable and Exa re-fla
 
 ## How to run
 
-Requires Docker with Compose 2.24+ and a POSIX shell (WSL on Windows). Reproduce recorded results:
+Requires Docker with Compose 2.24+ and a POSIX shell (WSL on Windows).
 
-```sh
-git clone https://github.com/Alpus/keenable-search-eval.git
-cd keenable-search-eval
-./eval reproduce
-```
+**Reproduce recorded results:**
 
-No keys, accounts, agent skills or tunnel setup. After building, replay runs offline and verifies output hashes in `runs/reproduced/`. Includes DevDex, all 40 scored Martian reviews and eight separate controls.
+1. Clone the repository and enter it:
 
-For **fresh live runs** of both benchmarks:
+   ```sh
+   git clone https://github.com/Alpus/keenable-search-eval.git
+   cd keenable-search-eval
+   ```
 
-```sh
-./eval setup
-# Fill .env: GITHUB_TOKEN, KEENABLE_API_KEY, EXA_API_KEY, ANTHROPIC_API_KEY.
-./eval run-all
-```
+2. Rebuild the published results:
 
-Repositories, tokens and the HTTPS tunnel are automatic; no Cloudflare account or CLI needed. Follow `.gateway/coderabbit-setup.md` for CodeRabbit App/MCP/scope setup, then confirm quota. These dashboard steps have no documented provisioning API. [Access and budget requirements](docs/usage.md#fresh-runs).
+   ```sh
+   ./eval reproduce
+   ```
+
+3. Find the verified outputs in `runs/reproduced/`: DevDex, 40 scored Martian reviews and eight controls. No keys or accounts are needed; replay runs offline after building.
+
+**Run fresh experiments:**
+
+1. Run `./eval setup` and fill `.env` with `GITHUB_TOKEN`, `KEENABLE_API_KEY`, `EXA_API_KEY` and `ANTHROPIC_API_KEY`. Ensure the accounts have the required access and credits.
+2. Run `./eval run-all`. It prepares private repositories, MCP tokens and the HTTPS tunnel automatically; no Cloudflare account or CLI is needed.
+3. When prompted, follow `.gateway/coderabbit-setup.md`: install CodeRabbit on the generated repositories, save both MCP connections and add them to a Review scope. These dashboard steps have no documented provisioning API.
+4. Confirm the saved settings and available quota in the terminal. The runner then executes and grades both benchmarks; use the same command to resume after an interruption.
+
+[Detailed setup and budget requirements](docs/usage.md#fresh-runs).
 
 ## Details
 
@@ -71,7 +79,9 @@ Repositories, tokens and the HTTPS tunnel are automatic; no Cloudflare account o
 | Inspect progress / stop containers | `./eval status` / `./eval stop` |
 | Rebuild a current run's report / verify code | `./eval report RUN_ID` / `./eval check` |
 
-Copy a `configs/` preset to change models, search modes, limits, seed or repeats. Inputs and evidence are saved in `runs/<run_id>/`. Resume with the same command; new experiments need new run IDs. Protocol changes require smoke-test qualification. Set a stable `PUBLIC_MCP_URL` for runs that must survive tunnel restarts.
+- Copy a `configs/` preset to change models, search modes, limits, seed or repeats. Inputs and evidence are saved in `runs/<run_id>/`.
+- Resume with the same command; new experiments need new run IDs. Protocol changes require smoke-test qualification.
+- Set a stable `PUBLIC_MCP_URL` for runs that must survive tunnel restarts.
 
 Fresh Martian presets allow 10 concurrent reviews (`limits.max_concurrent_reviews`) and at most 10 review events per hour. DevDex stays sequential. Recorded results used sequential reviews; no live speedup has been measured.
 
