@@ -1,4 +1,4 @@
-# Keenable Search Eval
+# Keenable Eval For CodeRabbit
 
 Compare Keenable and Exa searh on dev search tasks:
 * CodeRabbit reviews (Martian)
