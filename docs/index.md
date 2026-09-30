@@ -17,7 +17,7 @@ title: Keenable clients
 
 **Why:**
 
-- **General search:** I expect ChatGPT-scale distribution to depend more on relationships than product quality. Without those deals, Keenable risks staying an open-source niche.
+- **General search:** I expect distribution through ChatGPT, Claude, maybe Muse to depend more on relationships than product quality. Without those deals, Keenable risks staying an open-source niche.
 - **Domain-specific search:** I see a more defensible and potentially larger business.
 
 ## 1. Agent distribution → intent analytics
