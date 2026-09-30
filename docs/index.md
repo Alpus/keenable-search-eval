@@ -51,9 +51,9 @@ title: Keenable clients
 - **E-commerce:** product matching and competitor prices, a need I have worked on firsthand.
 - **Legal and science:** rulings, regulations and papers with traceable sources.
 
-**Where I would start:**
+**Where I started:**
 
-- **CodeRabbit:** [already uses Exa](https://exa.ai/customers/coderabbit) and publishes benchmark results. My [published pilots](https://github.com/Alpus/keenable-search-eval#results) do not establish a clear Keenable advantage.
+- **CodeRabbit:** I started here because it has clear benchmarks and the hypothesis is relatively easy to test in a day. It [already uses Exa](https://exa.ai/customers/coderabbit). My [published pilots](https://github.com/Alpus/keenable-search-eval#results) do not establish a clear Keenable advantage.
 - **Clay and e-commerce:** my next hypotheses. [Clay combines external providers and research agents](https://www.clay.com/claygent), so another data source could fit.
 
 **How I would validate it:**
