@@ -11,7 +11,10 @@ This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.
 
 ## Results
 
-**Keenable shows no clear advantage.** It matched slightly more reference issues than native search and Exa, but tied no search and produced more unmatched findings. Manual inspection found useful additional issues, but exposure to existing benchmark reviews prevents a clean claim that search improved review quality.
+**Keenable shows no clear advantage.**
+
+- It matched slightly more reference issues than native search and Exa, but tied no search and produced more unmatched findings.
+- Manual inspection found useful additional issues, but exposure to existing benchmark reviews prevents a clean claim that search improved review quality.
 
 ### Martian: search-focused reviews
 
