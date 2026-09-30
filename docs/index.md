@@ -54,7 +54,8 @@ title: Keenable clients
 **Where I started:**
 
 - **CodeRabbit:** I started here because it has clear benchmarks and the hypothesis is relatively easy to test in a day. Search is secondary here, mostly a documentation lookup. It [already uses Exa](https://exa.ai/customers/coderabbit). My [published evals](https://github.com/Alpus/keenable-search-eval#results) do not establish a clear Keenable advantage.
-- **Clay and e-commerce:** my next hypotheses. [Clay combines external providers and research agents](https://www.clay.com/claygent), so another data source could fit.
+- **Clay:** my next hypothesis, explored in a [separate evaluation](https://github.com/Alpus/clay-keenable-eval). [Clay combines external providers and research agents](https://www.clay.com/claygent), so another data source could fit.
+- **E-commerce:** I worked on product matching and competitor data at Joom and know teams did similar work at Ozon. The need exists; whether search is the bottleneck and companies will pay still needs validation.
 
 **How I would validate it:**
 
