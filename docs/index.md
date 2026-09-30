@@ -20,7 +20,7 @@ title: Keenable clients
 - **General search:** I see no clear quality advantage for everyday use. Plus, I expect most agent-search traffic to go through ChatGPT, Claude, maybe Muse. Getting integrated depends more on relationships than product quality; without those deals, Keenable risks staying an open-source niche.
 - **Domain-specific search:** I see a more defensible and potentially larger business.
 
-## 1. Agent distribution → intent analytics
+## 1. Agent distribution → data analytics
 
 **What works today:**
 
