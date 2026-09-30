@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Two directions for Keenable
+title: Keenable clients
 ---
 
-# Two directions for Keenable
+# Keenable clients
 
 **I see two paths:**
 
