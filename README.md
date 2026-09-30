@@ -24,7 +24,15 @@ Start with Martian because [CodeRabbit reports results on it](https://www.codera
 | Keenable MCP | **30/47** | 33 | 59.8% |
 | Exa Auto MCP | 28/47 | 23 | 58.6% |
 
-“Found” means matched to the benchmark's reference issues. Unmatched findings count as false positives in the benchmark, although some may be valid; F2 = 5TP/(5TP + 4FN + FP), where TP is found, FN is missed and FP is unmatched.
+**Core F2** combines precision and recall, giving more weight to recall. Core excludes reference issues categorized as style or speculative.
+
+**F2 = 5 × found / (5 × found + 4 × missed + unmatched)**
+
+- **Found:** matched reference issues.
+- **Missed:** reference issues the review did not find.
+- **Unmatched:** findings outside the reference matches. The benchmark penalizes these, although some may be valid.
+
+For Keenable: 30 found, 17 missed and 33 unmatched. **F2 = 150 / (150 + 68 + 33) = 59.8%.**
 
 - **What changed:** Keenable and no search each matched 30 reference issues. Keenable gained four matches but missed four others; most differences concern locally visible code, so the results do not establish a search benefit.
 - **Additional findings:** source inspection supports some unmatched issues, including a leaked website field and unnecessary Salesforce token refreshes. Others duplicate existing findings or concern documentation and cleanup. These are exploratory judgments, not extra benchmark points.
