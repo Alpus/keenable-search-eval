@@ -32,7 +32,7 @@ Keenable found:
 - **30 reference issues**, versus Exa’s 28 and no search’s 30.
 - **Four matches gained and four lost versus no search.** Retrieved framing documentation supports one gain; a CSS issue was missed despite a relevant search result.
 - **Documentation-supported extras:** an iframe-source check and a Redis key-type migration warning.
-- **Search found online spoilers for three findings:** a missing fetch timeout, incorrect ASN.1 sequence lengths and integer truncation.
+- **Extras likely due to contamination:** search found online spoilers for three findings: a missing fetch timeout, incorrect ASN.1 sequence lengths and integer truncation.
 
 These results suggest that improving search is not the main lever for CodeRabbit’s review quality or an obvious quick win.
 
