@@ -11,7 +11,7 @@ This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.
 
 ### Martian: code-review quality
 
-We start with Martian because [CodeRabbit publicly reports results on it](https://www.coderabbit.ai/blog/coderabbit-tops-martian-code-review-benchmark). For a quick pilot, we use 10 of the 50 offline PRs.
+I start with Martian because [CodeRabbit publicly reports results on it](https://www.coderabbit.ai/blog/coderabbit-tops-martian-code-review-benchmark). For a quick pilot, I use 10 of the 50 offline PRs.
 
 Each PR was reviewed once in four modes: native search, no search, Keenable MCP and Exa Auto MCP (40 reviews).
 
@@ -62,12 +62,13 @@ Requires Docker with Compose 2.24+ and a POSIX shell (WSL on Windows).
 
 **Run fresh experiments:**
 
-1. Run `./eval setup` and fill `.env` with `GITHUB_TOKEN`, `KEENABLE_API_KEY`, `EXA_API_KEY` and `ANTHROPIC_API_KEY`. Ensure the accounts have the required access and credits.
+1. Run `./eval setup` and fill `.env` with `GITHUB_TOKEN`, `KEENABLE_API_KEY`, `EXA_API_KEY` and `ANTHROPIC_API_KEY`. Use a GitHub token that can create private repositories; the provider accounts need model/search access and credits.
 2. Run `./eval run-all`. It prepares private repositories, MCP tokens and the HTTPS tunnel automatically; no Cloudflare account or CLI is needed.
-3. When prompted, follow `.gateway/coderabbit-setup.md`: install CodeRabbit on the generated repositories, save both MCP connections and add them to a Review scope. These dashboard steps have no documented provisioning API.
-4. Confirm the saved settings and available quota in the terminal. The runner then executes and grades both benchmarks; use the same command to resume after an interruption.
+3. When prompted, follow `.gateway/coderabbit-setup.md`: install CodeRabbit on the generated repositories, save both MCP connections and add them to a Review scope. The [numbered dashboard checklist](docs/usage.md#unavoidable-coderabbit-dashboard-steps) specifies every field and verification step.
+4. Confirm the saved settings and available quota in the terminal. The runner then executes and grades both benchmarks. Keep Docker, the terminal and tunnel running until it exits.
+5. Read reports in `runs/<run_id>/`. If interrupted, follow [resume instructions](docs/usage.md#resume-or-handoff) before starting another command.
 
-[Detailed setup and budget requirements](docs/usage.md#fresh-runs).
+The pinned benchmark inputs and scorers are already packaged. Account registration, credits, GitHub App access and CodeRabbit dashboard settings remain manual. [Detailed setup and budget requirements](docs/usage.md#fresh-runs).
 
 ## Details
 
@@ -100,6 +101,6 @@ flowchart TB
     E --> S[Original scorer] --> R[Metrics + report]
 ```
 
-The runner saves configuration, reviews/answers, tool logs and judge responses. CodeRabbit uses this gateway only in MCP modes; fetch uses our shared page reader.
+The runner saves configuration, reviews/answers, tool logs and judge responses. CodeRabbit uses this gateway only in MCP modes; fetch uses my shared page reader.
 
 `./eval reproduce` restores the archived files and rebuilds scores and reports. It does not run agents, the gateway or new model calls.

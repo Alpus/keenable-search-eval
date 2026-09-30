@@ -41,11 +41,16 @@ An independent experiment needs new run IDs. Do not reuse another person's test 
 
 The [documented API](https://docs.coderabbit.ai/api) and [OpenAPI specification](https://docs.coderabbit.ai/openapi.json) do not expose saved-connection or Review-scope provisioning (checked 2026-09-29). `run-all` stops at this checkpoint on first use or when connection/repository identity changes. Follow the generated local checklist:
 
-1. [Install the GitHub App](https://docs.coderabbit.ai/platforms/github-com) for the generated repositories. Selecting all repositories also covers future ones but grants broader access.
-2. [Save two MCP connections](https://docs.coderabbit.ai/connections/mcp-servers), `eval-search-a` and `eval-search-b`, with the generated URLs and bearer tokens from `.env`. Enable their search and fetch tools.
-3. [Create a named Review scope](https://docs.coderabbit.ai/connections/scopes-review) containing these connections and the generated repositories. Keep unrelated inherited connections out of these test repositories; preserve unrelated account settings. Confirm full reviews and MCP access.
+1. Open `.gateway/coderabbit-setup.md`. Use its exact repository names, connection names and HTTPS URLs; do not copy another run's account settings.
+2. [Install the GitHub App](https://docs.coderabbit.ai/platforms/github-com) for those repositories. Verify they appear in CodeRabbit's Connected repositories page; selecting all repositories also grants access to future ones.
+3. In Connections, add each listed server as **Custom → MCP → Read-only**. Set both names to the listed connection name, Server URL to its listed URL, Transport to **Streamable HTTP**, Authentication to **API token**, and Auth header to **Authorization**.
+4. Enter `Bearer ` followed by the corresponding token from local `.env`. Turn **Add this to the Base Scope** off. Set Prompt Guidance to: `Search public documentation when external facts are needed to review this change. For every search and fetch call, set review_url to https://github.com/{owner}/{repo}/pull/{pr}.`
+5. Click **Discover tools**, select `search` and `fetch`, then save. Both tools must be discovered successfully for each connection; an entered URL alone is not verification.
+6. In Scopes, create a named scope containing exactly the generated repositories and both connections. Verify its saved repository count, two connections and enabled state. Keep unrelated connections out of this scope and preserve unrelated account settings.
+7. Verify that the account permits full reviews and MCP, and has enough existing quota. The runner disables automatic PR reviews and sends one explicit review command per attempt; an initial “Auto reviews are disabled” comment is expected.
+8. Return to the waiting terminal and type `ready` only after saving and checking those settings. Confirm the existing budget when prompted; this is an operator attestation, not remote verification.
 
-Type `ready` in the terminal only after saving these settings. This is an operator attestation, not remote verification.
+If editing an existing URL cannot discover tools, inspect whether CodeRabbit is still checking the old saved connection. This occurred on 2026-09-30; creating a replacement with the same permissions worked. Before any run starts, update `profiles.<profile>.connection` in the input configs and rerun preparation so its checklist and qualification match.
 
 Live gateway health and actual review/tool receipts remain the execution evidence. No browser session is required after setup.
 
@@ -79,13 +84,31 @@ Martian preserves dated Opus 4.5, temperature 0, plain JSON and one total attemp
 
 Uncertain outcomes retain reservations. CodeRabbit's internal model and sampling remain unknown.
 
-For an individual already configured experiment, `./eval allow CONFIG --confirm-existing-quota` records quota approval (`--existing-model-credit-usd AMOUNT` is also required for Martian), then `./eval run CONFIG` executes it. These lower-level commands do not provision account settings or a tunnel. `./eval setup` only creates a private `.env` template and output directories without overwriting files.
+### Run one already prepared experiment
+
+These commands do not provision CodeRabbit, repositories or a tunnel. Use the resolved config, existing source inputs and qualified protocol from preparation.
+
+1. Confirm no runner is already executing this run ID. Check `docker compose ps -a` and `runs/<run_id>/state.json`.
+2. For a fresh Martian run, record the verified existing quota: `./eval allow CONFIG --confirm-existing-quota --existing-model-credit-usd AMOUNT`. Replace `CONFIG` and `AMOUNT`; never invent a balance.
+3. Check prerequisites with `./eval doctor CONFIG`. It must report `live_ready: true`; this local check does not prove provider balances or CodeRabbit access.
+4. Run `./eval run CONFIG`. It collects reviews, grades completed attempts and writes the report automatically.
+5. Inspect `runs/<run_id>/report.md`, `metrics.csv` and `state.json`. A running process or partial report is not a completed experiment.
+
+### Resume or handoff
+
+1. Read `runs/<run_id>/config.json`, `effective-inputs.json` and `state.json`, plus `.gateway/coderabbit-setup.md`. Check `docker compose ps -a` before doing anything that could start another runner.
+2. If the runner is still active, inspect its logs with `docker logs CONTAINER`. Do not launch a second copy or rebuild its gateway while it is running.
+3. If it stopped, preserve `.env`, configs, `runs/`, `validation/`, `.gateway/` and the original tunnel. Repeat the original command only after resolving the reported prerequisite; do not change frozen inputs.
+4. If state reports an unknown external write, a changed tunnel or a stopped judge call, keep the evidence and inspect that specific failure. Do not delete state, issue another review command or raise a budget to make it pass.
+5. Verify completion from terminal attempt states, complete grading and the report. Record the exact run ID, command and remaining issue when handing off.
+
+The default presets already contain pinned source inputs and qualification evidence. Selecting new PRs is separate preparation: freeze and verify their base/head trees, retain original gold and answer-source exclusions, and qualify the new manifest before launch. A new dataset is not enabled merely by changing a task count.
 
 ## Public repository and replay
 
 The harness and recorded DevDex and Martian evidence can be reused directly. `./eval reproduce` needs no account, keys or test repositories.
 
-Fresh hosted reviews use your own account and generated private repositories; making our execution repositories public would not grant your account the same scope, model, quota or clean review history. We reuse a test repository only to resume its exact attempt.
+Fresh hosted reviews use your own account and generated private repositories; making my execution repositories public would not grant your account the same scope, model, quota or clean review history. I reuse a test repository only to resume its exact attempt.
 
 ## Controls
 
