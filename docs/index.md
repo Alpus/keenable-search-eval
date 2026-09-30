@@ -33,10 +33,14 @@ title: Keenable clients
 1. **Test demand:** approach Attio, Runpod, Stripe, Vercel and Strapi, where personal contacts indirectly confirm a need for this type of data. Also approach GEO tools and agencies. Pitch: “I have agent-search data. Would it be useful to you?”
 2. **In parallel, expand distribution:** target existing search defaults: [OpenClaw](https://docs.openclaw.ai/tools/web) (built-in provider selection), [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT/blob/master/autogpt_platform/backend/backend/copilot/tools/web_search.py) (Sonar in AutoPilot), [Dify](https://marketplace.dify.ai/templates) (Tavily/Exa in research templates) and [Langflow](https://docs.langflow.org/web-search) (DuckDuckGo in its Web Search component). Pitch: “Keenable is already in Hermes. Can I help make it a free search option in your default setup or templates?” OpenClaw, Dify and Langflow already have optional Keenable integrations; the goal is default placement.
 
-**Pros and cons:**
+**Pro:**
 
-- **Pro:** proprietary usage data could become a moat for analytics. Existing integrations provide a starting point.
-- **Con:** without distribution through ChatGPT or Claude, this may stay a small data business serving open-source users. I am not convinced that is attractive long term.
+- Proprietary data: a moat for analytics.
+- Hermes is already a good starting point.
+
+**Con:**
+
+- Without distribution through ChatGPT or Claude, this may stay a small data business serving open-source users.
 
 ## 2. Specialized search → paid B2B API
 
