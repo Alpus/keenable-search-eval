@@ -7,6 +7,8 @@ This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.
 - CodeRabbit reviews: [Martian](https://github.com/withmartian/code-review-benchmark).
 - Agent documentation retrieval: [DevDex](https://github.com/firecrawl/benchmark-devdex).
 
+[Strategy note: two directions for Keenable](https://alpus.github.io/keenable-search-eval/).
+
 ## Results
 
 ### Martian: code-review quality
