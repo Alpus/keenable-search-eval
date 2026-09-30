@@ -75,7 +75,7 @@ Fresh Martian presets allow 10 concurrent reviews (`limits.max_concurrent_review
 Add benchmarks through `src/search_eval/suites/` and the registry in `core.py`, using existing task kinds. [Full commands and setup](docs/usage.md) · [File structure](docs/architecture.md).
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph Live[Live run]
         A[CodeRabbit / DevDex agent] <-->|MCP calls / results| G[MCP gateway]
         G <-->|Search| P[Keenable / Exa]
