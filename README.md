@@ -32,16 +32,9 @@ Keenable found:
 - **30 reference issues**, versus Exa’s 28 and no search’s 30.
 - **Four matches gained and four lost versus no search.** Retrieved framing documentation supports one gain; a CSS issue was missed despite a relevant search result.
 - **Documentation-supported extras:** an iframe-source check and a Redis key-type migration warning.
-- **Extras likely due to contamination:** search found online spoilers for three findings: a missing fetch timeout, incorrect ASN.1 sequence lengths and integer truncation.
+- **Extras likely due to contamination:** search found spoilers for a [missing fetch timeout](https://github.com/AI-Code-Review-Evals/claude_code-cal_dot_com/pull/7), [incorrect ASN.1 sequence lengths and integer truncation](https://github.com/AI-Code-Review-Evals/claude_code-keycloak/pull/3). It also fetched existing reviews for [Sentry 93824](https://github.com/AI-Code-Review-Evals/claude_code-sentry/pull/6) and [Sentry Greptile 1](https://github.com/AI-Code-Review-Evals/claude_code-sentry/pull/2).
 
 These results suggest that improving search is not the main lever for CodeRabbit’s review quality or an obvious quick win.
-
-**Note on benchmark contamination:** saved Keenable responses exposed existing benchmark PR reviews in at least **4 of the 11 tasks**. These were copies of the same tasks, not unrelated benchmarks:
-
-- **Cal.com 11059:** [an existing review](https://github.com/AI-Code-Review-Evals/claude_code-cal_dot_com/pull/7) discussed the missing fetch timeout and shared-secret comparison, also flagged in this run.
-- **Keycloak 33832:** [an existing review](https://github.com/AI-Code-Review-Evals/claude_code-keycloak/pull/3) discussed integer truncation, sequence-length validation and weak round-trip tests, overlapping this run's findings.
-- **Sentry 93824:** search fetched public benchmark copies, including [another agent's review PR](https://github.com/AI-Code-Review-Evals/claude_code-sentry/pull/6).
-- **Sentry Greptile 1:** search also fetched [a benchmark copy of the pagination task](https://github.com/AI-Code-Review-Evals/claude_code-sentry/pull/2).
 
 The question is whether Keenable shows a clear improvement. These results show none, so this limitation does not change the conclusion. [Evidence and other limitations](docs/martian-provenance.md#search-focused-extension).
 
