@@ -13,7 +13,7 @@ title: Keenable clients
 **My recommendation:**
 
 - **Short term:** turn agent search queries into analytics. Sell these insights to companies improving their visibility in AI answers (GEO).
-- **Long term:** based on my findings, I recommend starting with people and company data. Adapt the product to enrichment and sales workflows.
+- **Long term:** based on my limited research so far, I would start with people and company data. Adapt the product to enrichment and sales workflows.
 
 **Why:**
 
