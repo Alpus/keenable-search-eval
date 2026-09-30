@@ -49,7 +49,7 @@ I also tested a seeded, source-balanced sample of 10 of the 50 offline PRs becau
 | Keenable MCP | 16/28 | 19 | 54.4% |
 | Exa Auto MCP | 13/28 | 27 | 42.8% |
 
-Eight tasks were screened as mainly repository-local. Keenable scored above native and Exa but below no search; this is a different task mix, not evidence that enabling search itself caused the difference.
+Scores were lower in this pilot, but the different PR sample makes this weak evidence.
 
 ### DevDex: documentation retrieval
 
