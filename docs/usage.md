@@ -61,7 +61,7 @@ For an individual already configured experiment, `./eval allow CONFIG --confirm-
 
 ## Public repository and replay
 
-The harness and recorded DevDex evidence can be reused directly. `./eval reproduce` needs no account, keys or test repositories. Fresh hosted reviews use your own account and generated private repositories; making our execution repositories public would not grant your account the same scope, model, quota or clean review history. We reuse a test repository only to resume its exact attempt.
+The harness and recorded DevDex and Martian evidence can be reused directly. `./eval reproduce` needs no account, keys or test repositories. Fresh hosted reviews use your own account and generated private repositories; making our execution repositories public would not grant your account the same scope, model, quota or clean review history. We reuse a test repository only to resume its exact attempt.
 
 ## Controls
 
@@ -85,3 +85,29 @@ DevDex uses 30 fixed public documentation questions, one repeat, Keenable Pro an
 Martian compares native search, no configured search, Keenable MCP and Exa MCP on ten reconstructed PRs. Original Core F2/P/R/TP/FP/FN are primary, Strict/F1 secondary. Controls/development/blind audit remain separate. Missing grading suppresses headlines. These public tasks may be in model training; reconstructed PR context differs from the historical leaderboard. See [provenance](martian-provenance.md).
 
 YAML controls supported model settings, search combinations, limits, dataset, scorer revision, schedule seed and repeats. `effective-inputs.json` freezes resolved values before execution. The order seed does not make inference deterministic. Null sampling remains provider-owned unknown. Requested and returned model IDs are separate. Repeats are scored independently, never best-of or pooled; suites are never averaged.
+
+### Concurrent PR reviews
+
+Fresh Martian and Martian control presets use `limits.max_concurrent_reviews: 3`.
+Omitting this setting keeps the sequential default of `1`. DevDex always runs
+sequentially. The runner prepares and triggers one PR at a time, then polls the
+confirmed reviews and fills free slots. Hosted reviews overlap while state and
+gateway routing writes remain serialized under the existing workspace lock.
+
+Concurrency and `limits.max_review_events_per_hour` are independent limits.
+The presets retain the owner-wide cap of 10 review events per hour across saved
+runs. A full quota blocks new starts while active reviews continue to be polled.
+The ledger cannot observe reviews outside this workspace. Source preparation and
+individual GitHub requests can still delay a polling pass.
+
+Resume reads every confirmed active review before admitting new writes. It keeps
+the saved trigger identity and deadline. Pending reads keep their gateway route
+until terminal evidence or the original expiry. A transient read error stops new
+starts and permits read-only recovery; an unknown write outcome requires explicit
+reconciliation. Neither case automatically sends another review request.
+
+The concurrency setting is part of the run fingerprint and live acceptance
+protocol. Changing it requires a new run identity and qualification. Historical
+configs, measured bundles and existing run state remain frozen. Offline scheduler
+tests establish overlap and admission behavior; they do not establish hosted
+throughput or unchanged benchmark performance with parallel reviews.

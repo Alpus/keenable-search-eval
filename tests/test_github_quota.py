@@ -201,3 +201,11 @@ def test_bad_completion_timestamp_blocks_quota_aging(tmp_path, completed):
     save(tmp_path, "finished", {"attempts": [row]})
     with pytest.raises(EvalError, match="Cannot establish review quota"):
         gh.review_events(tmp_path, "Alpus")
+
+
+def test_nonblocking_quota_check_returns_delay_without_sleep_or_reservation(tmp_path, pacing):
+    config, attempt, artifact, clock, sleeps, allowances = pacing
+    save(tmp_path, "previous", {"attempts": [event("old", 0), event("recent", 60)]})
+    assert gh.pace_review_trigger(config, attempt, artifact, nonblocking=True) == 12
+    assert clock["now"] == START + 3590 and sleeps == [] and len(allowances) == 1
+    assert "trigger_intent" not in attempt and "expires_at" not in attempt

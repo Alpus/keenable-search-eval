@@ -1,4 +1,4 @@
-"""Sequential execution with explicit live gates and immutable evidence."""
+"""Single-writer execution with bounded PR reviews and immutable evidence."""
 
 from __future__ import annotations
 
@@ -145,6 +145,7 @@ def acceptance_identity(config: Experiment, root=ROOT):
             "episode": config.limits.episode_timeout_seconds,
             "poll": config.limits.poll_seconds,
         },
+        "max_concurrent_reviews": config.limits.max_concurrent_reviews,
         "suite_options": options,
         "gateway_config_sha256": gateway_identity(config, root),
     }
@@ -532,10 +533,10 @@ def run(config: Experiment, *, root=ROOT, plan_only=False):
         def save():
             atomic_json(run_dir / "state.json", state)
 
-        for attempt in state["attempts"]:
+        def execute_attempt(attempt, *, nonblocking=False):
             if attempt["status"] in {"completed", "failed", "skipped", "timed_out"}:
                 finish_route(route, attempt)
-                continue
+                return
             if attempt["status"] == "unknown":
                 raise EvalError(f"Reconcile unknown attempt {attempt['id']} before continuing")
             allowance = verify_allowance(config, root, len(state["attempts"]))
@@ -586,13 +587,15 @@ def run(config: Experiment, *, root=ROOT, plan_only=False):
                         artifact,
                         save,
                         lambda a: register_attempt(route, config, a, task, arm, root=root),
+                        **({"nonblocking": True} if nonblocking else {}),
                     )
                 attempt.update(result)
                 if attempt["status"] == "completed":
                     attempt.pop("reason", None)
                 attempt["updated_at"] = now()
                 save()
-                finish_route(route, attempt)
+                if attempt["status"] in TERMINAL | {"unknown"}:
+                    finish_route(route, attempt)
                 if kind == "developer_retrieval":
                     stop_on_startup_failure(state, run_dir)
                 if attempt["status"] == "unknown":
@@ -618,7 +621,57 @@ def run(config: Experiment, *, root=ROOT, plan_only=False):
                 save()
                 finish_route(route, attempt)
                 raise
+
+        if kind == "pr_review" and config.limits.max_concurrent_reviews > 1:
+            run_reviews(config, state, run_dir, execute_attempt)
+        else:
+            for attempt in state["attempts"]:
+                execute_attempt(attempt)
         return {"run_dir": str(run_dir), "statuses": [a["status"] for a in state["attempts"]]}
+
+
+def run_reviews(config, state, run_dir, execute_attempt):
+    """Cooperative review slots under the runner lock; every local write stays serial."""
+    from .github import confirmed_trigger, pace_review_trigger
+
+    while True:
+        # Read every previously confirmed review before admitting any new writes.
+        active = [
+            a for a in state["attempts"] if a["status"] not in TERMINAL and confirmed_trigger(a)
+        ]
+        for attempt in active:
+            execute_attempt(attempt, nonblocking=True)
+        active_count = sum(
+            a["status"] not in TERMINAL and confirmed_trigger(a) for a in state["attempts"]
+        )
+        quota_delay = None
+        for attempt in state["attempts"]:
+            if active_count >= config.limits.max_concurrent_reviews:
+                break
+            if attempt["status"] in TERMINAL or confirmed_trigger(attempt):
+                continue
+            # Check quota before source/repository preparation. execute rechecks it
+            # immediately before reserving the trigger, using the same ledger.
+            allowance = verify_allowance(config, run_dir.parent.parent, len(state["attempts"]))
+            attempt.setdefault("allowance_valid_until", allowance["valid_until"])
+            quota_delay = pace_review_trigger(
+                config, attempt, run_dir / attempt["artifact_dir"], nonblocking=True
+            )
+            if quota_delay:
+                break
+            execute_attempt(attempt, nonblocking=True)
+            if attempt["status"] not in TERMINAL and confirmed_trigger(attempt):
+                active_count += 1
+            elif attempt["status"] == "pending":
+                # Quota may change during source preparation. Poll active work
+                # before retrying admission, without extending attempt deadlines.
+                break
+        if all(a["status"] in TERMINAL for a in state["attempts"]):
+            return
+        delay = config.limits.poll_seconds
+        if quota_delay:
+            delay = min(delay, quota_delay)
+        time.sleep(delay)
 
 
 def reconcile_reviews(run_dir: Path, *, root=ROOT):

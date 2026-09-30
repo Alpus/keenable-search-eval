@@ -33,6 +33,7 @@ profiles:
     mode: auto
     tier: authenticated
 limits:
+  max_concurrent_reviews: 3
   max_attempts: 40
   max_search_calls: 8
   max_fetch_calls: 8

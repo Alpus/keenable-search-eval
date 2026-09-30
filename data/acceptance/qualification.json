@@ -1,9 +1,35 @@
 {
-  "changed_behavior": "Docker packaging and CLI orchestration, plus bounded read-only confirmation of GitHub Actions disable after one PUT; original agent/judge/scorer protocols unchanged. GitHub permission propagation regression and full offline suite passed.",
-  "historical_report_parity": "report.md, metrics.csv, results.png, state.json and tool-calls.json are byte-identical",
+  "changed_behavior": "Preserved Docker/CLI and GitHub permission-propagation qualification. Added bounded single-writer review scheduling, independent hourly admission, read-only resume and post-completion recollection. Fresh Martian concurrency is 3; DevDex remains sequential. Original agents, judges and scorers are unchanged. Concurrency is qualified by offline fake-service tests only; no concurrent hosted run or score equivalence is claimed.",
+  "coverage": [
+    "overlap and slot refill",
+    "quota waits with active polling",
+    "confirmed resume before new starts",
+    "uncertain write stop",
+    "deadline and routing preservation",
+    "comments published during completion reads",
+    "unchanged sequential DevDex"
+  ],
+  "historical_report_parity": "Preserved frozen runtimes replay DevDex 5 and Martian 286 files exactly; original Martian SVG archived, regenerated SVG excluded from byte equality",
+  "hosted_concurrency_tested": false,
+  "independent_review": "Fresh-context Codex review; completion-collection race reproduced and corrected with a regression",
   "network_calls": 0,
-  "scope": "Portable packaging and CLI qualification of the preserved live protocols",
+  "scope": "Historical live protocol evidence plus targeted offline runtime revalidation",
   "status": "passed",
-  "target_code_sha256": "0fbfbb737a3a79e400ee4785abd9a6d8f1f50c8cb1f2dd351638f739d55ee175",
-  "tests": 307
+  "target_code_sha256": "350e74d8a92b34047fcb3c4f0e0c7fd5f9e572c4f03a7ce7ba25cf206b98da00",
+  "test_sources": [
+    {
+      "path": "tests/test_parallel_reviews.py",
+      "sha256": "574f34e5f55b94ce2e9b7618fa27c87e35c3861118904ee4ea6772ec5f4e3025"
+    },
+    {
+      "path": "tests/test_github_quota.py",
+      "sha256": "40e3fa9aa06a20139d6adb507f6a89299362f1507b00059cb6a30015c7ca0be6"
+    },
+    {
+      "path": "tests/test_github.py",
+      "sha256": "e23c54cd51a04e9d238b292bfd5f859b97b132f4c628a4500aaaafc7ca000f10"
+    }
+  ],
+  "tests": 336,
+  "validation": "Docker test target, network disabled: Ruff, 336 pytest tests and shell wrapper checks"
 }

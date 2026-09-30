@@ -668,11 +668,11 @@ def review_events(root: Path, owner: str) -> list[float]:
     return [max(e["actual"] or e["intent"]) for e in events.values()]
 
 
-def pace_review_trigger(config, attempt, artifact_dir: Path):
-    """Wait before reserving a new trigger; no retry or deadline is created here."""
+def pace_review_trigger(config, attempt, artifact_dir: Path, *, nonblocking=False):
+    """Wait for quota, or return seconds until the next check without reserving a trigger."""
     cap = getattr(config.limits, "max_review_events_per_hour", None)
     if cap is None:
-        return
+        return 0
     runs = next((p for p in artifact_dir.resolve().parents if p.name == "runs"), None)
     if runs is None:
         raise EvalError("Review quota pacing requires an artifact directory under runs/")
@@ -697,9 +697,12 @@ def pace_review_trigger(config, attempt, artifact_dir: Path):
             raise EvalError("Allowance expired or invalid while waiting for review quota") from exc
         active = sorted(t for t in review_events(root, config.github_owner) if t + 3602 > current)
         if len(active) < cap:
-            return
+            return 0
         # If a tighter cap follows a larger historical burst, enough events must expire.
         release = active[len(active) - cap] + 3602
+        delay = min(30, release - current, expiry.timestamp() - current)
+        if nonblocking:
+            return delay
         if release != last_release:
             print(
                 f"Review quota: {len(active)}/{cap} recent events; waiting until "
@@ -707,13 +710,13 @@ def pace_review_trigger(config, attempt, artifact_dir: Path):
                 flush=True,
             )
             last_release = release
-        time.sleep(min(30, release - current, expiry.timestamp() - current))
+        time.sleep(delay)
 
 
-def execute(config, task, arm, attempt, artifact_dir, save, register):
+def execute(config, task, arm, attempt, artifact_dir, save, register, *, nonblocking=False):
     api = GitHub(token_from_environment())
     if confirmed_trigger(attempt):
-        return collect_review(api, config, attempt, artifact_dir)
+        return collect_review(api, config, attempt, artifact_dir, nonblocking=nonblocking)
     marker = f"search-eval:{attempt['id']}"
     name = f"se-{attempt['id']}"
     repo_data = ensure_repo(api, config.github_owner, name, marker, save, attempt)
@@ -767,7 +770,11 @@ def execute(config, task, arm, attempt, artifact_dir, save, register):
         if config.suite_options.get("completion_contract", {}).get("kind") == "commit_status":
             before_statuses = api.pages(f"/repos/{repo}/commits/{head}/statuses")
             attempt["old_statuses"] = [c["id"] for p in before_statuses for c in p["items"]]
-        pace_review_trigger(config, attempt, artifact_dir)
+        if nonblocking:
+            if pace_review_trigger(config, attempt, artifact_dir, nonblocking=True):
+                return {"status": "pending", "reason": "Waiting for review quota"}
+        else:
+            pace_review_trigger(config, attempt, artifact_dir)
         attempt["trigger_intent"] = now()
         if not attempt.get("expires_at"):
             allowance_end = datetime.fromisoformat(attempt["allowance_valid_until"])
@@ -791,10 +798,10 @@ def execute(config, task, arm, attempt, artifact_dir, save, register):
         register(attempt)
     attempt.update({"trigger_id": trigger["id"], "trigger_time": trigger["created_at"]})
     save()
-    return collect_review(api, config, attempt, artifact_dir)
+    return collect_review(api, config, attempt, artifact_dir, nonblocking=nonblocking)
 
 
-def collect_review(api, config, attempt, artifact_dir, *, final_only=False):
+def collect_review(api, config, attempt, artifact_dir, *, final_only=False, nonblocking=False):
     """Only GETs. Expired reviews receive one final server-timestamp reconciliation."""
     if not confirmed_trigger(attempt):
         raise EvalError("Read-only recovery requires a confirmed trigger and saved identity")
@@ -836,20 +843,24 @@ def collect_review(api, config, attempt, artifact_dir, *, final_only=False):
         while True:
             expired = time.time() > deadline
             result = read()
+            if (
+                result is not None
+                and result["status"] == "completed"
+                and not (expired or final_only)
+            ):
+                # Archive a post-completion collection without extending the deadline.
+                time.sleep(min(2, config.limits.poll_seconds))
+                result = read()
+                if result is None and not nonblocking:
+                    continue
             if result is not None:
-                if result["status"] == "completed" and not (expired or final_only):
-                    # Archive a post-completion collection without extending the deadline.
-                    time.sleep(min(2, config.limits.poll_seconds))
-                    result = read()
-                    if result is None:
-                        continue
                 return result
             if expired or time.time() > deadline:
                 return {
                     "status": "timed_out",
                     "reason": "No verified terminal review within the original deadline",
                 }
-            if final_only:
+            if final_only or nonblocking:
                 return {
                     "status": "read_pending",
                     "reason": "Confirmed review has no terminal evidence yet",

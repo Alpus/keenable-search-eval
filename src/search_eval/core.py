@@ -62,6 +62,7 @@ class Profile(StrictModel):
 
 class Limits(StrictModel):
     max_attempts: StrictInt = Field(ge=1, le=10000)
+    max_concurrent_reviews: StrictInt = Field(default=1, ge=1, le=100)
     max_review_events_per_hour: StrictInt | None = Field(default=None, ge=1, le=10000)
     max_search_calls: StrictInt = Field(default=8, ge=1, le=100)
     max_fetch_calls: StrictInt = Field(default=8, ge=1, le=100)

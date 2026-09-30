@@ -10,4 +10,6 @@ Batch related edits before full tests and independent review. Use focused checks
 
 Martian pairwise calls queue before the upstream 30-second timer. Git snapshot creation preserves exact blob bytes, symlinks and modes. GitHub permission writes can propagate late; confirm Actions disable with bounded reads before pushing source. DevDex's SDK runs as a non-root container user. These have dedicated regressions; do not replace them with superficial mocks.
 
+Nonblocking review polling must retain post-completion recollection. GitHub comments and completion statuses are separate reads; test publication between them as well as overlapping reviews and quota waits.
+
 Plan previews must not create resumable run state before gateway identity is known. Stop must include one-off Compose runner containers and the optional tunnel profile. Verify lifecycle changes with a disposable container. Run wrapper checks from the built test image so omitted templates or build-context files are caught.

@@ -8,7 +8,7 @@ ENV PATH="/app/.venv/bin:$PATH" PYTHONUNBUFFERED=1 MPLCONFIGDIR=/tmp/matplotlib
 
 FROM base AS bundles
 COPY assets /bundles
-RUN cd /bundles && sha256sum -c SHA256SUMS && mkdir /benchmark /snapshot && tar -xzf benchmarks.tar.gz -C /benchmark && tar -xzf devdex-pilot.tar.gz -C /snapshot
+RUN cd /bundles && sha256sum -c SHA256SUMS && mkdir /benchmark /snapshot /martian-snapshot && tar -xzf benchmarks.tar.gz -C /benchmark && tar -xzf devdex-pilot.tar.gz -C /snapshot && tar -xzf martian-pilot.tar.gz -C /martian-snapshot && cd /martian-snapshot && sha256sum -c SHA256SUMS
 
 FROM base AS replay
 COPY --from=bundles /snapshot/runtime/ /app/
@@ -18,8 +18,16 @@ COPY --from=bundles /snapshot/data/ /app/data/
 COPY --from=bundles /snapshot/validation/ /app/validation/
 COPY --from=bundles /snapshot/runs/ /recorded/
 COPY --from=bundles /snapshot/expected.json /recorded/expected.json
+COPY --from=bundles /martian-snapshot/runtime/ /martian/
+WORKDIR /martian
+RUN uv sync --frozen --no-dev
+COPY --from=bundles /martian-snapshot/vendor/ /martian/vendor/
+COPY --from=bundles /martian-snapshot/runs/ /recorded/
+COPY --from=bundles /martian-snapshot/expected.json /recorded/martian-expected.json
+COPY --from=bundles /martian-snapshot/provenance.json /recorded/martian-provenance.json
 COPY scripts/replay.py /replay.py
-RUN mkdir /app/runs && chown -R eval:eval /app /recorded
+WORKDIR /app
+RUN mkdir /app/runs && ln -s /app/runs /martian/runs && chown -R eval:eval /app /martian /recorded
 USER eval
 ENTRYPOINT ["python", "/replay.py"]
 

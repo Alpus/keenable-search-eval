@@ -10,9 +10,18 @@ Compare search providers on two tasks: CodeRabbit reviews (Martian) and an agent
 
 [CodeRabbit publicly reports Martian results](https://www.coderabbit.ai/blog/coderabbit-tops-martian-code-review-benchmark), emphasizing its online benchmark. We use 10 PRs from the separate offline benchmark, comparing native search, no search, Keenable MCP and Exa MCP.
 
-**Results pending:** 40 scored reviews and 8 controls are not yet complete. Primary metric: Core F2 (higher is better, recall weighted more than precision).
+40 scored reviews completed, one repeat. Core F2 weights recall more than precision; higher is better for all three metrics.
 
-Search sensitivity is unproven: [pre-run screening](docs/martian-provenance.md) classified 8/10 PRs as repository-local and only 2 as plausibly documentation-dependent. Similar scores would not establish equivalent search quality.
+| Search | Core F2 ↑ | Precision ↑ | Recall ↑ |
+|---|---:|---:|---:|
+| Native | 44.2% | 37.1% | 46.4% |
+| None | **59.6%** | **46.2%** | **64.3%** |
+| Keenable MCP | 54.4% | 45.7% | 57.1% |
+| Exa MCP | 42.8% | 32.5% | 46.4% |
+
+Keenable scored above native and Exa, but **no search scored highest**, so this pilot does not demonstrate a search benefit. [Pre-run screening](docs/martian-provenance.md) classified 8/10 PRs as repository-local and only 2 as plausibly documentation-dependent; one repeat cannot establish provider superiority. [Metrics](results/martian-metrics.csv).
+
+Eight separate control reviews completed; their grading is incomplete (4/8) because the judge's per-call reserve reached the control budget limit. They are excluded from this table and recorded replay.
 
 ### DevDex: documentation retrieval
 
@@ -37,7 +46,7 @@ cd keenable-search-eval
 ./eval reproduce
 ```
 
-No keys, accounts, agent skills or tunnel setup. After building, replay runs offline and verifies output hashes in `runs/reproduced/`. Currently includes DevDex only.
+No keys, accounts, agent skills or tunnel setup. After building, replay runs offline and verifies output hashes in `runs/reproduced/`. Includes DevDex and the 40 scored Martian reviews.
 
 For **fresh live runs** of both benchmarks:
 
@@ -60,6 +69,8 @@ Repositories, tokens and the HTTPS tunnel are automatic; no Cloudflare account o
 | Rebuild a current run's report / verify code | `./eval report RUN_ID` / `./eval check` |
 
 Copy a `configs/` preset to change models, search modes, limits, seed or repeats. Inputs and evidence are saved in `runs/<run_id>/`. Resume with the same command; new experiments need new run IDs. Protocol changes require smoke-test qualification. Set a stable `PUBLIC_MCP_URL` for runs that must survive tunnel restarts.
+
+Fresh Martian presets allow 3 concurrent reviews (`limits.max_concurrent_reviews`) and at most 10 review events per hour. DevDex stays sequential. Recorded results used sequential reviews; no live speedup has been measured.
 
 Add benchmarks through `src/search_eval/suites/` and the registry in `core.py`, using existing task kinds. [Full commands and setup](docs/usage.md) · [File structure](docs/architecture.md).
 

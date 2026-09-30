@@ -6,13 +6,13 @@
     },
     {
       "path": "data/acceptance/qualification.json",
-      "sha256": "8402501a929e1a19914f91bd159891ffed524de2028923e9a3fd60bb2e72e5b7"
+      "sha256": "a64c522be97dadf967bfe830586eab4c03cad65062f5e9cf136ea736999f2846"
     }
   ],
-  "code_sha256": "0fbfbb737a3a79e400ee4785abd9a6d8f1f50c8cb1f2dd351638f739d55ee175",
+  "code_sha256": "350e74d8a92b34047fcb3c4f0e0c7fd5f9e572c4f03a7ce7ba25cf206b98da00",
   "manifest_sha256": "62173f97f581a36ccb107b9c8ed7fd63f945c19c03237b35946995b71758a15b",
   "passed": true,
-  "protocol_sha256": "d244f2f6365a283f1d4c82ff2ad0c1f2c3319f349769cd76a45ef002c9d5f5c9",
+  "protocol_sha256": "680a296e15ed3ab88c3f4366089037669f3a3c0246d4075604ca058370dbe03d",
   "source_runs": [
     {
       "code_sha256": "a87edd5ad8af6bc12a7919892aca61197c1141df1dabf5f219512015396007da",
@@ -24,12 +24,12 @@
   "suite": "martian",
   "targeted_revalidation": [
     {
-      "changed_behavior": "Docker packaging and CLI orchestration, plus bounded read-only confirmation of GitHub Actions disable after one PUT; original agent/judge/scorer protocols unchanged. GitHub permission propagation regression and full offline suite passed.",
+      "changed_behavior": "Preserved Docker/CLI and GitHub permission-propagation qualification. Added bounded single-writer review scheduling, independent hourly admission, read-only resume and post-completion recollection. Fresh Martian concurrency is 3; DevDex remains sequential. Original agents, judges and scorers are unchanged. Concurrency is qualified by offline fake-service tests only; no concurrent hosted run or score equivalence is claimed.",
       "proof_artifacts": [
         "data/acceptance/qualification.json"
       ],
       "source_code_sha256": "a87edd5ad8af6bc12a7919892aca61197c1141df1dabf5f219512015396007da",
-      "target_code_sha256": "0fbfbb737a3a79e400ee4785abd9a6d8f1f50c8cb1f2dd351638f739d55ee175"
+      "target_code_sha256": "350e74d8a92b34047fcb3c4f0e0c7fd5f9e572c4f03a7ce7ba25cf206b98da00"
     }
   ]
 }
