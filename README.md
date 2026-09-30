@@ -34,9 +34,7 @@ Keenable found:
 - **Documentation-supported extras:** an iframe-source check and a Redis key-type migration warning.
 - **Extras likely due to contamination:** search found spoilers for a [missing fetch timeout](https://github.com/AI-Code-Review-Evals/claude_code-cal_dot_com/pull/7), [incorrect ASN.1 sequence lengths and integer truncation](https://github.com/AI-Code-Review-Evals/claude_code-keycloak/pull/3). It also fetched existing reviews for [Sentry 93824](https://github.com/AI-Code-Review-Evals/claude_code-sentry/pull/6) and [Sentry Greptile 1](https://github.com/AI-Code-Review-Evals/claude_code-sentry/pull/2).
 
-These results suggest that improving search is not the main lever for CodeRabbit’s review quality or an obvious quick win.
-
-The question is whether Keenable shows a clear improvement. These results show none, so this limitation does not change the conclusion. [Evidence and other limitations](docs/martian-provenance.md#search-focused-extension).
+Any isolated gains did not translate into a consistent improvement in these results.
 
 *Reviews: CodeRabbit (model undisclosed). Judge: Claude Opus 4.5.*
 
