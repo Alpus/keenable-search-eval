@@ -15,6 +15,11 @@ title: Keenable clients
 - **Short term:** turn agent search queries into analytics. Sell these insights to companies improving their visibility in AI answers (GEO).
 - **Long term:** choose a niche with a clear unmet need, such as e-commerce or sales. Adapt the product to its workflows.
 
+**Why:**
+
+- **General search:** I expect most agent-search traffic to go to providers integrated into ChatGPT and similar assistants. I see access to those deals as a relationships problem more than a product problem. Without it, Keenable risks remaining a niche tool for open-source agents.
+- **Domain-specific search:** I see a more defensible and potentially larger business.
+
 ## 1. Agent distribution → intent analytics
 
 **What works today:**
