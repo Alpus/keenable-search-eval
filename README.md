@@ -27,11 +27,12 @@ Start with Martian because [CodeRabbit reports results on it](https://www.codera
 
 *Core F2 = 5 × found / (5 × found + 4 × missed + unmatched), using reference matches and excluding style/speculative reference issues.*
 
-- **What changed:** Keenable and no search each matched 30 reference issues. Keenable gained four matches but missed four others; most differences concern locally visible code, so the results do not establish a search benefit.
-- **Additional findings:** source inspection supports some unmatched issues, including a leaked website field and unnecessary Salesforce token refreshes. Others duplicate existing findings or concern documentation and cleanup. These are exploratory judgments, not extra benchmark points.
+Keenable found:
 
-- It matched slightly more reference issues than native search and Exa, but found the same number of reference issues as running without search and produced more unmatched findings.
-- Manual review supported additional findings outside the reference list, including a privacy leak and unnecessary Salesforce token refreshes. These do not establish a search advantage.
+- **2 more reference issues** than native search or Exa (30 vs 28).
+- **The same total as no search** (30), with four different matches gained and four lost.
+- **More unmatched findings:** 18 more than native, 10 more than Exa and 13 more than no search.
+- **Useful issues outside the reference list**, including a privacy leak and unnecessary Salesforce token refreshes; others were duplicates or cleanup suggestions.
 
 **Note on benchmark contamination:** saved Keenable responses exposed existing benchmark PR reviews in at least **3 of the 11 tasks**. These were copies of the same tasks, not unrelated benchmarks:
 
