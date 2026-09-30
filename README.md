@@ -13,7 +13,7 @@ This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.
 
 **Keenable shows no clear advantage across the two benchmarks.**
 
-- **Martian:** Keenable scored 59.8% Core F2, versus 58.6% for Exa, 60.6% for native search and 63.0% without search on the 11-PR subset.
+- **Martian:** Keenable scored 59.8% Core F2 versus Exa’s 58.6%.
 - **DevDex:** Keenable found 9/30 reference URLs versus Exa’s 10/30, with median task times of 17.2 s and 20.3 s, respectively.
 
 ### Martian: search-focused reviews
