@@ -14,8 +14,6 @@ This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.
 - **Martian:** Keenable scored 59.8% Core F2 versus Exa’s 58.6%.
 - **DevDex:** Keenable found 9/30 reference URLs versus Exa’s 10/30, with median task times of 17.2 s and 20.3 s, respectively.
 
-(Models: DevDex agent, Claude Opus 4.8; Martian judge, Claude Opus 4.5; CodeRabbit’s review model is undisclosed.)
-
 ### Martian: search-focused reviews
 
 Start with Martian because [CodeRabbit reports results on it](https://www.coderabbit.ai/blog/coderabbit-tops-martian-code-review-benchmark). From its 50 offline PRs, I manually selected 11 with plausible dependence on external documentation and reviewed each once in four modes.
@@ -40,6 +38,8 @@ These results suggest that improving search is not the main lever for CodeRabbit
 
 The question is whether Keenable shows a clear improvement. These results show none, so this limitation does not change the conclusion. [Evidence and other limitations](docs/martian-provenance.md#search-focused-extension).
 
+*Reviews: CodeRabbit (model undisclosed). Judge: Claude Opus 4.5.*
+
 ### Additional Martian pilot
 
 I also tested 10 of the 50 offline PRs, limiting the sample to fit the available time and budget.
@@ -55,7 +55,7 @@ Eight tasks were screened as mainly repository-local. Keenable scored above nati
 
 ### DevDex: documentation retrieval
 
-[DevDex](https://github.com/firecrawl/benchmark-devdex) checks whether an agent retrieves the reference documentation URL among its first 10 citations. I ran the same Claude Opus 4.8 agent on 30 questions per provider, once each.
+[DevDex](https://github.com/firecrawl/benchmark-devdex) checks whether an agent retrieves the reference documentation URL among its first 10 citations. I ran the same agent on 30 questions per provider, once each.
 
 | Search | Reference URLs found | Median task time |
 |---|---:|---:|
@@ -63,6 +63,8 @@ Eight tasks were screened as mainly repository-local. Keenable scored above nati
 | Keenable Pro | 9/30 | **17.2 s** |
 
 Keenable found one fewer reference URL and had a lower median task time. This measures URL retrieval, not answer correctness; different agent queries mean time is not a pure provider-latency comparison.
+
+*Agent: Claude Opus 4.8 for both providers.*
 
 ## How to run
 
