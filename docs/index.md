@@ -5,10 +5,10 @@ title: Keenable clients
 
 # Keenable clients
 
-**I see two paths:**
+**Two paths:**
 
-- **Agent distribution:** offer general-purpose search and monetize intent analytics.
-- **B2B specialization:** sell search built for a specific workflow.
+- **General search for agents.** Offer general-purpose search. Distribute it as a free option in agents like Hermes. Monetize intent analytics.
+- **Domain-specific search.** Build search for a specific workflow.
 
 **My recommendation:**
 
