@@ -11,9 +11,9 @@ This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.
 
 ### Martian: code-review quality
 
-We start with Martian because [CodeRabbit publicly reports results on it](https://www.coderabbit.ai/blog/coderabbit-tops-martian-code-review-benchmark). For a quick pilot, we use 10 of the 50 offline PRs; CodeRabbit’s headline results refer to the separate online benchmark.
+We start with Martian because [CodeRabbit publicly reports results on it](https://www.coderabbit.ai/blog/coderabbit-tops-martian-code-review-benchmark). For a quick pilot, we use 10 of the 50 offline PRs.
 
-Each PR was reviewed once in four modes: native search, no search, Keenable MCP and Exa Auto MCP (40 reviews). Higher scores are better; Core F2 weights recall more than precision.
+Each PR was reviewed once in four modes: native search, no search, Keenable MCP and Exa Auto MCP (40 reviews).
 
 | Search | Core F2 ↑ | Precision ↑ | Recall ↑ |
 |---|---:|---:|---:|
