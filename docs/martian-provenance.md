@@ -73,6 +73,21 @@ All 33 unmatched Keenable comments were inspected against frozen source. This wa
 - **Paired recall:** compared with no search, Keenable gains four reference matches and loses four. Its gains include upload limits, ERB syntax, framing policy and datetime arithmetic. Three are directly visible in local code; relevant framing documentation was retrieved, but causation is not established.
 - **Gold is imperfect:** one Cal.com defect maps to two gold entries, and Keycloak 36882 already documents exit code 4 and uses an established CLI exit helper. The original scoring is retained; a missed reference is not automatically a real missed bug.
 
+### Finding-level retrieval evidence
+
+These are observed content overlaps, not causal counts. One review per mode cannot establish how many gains or losses were caused by search.
+
+| Observation | Saved retrieval | Interpretation |
+|---|---|---|
+| Keenable gains the framing-header reference match over no search | Discourse Graphite 4 retrieved framing documentation and search excerpts explicitly warning about ALLOWALL. | Documentation supports this additional match; necessity is not established. |
+| Keenable gains the upload-limit reference match | Discourse Graphite 1 retrieved upstream commits, including “FIX: don't hardcode maximum file size”. | Retrieval included a relevant existing fix, not just general documentation. Local code also exposes the mismatch. |
+| Keenable misses the legacy CSS ordinal issue found without search | Discourse Graphite 5 search returned a mixin using `$int + 1` for legacy ordinal properties and `$int` for modern order. | The relevant distinction was available but not reported. This is not evidence that search caused the miss. |
+| Additional iframe-source check | Graphite 4 fetched MDN postMessage documentation discussing message source. | Relevant documentation for a hardening suggestion, not a demonstrated extra exploit. |
+| Additional Redis rollout type mismatch | Sentry Greptile 2 search returned Sentry's Redis troubleshooting page describing WRONGTYPE after a key-type change. | Strong content overlap with a source-supported conditional rollout concern. This later operational documentation is not an independent reproduction of this PR. |
+| Additional timeout and ASN.1 validation findings | Cal.com and Keycloak fetched existing benchmark reviews describing these issues. | Answer exposure overlaps findings; useful observations cannot be presented as clean independent discoveries. |
+
+An additional successful benchmark-copy fetch was identified for Sentry Greptile 1 (`AI-Code-Review-Evals/claude_code-sentry/pull/2`). At least four tasks therefore fetched benchmark copies; specific review-answer overlap remains established for Cal.com and Keycloak. The earlier three examples were a lower bound.
+
 ### Limitations and recovery
 
 - Public benchmark copies appeared in search results. Successful Keenable fetches for Cal.com 11059 and Keycloak 33832 returned other agents’ review text overlapping the reported timeout, integer-truncation, sequence-validation and test-quality findings. Sentry 93824 copies were fetched too. Answer exposure is confirmed; reliance on that text is not proven. Known-URL exclusions did not cover every public mirror.

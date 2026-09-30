@@ -29,16 +29,17 @@ Start with Martian because [CodeRabbit reports results on it](https://www.codera
 
 Keenable found:
 
-- **2 more reference issues** than native search or Exa (30 vs 28).
-- **The same total as no search** (30), with four different matches gained and four lost.
-- **More unmatched findings:** 18 more than native, 10 more than Exa and 13 more than no search.
-- **Useful issues outside the reference list**, including a privacy leak and unnecessary Salesforce token refreshes; others were duplicates or cleanup suggestions.
+- **30 reference issues**, versus Exa’s 28 and no search’s 30.
+- **Four matches gained and four lost versus no search.** Retrieved framing documentation supports one gain; a CSS issue was missed despite a relevant search result.
+- **Documentation-supported extras:** an iframe-source check and a Redis key-type migration warning. Neither establishes a causal search benefit.
+- **Extras overlapping existing reviews:** a missing fetch timeout and ASN.1 validation problems. These cannot count as clean independent discoveries.
 
-**Note on benchmark contamination:** saved Keenable responses exposed existing benchmark PR reviews in at least **3 of the 11 tasks**. These were copies of the same tasks, not unrelated benchmarks:
+**Note on benchmark contamination:** saved Keenable responses exposed existing benchmark PR reviews in at least **4 of the 11 tasks**. These were copies of the same tasks, not unrelated benchmarks:
 
 - **Cal.com 11059:** [an existing review](https://github.com/AI-Code-Review-Evals/claude_code-cal_dot_com/pull/7) discussed the missing fetch timeout and shared-secret comparison, also flagged in this run.
 - **Keycloak 33832:** [an existing review](https://github.com/AI-Code-Review-Evals/claude_code-keycloak/pull/3) discussed integer truncation, sequence-length validation and weak round-trip tests, overlapping this run's findings.
 - **Sentry 93824:** search fetched public benchmark copies, including [another agent's review PR](https://github.com/AI-Code-Review-Evals/claude_code-sentry/pull/6).
+- **Sentry Greptile 1:** search also fetched [a benchmark copy of the pagination task](https://github.com/AI-Code-Review-Evals/claude_code-sentry/pull/2).
 
 The question is whether Keenable shows a clear improvement. These results show none, so this limitation does not change the conclusion. [Evidence and other limitations](docs/martian-provenance.md#search-focused-extension).
 
