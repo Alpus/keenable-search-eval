@@ -1,8 +1,8 @@
-# Developer Search Eval
+# Keenable Search Eval
 
-## About
-
-Compare search providers on two tasks: CodeRabbit reviews (Martian) and an agent's documentation retrieval (DevDex). Both retain their original scorers.
+Compare Keenable and Exa searh on dev search tasks:
+* CodeRabbit reviews (Martian)
+* Agent's documentation retrieval (DevDex)
 
 ## Results
 
