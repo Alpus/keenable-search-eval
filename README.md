@@ -16,6 +16,14 @@ This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.
 - It matched slightly more reference issues than native search and Exa, but found the same number of reference issues as running without search and produced more unmatched findings.
 - Manual inspection found useful additional issues.
 
+**Note on benchmark contamination:** saved Keenable responses exposed existing benchmark PR reviews in at least **3 of the 11 tasks**. These were copies of the same tasks, not unrelated benchmarks:
+
+- **Cal.com 11059:** [an existing review](https://github.com/AI-Code-Review-Evals/claude_code-cal_dot_com/pull/7) discussed the missing fetch timeout and shared-secret comparison, also flagged in this run.
+- **Keycloak 33832:** [an existing review](https://github.com/AI-Code-Review-Evals/claude_code-keycloak/pull/3) discussed integer truncation, sequence-length validation and weak round-trip tests, overlapping this run's findings.
+- **Sentry 93824:** search fetched public benchmark copies, including [another agent's review PR](https://github.com/AI-Code-Review-Evals/claude_code-sentry/pull/6).
+
+Exposure is confirmed; reliance on those answers is not proven. This prevents a clean claim that search improved independent review quality. [Evidence and other limitations](docs/martian-provenance.md#search-focused-extension).
+
 ### Martian: search-focused reviews
 
 Start with Martian because [CodeRabbit reports results on it](https://www.coderabbit.ai/blog/coderabbit-tops-martian-code-review-benchmark). From its 50 offline PRs, I manually selected 11 with plausible dependence on external documentation and reviewed each once in four modes.
@@ -39,13 +47,6 @@ For Keenable: 30 found, 17 missed and 33 unmatched. **F2 = 150 / (150 + 68 + 33)
 
 - **What changed:** Keenable and no search each matched 30 reference issues. Keenable gained four matches but missed four others; most differences concern locally visible code, so the results do not establish a search benefit.
 - **Additional findings:** source inspection supports some unmatched issues, including a leaked website field and unnecessary Salesforce token refreshes. Others duplicate existing findings or concern documentation and cleanup. These are exploratory judgments, not extra benchmark points.
-**Note on benchmark contamination:** saved Keenable responses exposed existing benchmark PR reviews in at least **3 of the 11 tasks**. These were copies of the same tasks, not unrelated benchmarks:
-
-- **Cal.com 11059:** [an existing review](https://github.com/AI-Code-Review-Evals/claude_code-cal_dot_com/pull/7) discussed the missing fetch timeout and shared-secret comparison, also flagged in this run.
-- **Keycloak 33832:** [an existing review](https://github.com/AI-Code-Review-Evals/claude_code-keycloak/pull/3) discussed integer truncation, sequence-length validation and weak round-trip tests, overlapping this run's findings.
-- **Sentry 93824:** search fetched public benchmark copies, including [another agent's review PR](https://github.com/AI-Code-Review-Evals/claude_code-sentry/pull/6).
-
-Exposure is confirmed; reliance on those answers is not proven. This prevents a clean claim that search improved independent review quality. [Evidence and other limitations](docs/martian-provenance.md#search-focused-extension).
 
 ### Additional Martian pilot
 
