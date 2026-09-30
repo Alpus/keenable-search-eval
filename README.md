@@ -25,7 +25,7 @@ Start with Martian because [CodeRabbit reports results on it](https://www.codera
 | Keenable MCP | **30/47** | 33 | 59.8% |
 | Exa Auto MCP | 28/47 | 23 | 58.6% |
 
-*Core F2 = 5 × found / (5 × found + 4 × missed + unmatched), using reference matches and excluding style/speculative reference issues.*
+*Core F2 = 5 × found / (5 × found + 4 × missed + unmatched).*
 
 Keenable found:
 
