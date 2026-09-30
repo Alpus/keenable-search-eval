@@ -7,7 +7,7 @@ title: Keenable clients
 
 **Two paths:**
 
-- **General search for agents.** Offer general-purpose search. Distribute it as a free option in agents like Hermes. Monetize intent analytics.
+- **General search for agents.** Offer general-purpose search. Distribute it as a free option in agents like Hermes. Monetize data analytics.
 - **Domain-specific search.** Build search for a specific workflow.
 
 **My recommendation:**
