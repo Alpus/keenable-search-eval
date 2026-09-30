@@ -22,7 +22,7 @@ This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.
 - **Keycloak 33832:** [an existing review](https://github.com/AI-Code-Review-Evals/claude_code-keycloak/pull/3) discussed integer truncation, sequence-length validation and weak round-trip tests, overlapping this run's findings.
 - **Sentry 93824:** search fetched public benchmark copies, including [another agent's review PR](https://github.com/AI-Code-Review-Evals/claude_code-sentry/pull/6).
 
-Exposure is confirmed; reliance on those answers is not proven. This prevents a clean claim that search improved independent review quality. [Evidence and other limitations](docs/martian-provenance.md#search-focused-extension).
+The question is whether Keenable shows a clear improvement. These results show none, so this limitation does not change the conclusion. [Evidence and other limitations](docs/martian-provenance.md#search-focused-extension).
 
 ### Martian: search-focused reviews
 
