@@ -34,6 +34,8 @@ Keenable found:
 - **Documentation-supported extras:** an iframe-source check and a Redis key-type migration warning. Neither establishes a causal search benefit.
 - **Extras overlapping existing reviews:** a missing fetch timeout and ASN.1 validation problems. These cannot count as clean independent discoveries.
 
+These results suggest that improving search is not the main lever for CodeRabbit’s review quality or an obvious quick win.
+
 **Note on benchmark contamination:** saved Keenable responses exposed existing benchmark PR reviews in at least **4 of the 11 tasks**. These were copies of the same tasks, not unrelated benchmarks:
 
 - **Cal.com 11059:** [an existing review](https://github.com/AI-Code-Review-Evals/claude_code-cal_dot_com/pull/7) discussed the missing fetch timeout and shared-secret comparison, also flagged in this run.
