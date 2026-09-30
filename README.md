@@ -1,6 +1,6 @@
 # Keenable Eval For CodeRabbit
 
-[CodeRabbit](https://www.coderabbit.ai/) is an AI agent that reviews pull requests and flags bugs. Under the hood, it uses [Exa Deep Search](https://exa.ai/customers/coderabbit) to verify findings against external documentation.
+[CodeRabbit](https://www.coderabbit.ai/) is an AI agent that reviews pull requests and flags bugs. It [uses Exa Deep Search](https://exa.ai/customers/coderabbit) to verify findings against external documentation.
 
 This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.ai/) for CodeRabbit reviews and a separate documentation-retrieval task:
 
