@@ -1,6 +1,6 @@
 # Keenable Eval For CodeRabbit
 
-Compare Keenable and Exa searh on dev search tasks:
+Compare Keenable and Exa search on dev search tasks:
 * CodeRabbit reviews (Martian)
 * Agent's documentation retrieval (DevDex)
 
