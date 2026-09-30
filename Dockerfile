@@ -8,7 +8,7 @@ ENV PATH="/app/.venv/bin:$PATH" PYTHONUNBUFFERED=1 MPLCONFIGDIR=/tmp/matplotlib
 
 FROM base AS bundles
 COPY assets /bundles
-RUN cd /bundles && sha256sum -c SHA256SUMS && mkdir /benchmark /snapshot /martian-snapshot && tar -xzf benchmarks.tar.gz -C /benchmark && tar -xzf devdex-pilot.tar.gz -C /snapshot && tar -xzf martian-pilot.tar.gz -C /martian-snapshot && cd /martian-snapshot && sha256sum -c SHA256SUMS
+RUN cd /bundles && sha256sum -c SHA256SUMS && mkdir /benchmark /snapshot /martian-snapshot /search11-snapshot && tar -xzf benchmarks.tar.gz -C /benchmark && tar -xzf devdex-pilot.tar.gz -C /snapshot && tar -xzf martian-pilot.tar.gz -C /martian-snapshot && cd /martian-snapshot && sha256sum -c SHA256SUMS && tar -xzf /bundles/martian-search11.tar.gz -C /search11-snapshot && cd /search11-snapshot && sha256sum -c SHA256SUMS
 
 FROM base AS replay
 COPY --from=bundles /snapshot/runtime/ /app/
@@ -28,9 +28,14 @@ COPY --from=bundles /martian-snapshot/provenance.json /recorded/martian-provenan
 COPY --from=bundles /martian-snapshot/control-reconciliation/ /recorded/control-reconciliation/
 COPY --from=bundles /martian-snapshot/controls-expected.json /recorded/controls-expected.json
 COPY --from=bundles /martian-snapshot/reconciliation.py /reconcile_martian.py
+COPY --from=bundles /search11-snapshot/runtime/ /search11/
+WORKDIR /search11
+RUN uv sync --frozen --no-dev
+COPY --from=bundles /search11-snapshot/runs/ /recorded/
+COPY --from=bundles /search11-snapshot/expected.json /recorded/search11-expected.json
 COPY scripts/replay.py /replay.py
 WORKDIR /app
-RUN mkdir /app/runs && ln -s /app/runs /martian/runs && chown -R eval:eval /app /martian /recorded
+RUN mkdir /app/runs && ln -s /app/runs /martian/runs && ln -s /app/runs /search11/runs && chown -R eval:eval /app /martian /search11 /recorded
 USER eval
 ENTRYPOINT ["python", "/replay.py"]
 

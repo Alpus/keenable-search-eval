@@ -767,7 +767,6 @@ def test_observed_zero_findings_walkthrough_completes_without_submitted_review()
         "null_app",
         "user_id",
         "user_login",
-        "created_old",
         "updated_old",
         "range_head",
         "source_head",
@@ -795,8 +794,6 @@ def test_zero_findings_completion_fails_closed(mutation):
         comment["user"]["id"] += 1
     elif mutation == "user_login":
         comment["user"]["login"] = "untrusted"
-    elif mutation == "created_old":
-        comment["created_at"] = "2026-09-29T16:11:50Z"
     elif mutation == "updated_old":
         comment["updated_at"] = "2026-09-29T16:11:50Z"
     elif mutation == "range_head":
@@ -917,3 +914,9 @@ def test_transient_http_status_is_resumable_only_for_get(method, error):
     )
     with pytest.raises(error):
         gh.GitHub("fixture", client).call(method, "/fixture")
+
+
+def test_updated_existing_zero_findings_walkthrough_completes():
+    raw = zero_findings_raw()
+    raw["issue_comments"][0]["items"][0]["created_at"] = "2026-09-29T15:00:00Z"
+    assert zero_terminal(raw)["status"] == "completed"

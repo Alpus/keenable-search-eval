@@ -15,3 +15,7 @@ Each archive retains the upstream license files. The Martian archive also contai
 Controls are graded separately. The archive preserves the original control stop and a checksummed completion sidecar; replay validates exact raw responses with the unchanged native pipeline before deriving the completed report. The historical finding sample remains unchanged; a separate independent audit does not alter native scores. Attribution code and source-audit evidence live under `validation/` inside the archive. The benchmark code and outcomes are public-benchmark evidence. The execution repositories remain private.
 
 To inspect a bundle directly: `tar -tzf assets/martian-pilot.tar.gz`. Docker does the required extraction automatically. Do not regenerate a measured bundle from current source or relabel its outputs as a new experiment.
+
+## Search-focused extension
+
+`martian-search11.tar.gz` preserves the measured runtime, all 44 completed reviews, model responses, tool traces and zero-findings reconciliation receipts. `./eval reproduce` also rebuilds this run and verifies 311 file hashes without network access. The frozen runtime remains unchanged; the current collector fixes detection of updated zero-findings comments. This extension uses 11 manually screened PRs, not the full benchmark, and its limitations are described in [provenance](../docs/martian-provenance.md#search-focused-extension).

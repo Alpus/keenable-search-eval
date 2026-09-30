@@ -323,7 +323,8 @@ def _zero_findings_walkthrough(raw, head, trigger, contract, repo, timestamp):
                 )
             except (KeyError, TypeError, ValueError, AttributeError):
                 return None
-            if created >= trigger and updated >= created:
+            # CodeRabbit updates its existing walkthrough after a new review.
+            if updated >= trigger and updated >= created:
                 comments.append((updated, comment))
     if not comments:
         return None

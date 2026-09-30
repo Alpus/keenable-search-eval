@@ -11,35 +11,48 @@ This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.
 
 ## Results
 
-### Martian: code-review quality
+Keenable matched slightly more reference issues than native search and Exa, but tied no search and produced more unmatched findings. Manual inspection found useful additional issues, but exposure to existing benchmark reviews prevents a clean claim that search improved review quality.
 
-I start with Martian because [CodeRabbit publicly reports results on it](https://www.coderabbit.ai/blog/coderabbit-tops-martian-code-review-benchmark). For a quick pilot, I use 10 of the 50 offline PRs.
+### Martian: search-focused reviews
 
-Each PR was reviewed once in four modes: native search, no search, Keenable MCP and Exa Auto MCP (40 reviews).
+Start with Martian because [CodeRabbit reports results on it](https://www.coderabbit.ai/blog/coderabbit-tops-martian-code-review-benchmark). From its 50 offline PRs, I manually selected 11 with plausible dependence on external documentation and reviewed each once in four modes.
 
-| Search | Core F2 ↑ | Precision ↑ | Recall ↑ |
+| Search | Reference issues found | Unmatched findings | Core F2 |
 |---|---:|---:|---:|
-| Native | 44.2% | 37.1% | 46.4% |
-| None | **59.6%** | **46.2%** | **64.3%** |
-| Keenable MCP | 54.4% | 45.7% | 57.1% |
-| Exa MCP | 42.8% | 32.5% | 46.4% |
+| Native | 28/47 | 15 | 60.6% |
+| None | **30/47** | 20 | **63.0%** |
+| Keenable MCP | **30/47** | 33 | 59.8% |
+| Exa Auto MCP | 28/47 | 23 | 58.6% |
 
-**No search scored highest overall, but this small pilot does not establish a reliable winner.** [Pre-run screening](docs/martian-provenance.md) classified 8/10 PRs as mainly repository-local; these account for the no-search advantage over Keenable. On the two potentially documentation-dependent PRs, Keenable found 7/9 reference issues, versus 6/9 without search and 4/9 for both native and Exa MCP. Two PRs and one review per mode cannot establish that search caused the difference. [Metrics](results/martian-metrics.csv).
+“Found” means matched to the benchmark's reference issues. Unmatched findings count as false positives in the benchmark, although some may be valid; F2 = 5TP/(5TP + 4FN + FP), where TP is found, FN is missed and FP is unmatched.
 
-All eight fixed-issue controls were also graded: native, Keenable and Exa re-flagged 0/2 repaired issues; no search re-flagged 1/2. These small diagnostics remain separate from benchmark scores. All 20 main MCP reviews used search. [Control and attribution details](docs/martian-provenance.md#fixed-issue-controls).
+- **What changed:** Keenable and no search each matched 30 reference issues. Keenable gained four matches but missed four others; most differences concern locally visible code, so the results do not establish a search benefit.
+- **Additional findings:** source inspection supports some unmatched issues, including a leaked website field and unnecessary Salesforce token refreshes. Others duplicate existing findings or concern documentation and cleanup. These are exploratory judgments, not extra benchmark points.
+- **Important limitation:** some searches fetched other agents' reviews of the same benchmark PRs, including text overlapping reported findings. Alongside overlapping tasks and imperfect reference labels, this prevents a clean attribution to independent search-assisted discovery. [Evidence and metrics](docs/martian-provenance.md#search-focused-extension).
+
+### Additional Martian pilot
+
+I also tested 10 of the 50 offline PRs, limiting the sample to fit the available time and budget.
+
+| Search | Reference issues found | Unmatched findings | Core F2 |
+|---|---:|---:|---:|
+| Native | 13/28 | 22 | 44.2% |
+| None | **18/28** | 21 | **59.6%** |
+| Keenable MCP | 16/28 | 19 | 54.4% |
+| Exa Auto MCP | 13/28 | 27 | 42.8% |
+
+Eight tasks were screened as mainly repository-local. Keenable scored above native and Exa but below no search; this is a different task mix, not evidence that enabling search itself caused the difference.
 
 ### DevDex: documentation retrieval
 
-[Firecrawl's DevDex](https://github.com/firecrawl/benchmark-devdex) tests search more directly: the agent must retrieve documentation for a developer's question. Recall@10 checks whether the reference URL appears among its first 10 citations.
+[DevDex](https://github.com/firecrawl/benchmark-devdex) checks whether an agent retrieves the reference documentation URL among its first 10 citations. I ran the same Claude Opus 4.8 agent on 30 questions per provider, once each.
 
-30 questions per provider, the same Claude Opus 4.8 agent, one repeat. All 60 episodes completed.
-
-| Search | Reference source found, recall@10 ↑ | Median task time ↓ |
+| Search | Reference URLs found | Median task time |
 |---|---:|---:|
-| Exa Auto | **10/30 (33.3%)** | 20.3 s |
-| Keenable Pro | 9/30 (30.0%) | **17.2 s** |
+| Exa Auto | **10/30** | 20.3 s |
+| Keenable Pro | 9/30 | **17.2 s** |
 
-**No demonstrated Keenable quality improvement:** one fewer source found, with a lower median task time. This small, single-repeat pilot measures URL retrieval, not answer correctness; agent-generated queries differ, so timing does not isolate provider latency. [Metrics](results/metrics.csv).
+Keenable found one fewer reference URL and had a lower median task time. This measures URL retrieval, not answer correctness; different agent queries mean time is not a pure provider-latency comparison.
 
 ## How to run
 

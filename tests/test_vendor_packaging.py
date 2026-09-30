@@ -20,6 +20,12 @@ def test_bundled_dependencies_match_checksums_and_are_self_contained():
                 assert "runtime/uv.lock" in names
                 assert "expected.json" in names
                 assert "runs/devdex_docs-pilot-001/state.json" in names
+            elif name == "martian-search11.tar.gz":
+                assert "runtime/uv.lock" in names
+                assert "runtime/vendor/martian/offline/analysis/score_profiles.py" in names
+                assert "expected.json" in names
+                assert "runs/martian-search11-001/state.json" in names
+                assert "provenance/zero-findings-fix/recovery-receipt.json" in names
             else:
                 assert "vendor/devdex/devdex/scorer/suite.py" in names
                 assert "vendor/martian/offline/analysis/score_profiles.py" in names

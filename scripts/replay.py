@@ -11,6 +11,7 @@ results = []
 for run_id, runtime, hashes in (
     ('devdex_docs-pilot-001', '/app', 'expected.json'),
     ('martian-pilot-002', '/martian', 'martian-expected.json'),
+    ('martian-search11-001', '/search11', 'search11-expected.json'),
 ):
     run = runs / run_id
     shutil.copytree(Path('/recorded') / run_id, run, dirs_exist_ok=True)
