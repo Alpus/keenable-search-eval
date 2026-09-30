@@ -1,6 +1,6 @@
 # Architecture
 
-One sequential runner executes a frozen configuration. Two suite adapters call original benchmark code. An MCP gateway supplies search and page reads. Saved evidence produces reports without new model calls. There is no database, queue or web application.
+One runner coordinates concurrent PR reviews and sequential documentation episodes from a frozen configuration. Two suite adapters call original benchmark code. An MCP gateway supplies search and page reads. Saved evidence produces reports without new model calls. There is no database, queue or web application.
 
 ```text
 eval                         Docker command entry point
@@ -21,6 +21,7 @@ src/search_eval/
   suites/devdex.py           Original DevDex URL scorer adapter
 scripts/prepare.py           Account preparation and explicit manual checkpoints
 scripts/replay.py            Frozen result replay
+scripts/reconcile_martian.py Explicit judge completion and offline control validation
 scripts/audit_devdex_run.py  Independent DevDex evidence audit
 assets/                      Checksummed benchmark dependencies and measured replay
 results/                     Measured CSV and chart, plus release verification

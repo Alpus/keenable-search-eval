@@ -21,7 +21,7 @@ Compare Keenable and Exa search on dev search tasks:
 
 Keenable scored above native and Exa, but **no search scored highest**, so this pilot does not demonstrate a search benefit. [Pre-run screening](docs/martian-provenance.md) classified 8/10 PRs as repository-local and only 2 as plausibly documentation-dependent; one repeat cannot establish provider superiority. [Metrics](results/martian-metrics.csv).
 
-Eight separate control reviews completed; their grading is incomplete (4/8) because the judge's per-call reserve reached the control budget limit. They are excluded from this table and recorded replay.
+All eight fixed-issue controls were also graded: native, Keenable and Exa re-flagged 0/2 repaired issues; no search re-flagged 1/2. These small diagnostics remain separate from benchmark scores. All 20 main MCP reviews used search. [Control and attribution details](docs/martian-provenance.md#fixed-issue-controls).
 
 ### DevDex: documentation retrieval
 
@@ -46,7 +46,7 @@ cd keenable-search-eval
 ./eval reproduce
 ```
 
-No keys, accounts, agent skills or tunnel setup. After building, replay runs offline and verifies output hashes in `runs/reproduced/`. Includes DevDex and the 40 scored Martian reviews.
+No keys, accounts, agent skills or tunnel setup. After building, replay runs offline and verifies output hashes in `runs/reproduced/`. Includes DevDex, all 40 scored Martian reviews and eight separate controls.
 
 For **fresh live runs** of both benchmarks:
 
@@ -82,7 +82,8 @@ flowchart LR
     C -->|MCP modes| E[MCP gateway]
     D --> E
     E --> F[Keenable / Exa]
-    C --> G[Saved evidence]
+    E --> G[Saved evidence]
+    C --> G
     D --> G
     G --> H[Original scorer → report]
 ```

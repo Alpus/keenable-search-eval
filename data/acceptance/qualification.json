@@ -1,9 +1,10 @@
 {
   "changed_behavior": "Preserved Docker/CLI and GitHub permission-propagation qualification. Added bounded single-writer review scheduling, independent hourly admission, read-only resume and post-completion recollection. Fresh Martian concurrency is 10; DevDex remains sequential. Original agents, judges and scorers are unchanged. Concurrency is qualified by offline fake-service tests only; no concurrent hosted run or score equivalence is claimed.",
   "configuration_update": {
+    "budget_amendment": "Main judge cap $13; controls $5; combined $18 unchanged. Covers the original $2.60 per-call reservation. Historical inputs remain immutable; completed controls use explicit reconciliation evidence.",
     "description": "User requested 10 concurrent reviews in both fresh Martian presets; hourly cap stays 10. Runtime source unchanged.",
     "hosted_calls": 0,
-    "validation": "41 focused concurrency/quota tests passed; resolved preset limits and all three acceptance bindings verified. Earlier 336-test runtime validation remains applicable."
+    "validation": "41 focused concurrency/quota tests passed; resolved preset limits and all three acceptance bindings verified. Earlier 336-test runtime validation remains applicable. Budget allocation verified; runtime source unchanged."
   },
   "coverage": [
     "overlap and slot refill",

@@ -4,6 +4,8 @@ Keep code, docs, examples and reports in English. Keep user-owned GitHub reposit
 
 Use ./eval check for offline verification and ./eval reproduce for the preserved measured pilot. Docker expands checksummed assets. Host working vendor directories, caches and historical Git commits must not affect replay. Live calls require explicit account/quota approval and the suite's qualification record. Never auto-purchase credit or silently switch models.
 
+Judge budgets need headroom for the $2.60 per-call reservation, not only expected token cost. A grading stop preserves its original evidence; any authorized completion must replay exact saved request occurrences and record only never-issued calls in a separate sidecar.
+
 Run configs freeze dataset, model, tool parameters, scorer and repeats. Changed code/protocol needs a new run identity and requalification. Keep lifecycle, transport and scoring separate. Preserve attribution, leakage prevention, immutable resume and budget checks. Runtime failures cannot become successful no-findings results.
 
 Batch related edits before full tests and independent review. Use focused checks during iteration. Fix current blockers; defer non-blocking edge cases. Do not add a generic framework or recovery machinery without a current need.

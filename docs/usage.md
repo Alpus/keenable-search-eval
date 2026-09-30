@@ -9,7 +9,7 @@ Install Docker with Compose 2.24+ and use a POSIX shell (WSL on Windows). No hos
 ./eval check
 ```
 
-The first build downloads pinned images/packages. Replay and tests then run without network or credentials. Replay restores the historical DevDex runtime and observations into `runs/reproduced/devdex_docs-pilot-001/`. Report, CSV, PNG, state and tool-call hashes must match. This reproduces scoring of recorded answers; fresh model/search calls can produce different answers.
+The first build downloads pinned images/packages. Replay and tests then run without network or credentials. Replay restores both historical runtimes and all scored observations under `runs/reproduced/`. Completed controls appear in `martian-controls-002-completed/`; their original evidence remains in `martian-controls-002/`. Report, CSV, PNG, state and tool-call hashes must match. This reproduces scoring of recorded answers; fresh model/search calls can produce different answers.
 
 ## Fresh runs
 
@@ -45,7 +45,7 @@ Temporary tunnels need no Cloudflare key or account, but their address can chang
 
 ### Quota and configuration
 
-The command asks for confirmation of existing quota and disabled paid overage, plus the prepaid USD reserved for Martian **after** DevDex. The two Martian judge caps total $18. DevDex has episode/tool limits but no local dollar cap; use account spending controls and budget for it separately. No command reads provider balances, buys credit, changes a subscription or proves entitlement from a key. Confirmations expire after 24 hours and are never included in the repository.
+The command asks for confirmation of existing quota and disabled paid overage, plus the prepaid USD reserved for Martian **after** DevDex. The Martian judge caps total $18 ($13 main, $5 controls), including headroom for the $2.60 per-call reservation. DevDex has episode/tool limits but no local dollar cap; use account spending controls and budget for it separately. No command reads provider balances, buys credit, changes a subscription or proves entitlement from a key. Confirmations expire after 24 hours and are never included in the repository.
 
 The presets pace reviews at 10 per hour. Set `limits.max_review_events_per_hour: null` only after verifying eligible [free trial PR overages](https://docs.coderabbit.ai/management/usage-based-addon#pr-reviews-during-your-trial). Hosted review latency remains separate.
 

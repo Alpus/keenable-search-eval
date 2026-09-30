@@ -61,7 +61,7 @@ suite_options:
     creator_login: coderabbitai[bot]
     success_description: Review completed
     zero_findings_app_id: 347564
-  max_judge_usd: 15
+  max_judge_usd: 13
   max_judge_calls_per_attempt: 200
   judge:
     model: claude-opus-4-5-20251101

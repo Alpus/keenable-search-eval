@@ -25,6 +25,9 @@ COPY --from=bundles /martian-snapshot/vendor/ /martian/vendor/
 COPY --from=bundles /martian-snapshot/runs/ /recorded/
 COPY --from=bundles /martian-snapshot/expected.json /recorded/martian-expected.json
 COPY --from=bundles /martian-snapshot/provenance.json /recorded/martian-provenance.json
+COPY --from=bundles /martian-snapshot/control-reconciliation/ /recorded/control-reconciliation/
+COPY --from=bundles /martian-snapshot/controls-expected.json /recorded/controls-expected.json
+COPY --from=bundles /martian-snapshot/reconciliation.py /reconcile_martian.py
 COPY scripts/replay.py /replay.py
 WORKDIR /app
 RUN mkdir /app/runs && ln -s /app/runs /martian/runs && chown -R eval:eval /app /martian /recorded
