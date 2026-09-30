@@ -12,8 +12,8 @@ title: Keenable clients
 
 **My recommendation:**
 
-- **Short term:** test demand for agent-search analytics.
-- **Long term:** specialize. Large assistants may capture most user activity, limiting an independent provider's data business.
+- **Short term:** turn agent search queries into analytics. Sell these insights to companies improving their visibility in AI answers (GEO).
+- **Long term:** choose a niche with a clear unmet need, such as e-commerce or sales. Adapt the product to its workflows.
 
 ## 1. Agent distribution → intent analytics
 
