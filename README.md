@@ -31,7 +31,7 @@ Keenable found:
 
 - **30 reference issues**, versus Exa’s 28 and no search’s 30.
 - **Four matches gained and four lost versus no search.** Retrieved framing documentation supports one gain; a CSS issue was missed despite a relevant search result.
-- **Documentation-supported extras:** an iframe-source check and a Redis key-type migration warning. Neither establishes a causal search benefit.
+- **Documentation-supported extras:** an iframe-source check and a Redis key-type migration warning.
 - **Extras overlapping existing reviews:** a missing fetch timeout and ASN.1 validation problems. These cannot count as clean independent discoveries.
 
 These results suggest that improving search is not the main lever for CodeRabbit’s review quality or an obvious quick win.
