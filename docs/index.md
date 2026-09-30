@@ -46,12 +46,13 @@ title: Keenable clients
 
 **I would choose one domain.** Each workflow needs its own coverage, freshness and benchmarks.
 
-- **Coding:** version-specific documentation for code reviews.
 - **People and companies:** roles and identity matching for enrichment and outreach.
+- **Coding:** version-specific documentation for code reviews.
 - **E-commerce:** product matching and competitor prices, a need I have worked on firsthand.
 - **Legal and science:** rulings, regulations and papers with traceable sources.
+- Other domains.
 
-**Where I started:**
+**Domain evidence:**
 
 - **CodeRabbit:** I started here because it has clear benchmarks and the hypothesis is relatively easy to test in a day. Search is secondary here, mostly a documentation lookup. It [already uses Exa](https://exa.ai/customers/coderabbit). My [published evals](https://github.com/Alpus/keenable-search-eval#results) do not establish a clear Keenable advantage.
 - **Clay:** my next hypothesis, explored in a [separate evaluation](https://github.com/Alpus/clay-keenable-eval). [Clay combines external providers and research agents](https://www.clay.com/claygent), so another data source could fit.
