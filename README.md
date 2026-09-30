@@ -1,8 +1,11 @@
 # Keenable Eval For CodeRabbit
 
-Compare Keenable and Exa search on dev search tasks:
-* CodeRabbit reviews (Martian)
-* Agent's documentation retrieval (DevDex)
+[CodeRabbit](https://www.coderabbit.ai/) is an AI agent that reviews pull requests and flags bugs. It uses [Exa Deep Search](https://exa.ai/customers/coderabbit) to verify findings against external documentation.
+
+This repository compares [Keenable](https://keenable.ai/) and [Exa](https://exa.ai/) for CodeRabbit reviews and a separate documentation-retrieval task:
+
+- CodeRabbit reviews: [Martian](https://github.com/withmartian/code-review-benchmark).
+- Agent documentation retrieval: [DevDex](https://github.com/firecrawl/benchmark-devdex).
 
 ## Results
 
