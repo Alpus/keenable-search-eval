@@ -41,9 +41,9 @@ All eight fixed-issue controls were also graded: native, Keenable and Exa re-fla
 
 ## How to run
 
-Requires Docker with Compose 2.24+ and a POSIX shell (WSL on Windows).
+Requires Docker with Compose 2.24+.
 
-**Reproduce recorded results:**
+### Reproduce recorded results
 
 1. Clone the repository and enter it:
 
@@ -58,19 +58,19 @@ Requires Docker with Compose 2.24+ and a POSIX shell (WSL on Windows).
    ./eval reproduce
    ```
 
-3. Find the verified outputs in `runs/reproduced/`: DevDex, 40 scored Martian reviews and eight controls. No keys or accounts are needed; replay runs offline after building.
+3. Read the verified reports in `runs/reproduced/`.
 
-**Run fresh experiments:**
+### Run fresh experiments
 
-1. Run `./eval setup` and fill `.env` with `GITHUB_TOKEN`, `KEENABLE_API_KEY`, `EXA_API_KEY` and `ANTHROPIC_API_KEY`. Use a GitHub token that can create private repositories; the provider accounts need model/search access and credits.
-2. Run `./eval run-all`. It prepares private repositories, MCP tokens and the HTTPS tunnel automatically; no Cloudflare account or CLI is needed.
-3. When prompted, follow `.gateway/coderabbit-setup.md`: install CodeRabbit on the generated repositories, save both MCP connections and add them to a Review scope. The [numbered dashboard checklist](docs/usage.md#unavoidable-coderabbit-dashboard-steps) specifies every field and verification step.
-4. Confirm the saved settings and available quota in the terminal. The runner then executes and grades both benchmarks. Keep Docker, the terminal and tunnel running until it exits.
-5. Read reports in `runs/<run_id>/`. If interrupted, follow [resume instructions](docs/usage.md#resume-or-handoff) before starting another command.
-
-The pinned benchmark inputs and scorers are already packaged. Account registration, credits, GitHub App access and CodeRabbit dashboard settings remain manual. [Detailed setup and budget requirements](docs/usage.md#fresh-runs).
+1. Run `./eval setup`. Fill `.env` with `GITHUB_TOKEN`, `KEENABLE_API_KEY`, `EXA_API_KEY` and `ANTHROPIC_API_KEY`. The accounts need [the required permissions and credits](docs/usage.md#fresh-runs).
+2. Run `./eval run-all` to prepare private repositories, MCP tokens and the HTTPS tunnel.
+3. When prompted, follow `.gateway/coderabbit-setup.md` to install CodeRabbit, save both MCP connections and assign the repositories to a Review scope. Follow the [dashboard checklist](docs/usage.md#unavoidable-coderabbit-dashboard-steps) for exact settings.
+4. Confirm settings and quota in the terminal. Keep Docker and the command running while it executes and grades both benchmarks.
+5. Read reports in `runs/<run_id>/`.
 
 ## Details
+
+### Commands
 
 | Action | Command |
 |---|---|
@@ -80,13 +80,24 @@ The pinned benchmark inputs and scorers are already packaged. Account registrati
 | Inspect progress / stop containers | `./eval status` / `./eval stop` |
 | Rebuild a current run's report / verify code | `./eval report RUN_ID` / `./eval check` |
 
-- Copy a `configs/` preset to change models, search modes, limits, seed or repeats. Inputs and evidence are saved in `runs/<run_id>/`.
-- Resume with the same command; new experiments need new run IDs. Protocol changes require smoke-test qualification.
-- Set a stable `PUBLIC_MCP_URL` for runs that must survive tunnel restarts.
+### Configure an experiment
 
-Fresh Martian presets allow 10 concurrent reviews (`limits.max_concurrent_reviews`) and at most 10 review events per hour. DevDex stays sequential. Recorded results used sequential reviews; no live speedup has been measured.
+1. Copy a `configs/` preset and assign a new run ID.
+2. Set models, search modes, limits, seed and repeats. Protocol changes require smoke-test qualification; see [configuration requirements](docs/usage.md#quota-and-configuration).
+3. Inspect resolved inputs with `./eval config CONFIG` and preview tasks with `./eval plan CONFIG` before running.
 
-Add benchmarks through `src/search_eval/suites/` and the registry in `core.py`, using existing task kinds. [Full commands and setup](docs/usage.md) · [File structure](docs/architecture.md).
+Inputs and evidence are saved in `runs/<run_id>/`. Fresh Martian presets allow 10 concurrent reviews and at most 10 review events per hour. DevDex runs sequentially.
+
+### Resume an experiment
+
+1. Check whether the original runner is still active before starting another command.
+2. Preserve the run files and configuration, resolve the interruption, then repeat the original command. Follow the [resume checklist](docs/usage.md#resume-or-handoff) for uncertain reviews or grading failures.
+
+For runs that must survive tunnel restarts, set a stable `PUBLIC_MCP_URL` before the first launch.
+
+### Architecture and extension
+
+Add benchmarks through `src/search_eval/suites/` and the registry in `core.py`, using existing task kinds. [File structure](docs/architecture.md) · [Full commands and methodology](docs/usage.md).
 
 ```mermaid
 flowchart TB
@@ -103,4 +114,4 @@ flowchart TB
 
 The runner saves configuration, reviews/answers, tool logs and judge responses. CodeRabbit uses this gateway only in MCP modes; fetch uses my shared page reader.
 
-`./eval reproduce` restores the archived files and rebuilds scores and reports. It does not run agents, the gateway or new model calls.
+`./eval reproduce` restores the archived files and rebuilds scores and reports.
