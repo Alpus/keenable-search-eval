@@ -17,7 +17,7 @@ title: Keenable clients
 
 **Why:**
 
-- **General search:** I expect most agent-search traffic to go to providers integrated into ChatGPT and similar assistants. I see access to those deals as a relationships problem more than a product problem. Without it, Keenable risks remaining a niche tool for open-source agents.
+- **General search:** I expect ChatGPT-scale distribution to depend more on relationships than product quality. Without those deals, Keenable risks staying an open-source niche.
 - **Domain-specific search:** I see a more defensible and potentially larger business.
 
 ## 1. Agent distribution → intent analytics
